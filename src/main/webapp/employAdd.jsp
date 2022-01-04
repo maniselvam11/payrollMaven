@@ -19,10 +19,7 @@
     width:200px;
     display:inline-block;
     }
-    table,th,td{
-border:1px solid black;
-border-collapse:collapse;
-}
+   
     </style>
     
   </head>
@@ -30,20 +27,8 @@ border-collapse:collapse;
   <br>
   <br>
   <br>
-  <script type="text/javascript">
-  function empAdd(){
-	  var employShow=document.getElementById("addEmp");
-	  employShow.style.display="none";
-	  var employAdd=document.getElementById("empAddForm");
-	  employAdd.style.display="block";
-	  
-  }
-  
-</script>
-<div id="addEmp">
-<button  class="btn" style="width:10%; font-size : 20px;" onclick="empAdd()"><strong>Employee Add</strong></font></button>
-</div>
-  <div id="empAddForm" style="display :none;">
+ 
+
   <h3>Add Employee</h3>
   <br><br>
 
@@ -51,8 +36,7 @@ border-collapse:collapse;
 <label for="name">Name</label>
 <input type="text" pattern="[a-zA-z\s]+" id="name" name="EmployeeName" placeholder="Enter your name"><br><br>
 <label for="dob">DateOfBirth</label>
- <input type="date" pattern="(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-]\\d{4}" id="dob" name="dob" placeholder="enter your DOB"><br><br>
-
+<input type="date" pattern="(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-]\\d{4}" id="dob" name="dob" placeholder="enter your DOB"><br><br>
 <label for="doj">DateOfJoining</label>
 <input type="date" pattern="(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-]\\d{4}" id="doj" name="doj" placeholder="Date Of Joining"><br><br>
 <label for="address">Address</label>

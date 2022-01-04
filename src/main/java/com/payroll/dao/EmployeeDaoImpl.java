@@ -169,6 +169,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				Departments depart=deptDao.findDepartment(rs.getInt(12));
 				Employee employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),depart);
 				employeeList.add(employee);
+				System.out.println(rs.getInt(1));
 			}
 			
 		} catch (SQLException e) {

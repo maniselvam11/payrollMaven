@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="deptUpd" >
-  <label for="deptName">Department Name</label>
+<label for="deptName">Department Name</label>
 <input type="text" id="deptName" name="name" ><br>
 <input type="submit">
 </form>

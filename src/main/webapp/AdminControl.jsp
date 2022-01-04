@@ -60,7 +60,7 @@ ADMIN CONTROLS
 
 <br>
 
-<a href="Department.jsp"><button type="button" class="btn"name="add" ><font size="3"><strong>DEPARTMENT</strong></font></button></a>
+<a href="DepartShow.jsp"><button type="button" class="btn"name="add" ><font size="3"><strong>DEPARTMENT</strong></font></button></a>
 <br>
 
 <a href="Grade.jsp"><button type="button" class="btn"name="add" ><font size="3"><strong>GRADE</strong></font></button></a>

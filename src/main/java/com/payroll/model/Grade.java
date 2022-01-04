@@ -3,14 +3,7 @@ package com.payroll.model;
 import java.util.Objects;
 
 public class Grade {
-	private int gradeId;
 	
-	public int getGradeId() {
-		return gradeId;
-	}
-	public void setGradeId(int gradeId) {
-		this.gradeId = gradeId;
-	}
 	private String gradeName;
 	private long gradeBonus;
 	private long gradeBasic;
@@ -47,24 +40,16 @@ public class Grade {
 	public void setGradePt(long gradePt) {
 		this.gradePt = gradePt;
 	}
-	public Grade( int gradeId,String gradeName, long gradeBonus, long gradeBasic, long gradePf, long gradePt) {
+	public Grade(String gradeName,  long gradeBasic,long gradeBonus, long gradePf, long gradePt) {
 		super();
-		this.gradeId=gradeId;
 		this.gradeName = gradeName;
-		this.gradeBonus = gradeBonus;
 		this.gradeBasic = gradeBasic;
+		this.gradeBonus = gradeBonus;
+		
 		this.gradePf = gradePf;
 		this.gradePt = gradePt;
 	}
-	public Grade(String gradeName2, long basic, long bonus, long pf, long pt) {
-		
-		super();
-		this.gradeName = gradeName2;
-		this.gradeBonus = basic;
-		this.gradeBasic = bonus;
-		this.gradePf = pf;
-		this.gradePt = pt;
-	}
+
 
 	@Override
 	public int hashCode() {

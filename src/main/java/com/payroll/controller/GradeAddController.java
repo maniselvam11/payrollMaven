@@ -22,16 +22,14 @@ public class GradeAddController extends HttpServlet {
 		long pf=Long.parseLong(request.getParameter("pf"));
 		long pt=Long.parseLong(request.getParameter("pt"));
 		GradeDaoImpl gradeDao=new GradeDaoImpl();
-		Grade grade=gradeDao.findGrade(gradeName);
-		int gradeId=gradeDao.findGradeID(grade);
-		
-		Grade gradeAdd=new Grade( gradeId,gradeName,basic,bonus,pf,pt);
+
+		Grade gradeAdd=new Grade(gradeName,basic,bonus,pf,pt);
 		boolean flag=gradeDao.insertGrade(gradeAdd);
 		if(flag!=false) {
 			response.sendRedirect("GradeShow.jsp");
 		}
 		else {
-			response.sendRedirect("grade.jsp");
+			response.sendRedirect("Grade.jsp");
 		}
 		
 	

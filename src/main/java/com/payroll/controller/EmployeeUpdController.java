@@ -48,7 +48,7 @@ public class EmployeeUpdController extends HttpServlet {
 		EmployeeDaoImpl employ=new EmployeeDaoImpl();
 		Employee emp=new Employee(name,dob,doj,address,city,pincode,mobileNo,state,email,panNo,null);
 		employ.updateEmp(emp);
-		response.sendRedirect("empShow.jsp");
+		response.sendRedirect("EmpShow.jsp");
 		
 		
 		

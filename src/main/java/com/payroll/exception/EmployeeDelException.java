@@ -7,6 +7,7 @@ public class EmployeeDelException extends SQLIntegrityConstraintViolationExcepti
 	public String getMessage() {
 		// TODO Auto-generated method stub
 		return "Employee details can't be delete";
+	
 	}
 
 }

@@ -52,7 +52,7 @@ public class EmployeeAddController extends HttpServlet {
 		}
 		else{
 			
-			response.sendRedirect("employAdd.jsp");
+			response.sendRedirect("EmployAdd.jsp");
 			
 		}
 		

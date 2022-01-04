@@ -28,26 +28,12 @@ border-collapse:collapse;
 </head>
 <body>
 
-<div id="showform" style="display:block;">
-<button  class="btn" style="width:10%; font-size : 20px;" onclick="empShow()"><strong>Show Employee</strong></font></button>
-</div>
-
-
-<script>
-function empShow(){
-	  
-	  var employAdd=document.getElementById("showform");
-	  employAdd.style.display="none";
-	  var employShow=document.getElementById("empShowForm");
-	  employShow.style.display="block";
-}
 
 
 
-</script>
 
 
-<div id="empShowForm" style="display: none;">
+<div id="empShowForm" >
 <h2>Show Employee</h2>
 <form >
 <table >
@@ -90,7 +76,7 @@ for(int i=0;i<employeeList.size();i++)
 <td><%= emp.getPanNo() %></td>
 <td><%= emp.getDept().getDeptName()%></td>
 <td><a href="empDel?empId=<%= emp.getEmpId() %>">Delete</a></td>
-<td><a href="employUpd.jsp?empId=<%= emp.getEmpId() %>">Edit</a></td>
+<td><a href="EmployUpd.jsp?empId=<%= emp.getEmpId() %>">Edit</a></td>
 </tr>
 <%} %> 
 

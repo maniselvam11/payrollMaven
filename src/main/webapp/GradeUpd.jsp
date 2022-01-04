@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="gradeUpd" method="post">
-  <label for="gradeName">Grade Name</label>
+<label for="gradeName">Grade Name</label>
 <input type="text" id="gradeName" name="name" ><br><br>
 
  <label for="gradeBasic">Basic Salary</label>

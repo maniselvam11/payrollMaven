@@ -38,6 +38,7 @@ border-collapse:collapse;
 
 
 <%GradeDaoImpl gradeDao=new GradeDaoImpl();
+int gradeId=0;
 List<Grade> gradeList=gradeDao.showGrade();
 for(int i=0;i<gradeList.size();i++){
 	Grade grade=gradeList.get(i);
@@ -48,8 +49,9 @@ for(int i=0;i<gradeList.size();i++){
 	<td><%= grade.getGradeBasic() %></td>
 	<td><%= grade.getGradePf() %></td>
 	<td><%= grade.getGradePt() %></td>
-	<td><a href="GradeDel?gradeId=<%= grade.getGradeId() %>">Delete</a></td>
-	<td><a href="GradeUpd.jsp?gradeId=<%= grade.getGradeId() %>">Edit</a></td>
+	<%= gradeId=gradeDao.findGradeID(grade) %>
+	<td><a href="GradeDel?gradeId=<%= gradeId %>">Delete</a></td>
+	<td><a href="GradeUpd.jsp?gradeId=<%= gradeId%>">Edit</a></td>
 	
 	</tr>
 	

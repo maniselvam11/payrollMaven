@@ -17,7 +17,7 @@
 </style>
 </head>
 <body>
-<a href="empShow.jsp?empId=0"><button type="submit"><strong>Employee Show</strong></button></a>
-<a href="employAdd.jsp"><button type="submit"><strong>Employee Add</strong></button></a>
+<a href="EmpShow.jsp?empId="><button type="submit"><strong>Employee Show</strong></button></a>
+<a href="EmployAdd.jsp"><button type="submit"><strong>Employee Add</strong></button></a>
 </body>
 </html>

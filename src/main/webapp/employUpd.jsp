@@ -6,20 +6,24 @@
 <meta charset="ISO-8859-1">
 <title>Payroll</title>
 <style>
-body{
+     body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #2ECC71;
+    }
+    label{
+    width:200px;
+    display:inline-block;
+    }
 
-}
-label{
-width:80px;
-display:inline-block;
-}
 </style>
 
 </head>
 <body>
+
 <form action="empUpdate" method="post">
+
   <label for="empName">Employ Name</label>
-<input type="text" id="empName" name="name" ><br>
+<input type="text" id="empName" name="name"  placeholder=""><br>
 
 <label for="empDob">Employ DateOfBirth</label>
 <input type="date" id="empDob" name="dob" ><br>
