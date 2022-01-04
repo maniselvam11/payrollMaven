@@ -27,7 +27,7 @@ for(int i=0;i<leaveList.size();i++){
 	%>
 	
 	<tr>
-	<td><%= empId %>
+	<td><%= empId %></td>
 	<td><%= leave.getLeaveDt() %></td>
 	<td><%= leave.getLeaveReason() %></td>
 	</tr>

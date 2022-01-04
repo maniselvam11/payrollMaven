@@ -26,8 +26,8 @@ function LeaveAdd(){
 
 </script>
 <div>
-<button  class="btn" style="width:10%; font-size : 20px;" onclick="LeaveAdd()"><strong>Leave Add</strong></font></button>
-<a href="LeaveShow.jsp"><button  class="btn" style="width:10%; font-size : 20px;" ><strong>Show Leave</strong></font></button></a>
+<button  class="btn" style="width:10%; font-size : 20px;" onclick="LeaveAdd()"><strong>Leave Add</strong></button>
+<a href="LeaveShow.jsp"><button  class="btn" style="width:10%; font-size : 20px;" ><strong>Show Leave</strong></button></a>
 </div>
 <form action="LeaveAdd" style="display :none;">
 <h2>Add Leave</h2>
