@@ -56,20 +56,20 @@ ADMIN CONTROLS
 
 <br>
 
-<button type="button" class="btn"  name="emp" ><a href="employ.jsp"><strong>EMPLOYEE</strong></a></button>
+<a href="Employ.jsp"><button type="button" class="btn"  name="emp" ><strong>EMPLOYEE</strong></button></a>
 
 <br>
 
-<button type="button" class="btn"name="add" ><font size="3"><a href="department.jsp"><strong>DEPARTMENT</strong></a></font></button>
+<a href="Department.jsp"><button type="button" class="btn"name="add" ><font size="3"><strong>DEPARTMENT</strong></font></button></a>
 <br>
 
-<button type="button" class="btn"name="add" ><font size="3"><a href="grade.jsp"><strong>GRADE</strong></a></font></button>
+<a href="Grade.jsp"><button type="button" class="btn"name="add" ><font size="3"><strong>GRADE</strong></font></button></a>
 <br>
-<button type="button" class="btn" name="add" ><font size="3"><strong><a href="leaveDetail.jsp">LEAVE DETAIL</strong></a></font></button>
+<a href="LeaveDetail.jsp"><button type="button" class="btn" name="add" ><font size="3"><strong>LEAVE DETAIL</strong></font></button></a>
 
 <br>
 
-<button type="button" class="btn" name="add" ><font size="3"><a href="salary.jsp"><strong>SALARY</strong></a></font></button>
+<a href="Salary.jsp"><button type="button" class="btn" name="add" ><font size="3"><strong>SALARY</strong></font></button></a>
 
 
  </center>

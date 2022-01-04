@@ -9,18 +9,19 @@
 <body>
 <script type="text/javascript">
 function gradeAdd(){
-	var gradeAdd=document.getElementById("");
+	var gradeAdd=document.getElementById("gradeAdd");
+	gradeAdd.style.display="block";
 	
 }
 
 </script>
 
-
 <div>
 <button  class="btn" style="width:10%; font-size : 20px;" onclick="gradeAdd()"><strong>Grade Add</strong></font></button>
-<button  class="btn" style="width:10%; font-size : 20px;" onclick="gradeShow()"><strong>Show Grade</strong></font></button>
+<a href="GradeShow.jsp"><button  class="btn" style="width:10%; font-size : 20px;" ><strong>Show Grade</strong></font></button></a>
 </div>
-<div id="gradeAdd">
+<form action="gradeAdd">
+<div id="gradeAdd" style="display :none;">
 <h2>Add Grade</h2>
 <label for="gradeNa">Grade Name</label>
 <input type="text" name="gradeName" id="gradeNa" pattern="[a-zA-z\s]+" placeholder="enter grade Name"><br><br>
@@ -31,9 +32,11 @@ function gradeAdd(){
 <label for="gradePf">GradePf</label>
 <input type="number" name="pf" id="gradePf" pattern="[0-9]+" placeholder="enter providient fund "><br><br>
 <label for="gradePt">GradePt</label>
-<input type="number" name="bonus" id="gradePt" pattern="[0-9]+" placeholder="enter Professional tax "><br><br>
+<input type="number" name="pt" id="gradePt" pattern="[0-9]+" placeholder="enter Professional tax "><br><br>
 <input type="submit">
 </div>
+</form>
+
 
 
 

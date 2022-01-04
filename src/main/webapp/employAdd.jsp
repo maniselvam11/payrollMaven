@@ -39,9 +39,8 @@ border-collapse:collapse;
 	  
   }
   
-  
 </script>
-  <div id="addEmp">
+<div id="addEmp">
 <button  class="btn" style="width:10%; font-size : 20px;" onclick="empAdd()"><strong>Employee Add</strong></font></button>
 </div>
   <div id="empAddForm" style="display :none;">

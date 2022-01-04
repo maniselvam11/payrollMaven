@@ -10,13 +10,14 @@
     font-family: Arial, Helvetica, sans-serif;
     background: #2ECC71;
     }
+    a{
+    text-decoration: none;
+    }
 
 </style>
 </head>
 <body>
-<button type="submit">
-<a href="empShow.jsp"><strong>Employee Show</strong></a></button>
-<button type="submit">
-<a href="employAdd.jsp"><strong>Employee Add</strong></a></button>
+<a href="empShow.jsp?empId=0"><button type="submit"><strong>Employee Show</strong></button></a>
+<a href="employAdd.jsp"><button type="submit"><strong>Employee Add</strong></button></a>
 </body>
 </html>

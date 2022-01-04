@@ -3,7 +3,13 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Employee {
-	
+	private int empId;
+	public int getEmpId() {
+		return empId;
+	}
+	public void setEmpId(int empId) {
+		this.empId = empId;
+	}
 	private String empName;
 	private Date dob;
 	private Date doj;
@@ -124,9 +130,23 @@ public class Employee {
 		this.panNo = panNo;
 		this.dept = dept;
 	}
-	public Employee() {
+	public Employee(int empId, String empName, java.sql.Date dob, java.sql.Date doj, String address, 
+			String city, long pincode, long mobileNo, String state, String mailId, String panNo, 
+			Departments dept) {
 		super();
 		// TODO Auto-generated constructor stub
+		this.empId=empId;
+		this.empName = empName;
+		this.dob = dob;
+		this.doj = doj;
+		this.address = address;
+		this.city = city;
+		this.pincode = pincode;
+		this.mobileNo = mobileNo;
+		this.state = state;
+		this.mailId = mailId;
+		this.panNo = panNo;
+		this.dept = dept;
 	}
 
 	

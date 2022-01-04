@@ -68,12 +68,6 @@ function empShow(){
 
 </tr>
 
-<%
-EmployeeDaoImpl empDao=new EmployeeDaoImpl();
-String emailId=request.getParameter("empEmail");
-empDao.deleteEmp(emailId);
-
-%>
 
 <%EmployeeDaoImpl employeeDao=new  EmployeeDaoImpl();
 List<Employee> employeeList=employeeDao.showEmployee();
@@ -82,6 +76,7 @@ for(int i=0;i<employeeList.size();i++)
 	Employee emp=employeeList.get(i);
 %>
 <tr>
+
 
 <td><%= emp.getEmpName() %></td>
 <td><%= emp.getDob() %></td>
@@ -94,19 +89,14 @@ for(int i=0;i<employeeList.size();i++)
 <td><%= emp.getMailId() %></td>
 <td><%= emp.getPanNo() %></td>
 <td><%= emp.getDept().getDeptName()%></td>
-<td><a href="empShow.jsp?empEmail=<%= emp.getMailId() %>">Delete</a></td>
-
-
-
+<td><a href="empDel?empId=<%= emp.getEmpId() %>">Delete</a></td>
+<td><a href="employUpd.jsp?empId=<%= emp.getEmpId() %>">Edit</a></td>
+</tr>
 <%} %> 
+
 </table>
 
 </form>
-
-
-
-
-
 </div>
 <br>
 </body>

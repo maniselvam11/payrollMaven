@@ -9,7 +9,7 @@ import com.payroll.model.Departments;
 public interface DepartmentDao {
 	public void insertDep(Departments dprt) ;
 	public  int findDepartmentID(Departments dept);
-	public void updateDept(int deptId,String deptName);
+	public void updateDept(Departments depart);
 	public boolean deleteDept(int  deptId);
 	public List<Departments> showDepartments();
 	public Departments	findDepartment(int id);

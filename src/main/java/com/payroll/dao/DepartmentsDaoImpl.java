@@ -68,7 +68,7 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 	
 		return id;
 	}
-	public void updateDept(int deptId,String deptName)
+	public void updateDept(Departments depart)
 	{
 		String insertQuery = "update departments set dept_name=? where dept_id=?";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
@@ -77,8 +77,8 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 		try {
 
 			pstmt = con.prepareStatement(insertQuery);
-			pstmt.setString(1,deptName);
-			pstmt.setLong(2, deptId);
+			pstmt.setString(1,depart.getDeptName());
+			pstmt.setLong(2, depart.getDeptId());
 			pstmt.executeUpdate();
 //			System.out.println("Department Updated Successfully");
 

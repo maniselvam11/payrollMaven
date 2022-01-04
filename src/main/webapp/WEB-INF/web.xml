@@ -3,25 +3,37 @@
 	<servlet>
 		<description>
 		</description>
-		<display-name>EmployeeController</display-name>
-		<servlet-name>EmployeeController</servlet-name>
-		<servlet-class>com.payroll.controller.EmployeeAddServlet</servlet-class>
+		<display-name>DepartmentDel</display-name>
+		<servlet-name>DepartmentDel</servlet-name>
+		<servlet-class>com.payroll.controller.DepartmentDelController</servlet-class>
 	</servlet>
 	<servlet>
 		<description>
 		</description>
-		<display-name>EmployeeUpdServlet</display-name>
-		<servlet-name>EmployeeUpdServlet</servlet-name>
-		<servlet-class>com.payroll.controller.EmployeeUpdServlet</servlet-class>
+		<display-name>GradeUpdController</display-name>
+		<servlet-name>GradeUpdController</servlet-name>
+		<servlet-class>com.payroll.controller.GradeUpdController</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>LeaveAddController</display-name>
+		<servlet-name>LeaveAddController</servlet-name>
+		<servlet-class>com.payroll.controller.LeaveAddController</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>EmployeeController</servlet-name>
-		<url-pattern>/EmployeeController</url-pattern>
+		<servlet-name>DepartmentDel</servlet-name>
+		<url-pattern>/DepartmentDel</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>EmployeeUpdServlet</servlet-name>
-		<url-pattern>/EmployeeUpdServlet</url-pattern>
+		<servlet-name>GradeUpdController</servlet-name>
+		<url-pattern>/GradeUpdController</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LeaveAddController</servlet-name>
+		<url-pattern>/LeaveAddController</url-pattern>
+	</servlet-mapping>
+	
 
 
 </web-app>

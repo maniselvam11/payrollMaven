@@ -94,6 +94,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			pstmt.setString(8, employ.getState());
 			pstmt.setString(9, employ.getMailId());
 			pstmt.setString(10, employ.getPanNo());
+			pstmt.setInt(11, employ.getEmpId());
 			int i=pstmt.executeUpdate();
 			
 			
@@ -109,7 +110,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	
 	public void deleteEmp(int  empId)
 	{
-		String deleteQuery = "delete from employees where emp_id="+empId;
+		String deleteQuery = "delete from employees where emp_id='"+empId+"'";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		try {
@@ -117,12 +118,12 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			stmt.executeUpdate(deleteQuery);
 			
 			
-			System.out.println("employee details are deleted successfully");
+//			System.out.println("employee details are deleted successfully");
 
 		} catch (Exception e) {
 			//catch the exception and get that message
 			e.getMessage();
-			System.out.println("employee details are not deleted ");
+//			System.out.println("employee details are not deleted ");
 		}
 	}
 	
@@ -166,7 +167,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			while(rs.next())
 			{
 				Departments depart=deptDao.findDepartment(rs.getInt(12));
-				Employee employee=new Employee(rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),depart);
+				Employee employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),depart);
 				employeeList.add(employee);
 			}
 			
