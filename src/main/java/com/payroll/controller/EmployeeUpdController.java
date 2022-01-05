@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.payroll.dao.DepartmentsDaoImpl;
 import com.payroll.dao.EmployeeDaoImpl;
+import com.payroll.model.Departments;
 import com.payroll.model.Employee;
 @WebServlet("/empUpdate")
 public class EmployeeUpdController extends HttpServlet {
@@ -32,7 +34,7 @@ public class EmployeeUpdController extends HttpServlet {
 		Date dob=null;
 		Date doj=null;
 		try {
-			dob=new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("doj"));
+			dob=new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("dob"));
 			doj=new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("doj"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -45,8 +47,11 @@ public class EmployeeUpdController extends HttpServlet {
 		String state=request.getParameter("state");
 		String email=request.getParameter("email");
 		String panNo=request.getParameter("pan");
+		String departName=request.getParameter("dName");
+		DepartmentsDaoImpl departDao=new DepartmentsDaoImpl();
+		Departments depart=departDao.findDepartment(departName);)
 		EmployeeDaoImpl employ=new EmployeeDaoImpl();
-		Employee emp=new Employee(name,dob,doj,address,city,pincode,mobileNo,state,email,panNo,null);
+		Employee emp=new Employee(name,dob,doj,address,city,pincode,mobileNo,state,email,panNo,depart);
 		employ.updateEmp(emp);
 		response.sendRedirect("EmpShow.jsp");
 		

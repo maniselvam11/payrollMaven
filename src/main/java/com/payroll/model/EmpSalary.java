@@ -6,8 +6,9 @@ import java.util.Objects;
 public class EmpSalary {
 	private Employee empId;
 	private Departments deptId;
+	
+	private int totalLeave;
 	private Grade gradeId;
-	private Leave leaveId;
 	private Date salaryDt;
 	private Long gross;
 	private Long salary;
@@ -29,12 +30,7 @@ public class EmpSalary {
 	public void setGradeId(Grade gradeId) {
 		this.gradeId = gradeId;
 	}
-	public Leave getLeaveId() {
-		return leaveId;
-	}
-	public void setLeaveId(Leave leaveId) {
-		this.leaveId = leaveId;
-	}
+	
 	public Date getSalaryDt() {
 		return salaryDt;
 	}
@@ -75,16 +71,23 @@ public class EmpSalary {
 		return "empId=" + empId + "\n deptId=" + deptId + "\n gradeId=" + gradeId + "\n salaryDt=" + salaryDt
 				+ "\n gross=" + gross + "\n salary=" + salary + "\n";
 	}
-	public EmpSalary(Employee empId, Departments deptId, Grade gradeId, Leave leaveId, Date salaryDt, Long gross,
+	
+	public EmpSalary(Employee empId, Departments deptId,  int totalLeave,Grade gradeId, Date salaryDt, Long gross,
 			Long salary) {
 		super();
 		this.empId = empId;
 		this.deptId = deptId;
 		this.gradeId = gradeId;
-		this.leaveId = leaveId;
+		this.totalLeave = totalLeave;
 		this.salaryDt = salaryDt;
 		this.gross = gross;
 		this.salary = salary;
+	}
+	public int getTotalLeave() {
+		return totalLeave;
+	}
+	public void setTotalLeave(int totalLeave) {
+		this.totalLeave = totalLeave;
 	}
 	public EmpSalary() {
 		super();

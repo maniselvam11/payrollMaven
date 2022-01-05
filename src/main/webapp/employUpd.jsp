@@ -51,6 +51,10 @@
 
 <label for="empPan">Pan Number</label>
 <input type="text" id="empPan" name="pan"><br><br>
+
+
+<label for="empDepart">Department Name</label>
+<input type="text" id="deptName" name="dName"><br><br>
 <input type="submit">
 </form>
 </body>

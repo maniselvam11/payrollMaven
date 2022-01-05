@@ -7,29 +7,37 @@
 <title>payroll</title>
 </head>
 <body>
-<script>
-function salaryAdd(){
-	var salaryAdd=document.getElementById("salaryInsert");
-	salaryAdd.style.display=("block");
-}</script>
-<div>
-<button  class="btn" style="width:10%; font-size : 20px;" onclick="salaryAdd()"><strong>Enter Salary Detail</strong></button>
-<a href="SalaryShow.jsp"><button  class="btn" style="width:10%; font-size : 20px;" ><strong>Show Salary</strong></button></a>
-</div>
-
-<form action="salaryInsert" style="display :none;">
 <h1><STRONG>ADMINISTRATOR &nbsp;</STRONG></h1>
 
-<label for="employName">Employee Name</label>
-<input type="text" name="eName" id="employName" pattern="[a-zA-Z]+" placeholder="enter employ Name"><br><br>
+<form action="salaryInsert" >
+<label for="employId">Employee Id</label>
+<input type="number" name="eId" id="employId" pattern="[a-zA-Z]+" placeholder="enter employ Id"><br><br>
 <label for="gradeName">Grade Name</label>
 <input type="text" name="gName" id="gradeName" pattern="[a-zA-Z]+" placeholder="enter Grade Name"><br><br>
 <label for="deptName">Department Name</label>
 <input type="text" name="dName" id="deptName" pattern="[a-zA-Z]+" placeholder="enter Department Name"><br><br>
 <label for="salDate">Salary Date</label>
 <input type="date" name="salDate" id="salaryDate" ><br><br>
-<label for="Basic">Department Name</label>
-<input type="text" name="dName" id="deptName" pattern="[a-zA-Z]+" placeholder="enter Department Name"><br><br>
+
+
+
+<label for="taxDeducte">Do you want to Deducte professional</label>
+
+<select name="tax" id="pf">
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+ 
+</select>
+<br><br>
+<label for="monthBonus">This month bonus do you want to Add</label>
+
+<select name="bonus" id="monthBonus">
+  <option value="yes">Yes</option>
+  <option value="no">No</option>
+ 
+</select>
+<br>
+<input type="submit">
 
 </body>
 </html>

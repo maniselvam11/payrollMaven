@@ -1,39 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app id="WebApp_ID" version="2.4" xmlns="http://JAVA.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-	<servlet>
-		<description>
-		</description>
-		<display-name>DepartmentDel</display-name>
-		<servlet-name>DepartmentDel</servlet-name>
-		<servlet-class>com.payroll.controller.DepartmentDelController</servlet-class>
-	</servlet>
-	<servlet>
-		<description>
-		</description>
-		<display-name>GradeUpdController</display-name>
-		<servlet-name>GradeUpdController</servlet-name>
-		<servlet-class>com.payroll.controller.GradeUpdController</servlet-class>
-	</servlet>
-	<servlet>
-		<description>
-		</description>
-		<display-name>LeaveAddController</display-name>
-		<servlet-name>LeaveAddController</servlet-name>
-		<servlet-class>com.payroll.controller.LeaveAddController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>DepartmentDel</servlet-name>
-		<url-pattern>/DepartmentDel</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>GradeUpdController</servlet-name>
-		<url-pattern>/GradeUpdController</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>LeaveAddController</servlet-name>
-		<url-pattern>/LeaveAddController</url-pattern>
-	</servlet-mapping>
 	
-
 
 </web-app>
