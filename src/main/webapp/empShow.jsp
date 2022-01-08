@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>payroll</title>
 
 <style>
     
@@ -63,7 +63,6 @@ for(int i=0;i<employeeList.size();i++)
 %>
 <tr>
 
-
 <td><%= emp.getEmpName() %></td>
 <td><%= emp.getDob() %></td>
 <td><%= emp.getDoj() %></td>
@@ -82,7 +81,11 @@ for(int i=0;i<employeeList.size();i++)
 
 </table>
 
+<button onclick="history.go(-1)">Go Back</button>
+
+<a href="AdminControl.jsp"><button type="button"><strong>Home Page</strong></button></a>
 </form>
+
 </div>
 <br>
 </body>

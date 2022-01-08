@@ -34,7 +34,7 @@
 
 <form action="empAdd" method="post">
 <label for="name">Name</label>
-<input type="text" pattern="[a-zA-z\s]+" id="name" name="EmployeeName" placeholder="Enter your name"><br><br>
+<input type="text" pattern="[a-zA-z\s]+" id="name" name="EmployeeName" placeholder="Enter your name" autofocus="autofocus"><br><br>
 <label for="dob">DateOfBirth</label>
 <input type="date" pattern="(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-]\\d{4}" id="dob" name="dob" placeholder="enter your DOB"><br><br>
 <label for="doj">DateOfJoining</label>
@@ -55,15 +55,19 @@
 <input type="text" pattern="[a-zA-z0-9]+{10}" id="panNumber" name="panNo" placeholder="Enter Pan Number"><br><br>
 <label for="departmentName">Department Name</label>
 <input type="text" pattern="[a-zA-z]+" name="deptName" placeholder="Enter Department Name"><br><br>
+<div>
 <input type="submit">
 
+<input type="reset">
 </form>
   
+<a href="AdminControl.jsp"><button type="button"><strong>Home Page</strong></button></a>
+
+
+ <input type="button" value="Go back!" onclick="history.go(-1)">
 
 </div>
-
-  
-  </body>
+</body>
   
   
 </html>

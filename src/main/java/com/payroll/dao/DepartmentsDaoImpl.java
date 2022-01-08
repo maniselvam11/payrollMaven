@@ -31,12 +31,12 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 			pstmt.setInt(3,gradID);
 			
 			pstmt.executeUpdate();
-			System.out.println("Department Inserted Successfully");
+//			System.out.println("Department Inserted Successfully");
 			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.out.println("Department not Inserted successfully");
+//			System.out.println("Department not Inserted successfully");
 		}
 		
 		

@@ -19,15 +19,22 @@ import com.payroll.dao.SalaryCalculateDaoImpl;
 import com.payroll.model.Departments;
 import com.payroll.model.Employee;
 import com.payroll.model.Grade;
-@WebServlet("\salaryInsert")
+@WebServlet("/salaryInsert")
 public class SalaryAddController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		
-		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		
 		int empID=Integer.parseInt(request.getParameter("eId"));
 		String gradeName=request.getParameter("gName");
 		String deptName=request.getParameter("dName");
+		String selectTax=request.getParameter("tax");
+		String selectBonus=request.getParameter("bonus");
+		System.out.println(empID);
+		System.out.println(gradeName);
+		System.out.println(deptName);
+		System.out.println(selectTax);
+		System.out.println(selectBonus);
 		Date salaryDate=null;
 		try {
 			salaryDate=sdf.parse(request.getParameter("salDate"));
@@ -55,22 +62,70 @@ public class SalaryAddController extends HttpServlet {
 		}
 		String pfCheck=request.getParameter("tax");
 		String monthBonus=request.getParameter("monthBonus");
-		System.out.println(pfCheck);
-		System.out.println(monthBonus);
+		
 		long grossSalary = gradeDao.grossSalary(gradeName);
 		long perDaySalary = gradeDao.perDaySalary(gradeName);
-//		System.out.println("PerDay Salary " + perDaySalary);
 		long basicSalary = gradeDao.basicSalary(gradeName);
-//		System.out.println("Basic Salary " + basicSalary);
 		long bonus = gradeDao.bonus(gradeName);
 		long pt = gradeDao.professionalTax(gradeName);
 		long pf = gradeDao.providentFund(gradeName);
-		long salary = (((basicSalary + pt) - (leaveDays * perDaySalary)) - pf);
 		SalaryCalculateDaoImpl salaryCal = new SalaryCalculateDaoImpl();
-		boolean result=salaryCal.insertSalary(emp, grade, depart, leaveDays, salaryDt, grossSalary, salary);
-		if(result) {
+
+		if(selectTax.equals("yes")) {
+			if(selectBonus.equals("yes")) {
+				long salaryBonus = (((basicSalary + bonus + pt) - (leaveDays * perDaySalary)) - pf);
+				boolean result=salaryCal.insertSalary(emp, grade, depart, leaveDays, salaryDt, grossSalary, salaryBonus);
+				if (result!=false) {
+					response.sendRedirect("Salary.jsp");
+				}
+				else {
+					response.sendError(1, "Salary Not Inserted Properly");
+				}
+			}
+			else {
+				long salary = (((basicSalary + pt) - (leaveDays * perDaySalary)) - pf);
+				boolean result=salaryCal.insertSalary(emp, grade, depart, leaveDays, salaryDt, grossSalary, salary);
+				if (result!=false) {
+					response.sendRedirect("Salary.jsp");
+				}
+				else {
+					response.sendError(1, "Salary Not Inserted Properly");
+				}
+			}
 			
 		}
+		else {
+			if(selectBonus.equals("yes")) {
+				long salaryBonus = (((basicSalary + bonus + pt) - (leaveDays * perDaySalary)));
+
+				boolean result = salaryCal.insertSalary(emp, grade, depart, leaveDays, salaryDt,
+						grossSalary, salaryBonus);
+				System.out.println();
+				if (result!=false) {
+					response.sendRedirect("Salary.jsp");
+				}
+				else {
+					response.sendError(1, "Salary Not Inserted Properly");
+				}
+			}
+			else {
+				long salary = (((basicSalary + pt) - (leaveDays * perDaySalary)));
+
+				boolean result = salaryCal.insertSalary(emp, grade, depart, leaveDays, salaryDt,
+						grossSalary, salary);
+				if (result==true) {
+					response.sendRedirect("Salary.jsp");
+				}
+				else {
+					response.sendError(1, "Salary Not Inserted Properly");
+				}
+				
+			}
+			
+			
+		}
+		
+		
 	}
 
 }

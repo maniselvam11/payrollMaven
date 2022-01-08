@@ -42,6 +42,7 @@ int gradeId=0;
 List<Grade> gradeList=gradeDao.showGrade();
 for(int i=0;i<gradeList.size();i++){
 	Grade grade=gradeList.get(i);
+	gradeId=gradeDao.findGradeID(grade);
 	%>
 	<tr>
 	<td><%= grade.getGradeName() %></td>
@@ -49,7 +50,6 @@ for(int i=0;i<gradeList.size();i++){
 	<td><%= grade.getGradeBasic() %></td>
 	<td><%= grade.getGradePf() %></td>
 	<td><%= grade.getGradePt() %></td>
-	<%= gradeId=gradeDao.findGradeID(grade) %>
 	<td><a href="GradeDel?gradeId=<%= gradeId %>">Delete</a></td>
 	<td><a href="GradeUpd.jsp?gradeId=<%= gradeId%>">Edit</a></td>
 	
@@ -58,5 +58,8 @@ for(int i=0;i<gradeList.size();i++){
 
 <%} %>
 </table>
+<a href="AdminControl.jsp"><button type="button"><strong>Home Page</strong></button></a>
+
+ <input type="button" value="Go back!" onclick="history.go(-1)">
 </body>
 </html>

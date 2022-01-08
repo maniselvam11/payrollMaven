@@ -51,6 +51,9 @@ for(int i=0;i<departList.size();i++)
 </tr>
 <%}%>
 </table>
-
+<form>
+<a href="AdminControl.jsp"><button type="button"><strong>Home Page</strong></button></a>
+<input type="button" value="Go back!" onclick="history.go(-1)">
+</form>
 </body>
 </html>

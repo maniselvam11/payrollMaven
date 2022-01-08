@@ -4,6 +4,20 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Leave {
+	private int leaveId;
+	public Leave(int leaveId, Employee employ, Date leaveDt, String leaveReason) {
+		super();
+		this.leaveId = leaveId;
+		this.employ = employ;
+		this.leaveDt = leaveDt;
+		LeaveReason = leaveReason;
+	}
+	public int getLeaveId() {
+		return leaveId;
+	}
+	public void setLeaveId(int leaveId) {
+		this.leaveId = leaveId;
+	}
 	private Employee employ;
 	private Date leaveDt;
 	private String LeaveReason;

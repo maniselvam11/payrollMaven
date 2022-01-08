@@ -8,7 +8,7 @@ public interface EmployeeDao {
 	public  boolean insertEmp(Employee emp);
 	public  Employee findEmployee(int empId);
 	public void updateEmp(Employee employ);
-	public void deleteEmp(int  empId);
+	public int deleteEmp(int  empId);
 	public int findEmployeeID(Employee emp);
 	public List<Employee> showEmployee();
 	public Employee findEmploy(String email);

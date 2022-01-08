@@ -96,12 +96,12 @@ public class GradeDaoImpl {
 			pstmt = con.prepareStatement(deleteQuery);
 			pstmt.setInt(1, gradeId);
 			pstmt.executeUpdate();
-			System.out.println("Grade Deleted Successfully");
+//			System.out.println("Grade Deleted Successfully");
 
 		} catch (SQLException e) {
 			//catch the exception and get that message
 			e.printStackTrace();
-			System.out.println("Grade not Deleted properly");
+//			System.out.println("Grade not Deleted properly");
 		}
 		return result;
 	}

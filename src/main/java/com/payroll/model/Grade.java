@@ -3,7 +3,22 @@ package com.payroll.model;
 import java.util.Objects;
 
 public class Grade {
-	
+	private int gradeId;
+	public Grade(int gradeId, String gradeName, long gradeBonus, long gradeBasic, long gradePf, long gradePt) {
+		super();
+		this.gradeId = gradeId;
+		this.gradeName = gradeName;
+		this.gradeBonus = gradeBonus;
+		this.gradeBasic = gradeBasic;
+		this.gradePf = gradePf;
+		this.gradePt = gradePt;
+	}
+	public int getGradeId() {
+		return gradeId;
+	}
+	public void setGradeId(int gradeId) {
+		this.gradeId = gradeId;
+	}
 	private String gradeName;
 	private long gradeBonus;
 	private long gradeBasic;

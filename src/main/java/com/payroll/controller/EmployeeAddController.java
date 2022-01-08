@@ -21,7 +21,7 @@ public class EmployeeAddController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String name=request.getParameter("EmployeeName");
 		Date dob=null;
 		Date doj=null;

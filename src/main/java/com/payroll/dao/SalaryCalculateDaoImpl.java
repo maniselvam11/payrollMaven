@@ -40,7 +40,7 @@ public class SalaryCalculateDaoImpl {
 				pstmt.setLong(7, totalSalary);
 				pstmt.executeQuery();
 				result=true;
-				
+				return result;	
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -57,11 +57,11 @@ public class SalaryCalculateDaoImpl {
 
 				Statement stmt=con.createStatement();
 				stmt.executeUpdate(insertQuery);
-				System.out.println("Employee Updated Successfully");
+//				System.out.println("Employee Updated Successfully");
 			} catch (SQLException e) {
 				//catch the exception and get that message
 				e.printStackTrace();
-				System.out.println("Employee not updated properly");
+//				System.out.println("Employee not updated properly");
 			}
 			
 		}
@@ -106,7 +106,7 @@ public class SalaryCalculateDaoImpl {
 				PreparedStatement pstmt=con.prepareStatement(query);
 				pstmt.setInt(1, empId);
 				Statement stmt=con.createStatement();
-				ResultSet rs=stmt.executeQuery(query);
+				ResultSet rs=pstmt.executeQuery();
 				while(rs.next()) {
 					EmployeeDaoImpl empDao=new EmployeeDaoImpl();
 					
@@ -117,7 +117,7 @@ public class SalaryCalculateDaoImpl {
 					Departments department=departDao.findDepartment(rs.getInt(3));
 					
 					salary=new EmpSalary(emp,department,rs.getInt(4),grade,new java.sql.Date(rs.getDate(6).getTime()),rs.getLong(7),rs.getLong(8));
-					
+					return salary;
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

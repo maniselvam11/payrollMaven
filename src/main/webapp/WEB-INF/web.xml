@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app id="WebApp_ID" version="2.4" xmlns="http://JAVA.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<servlet>
+		<description>
+		</description>
+		<display-name>EmployeeDelController</display-name>
+		<servlet-name>EmployeeDelController</servlet-name>
+		<servlet-class>com.payroll.controller.EmployeeDelController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EmployeeDelController</servlet-name>
+		<url-pattern>/EmployeeDelController</url-pattern>
+	</servlet-mapping>
 	
 
 </web-app>

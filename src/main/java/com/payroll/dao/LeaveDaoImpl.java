@@ -55,9 +55,14 @@ public class LeaveDaoImpl {
 			ResultSet rs=stmt.executeQuery(showQuery);
 			while(rs.next())
 			{
+				System.out.println(rs.getInt(2));
 				Employee employ=employeeDaoImpl.findEmployee(rs.getInt(2));
+				System.out.println(employ);
+				
 				Leave leave=new Leave(employ,rs.getDate(3),rs.getString(4));
 				leaveList.add(leave);
+				System.out.println(leave.getEmploy().getEmpId());
+				
 			}
 			
 		} catch (SQLException e) {
