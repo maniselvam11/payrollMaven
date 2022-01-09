@@ -18,6 +18,13 @@ border-collapse:collapse;
 </style>
 </head>
 <body>
+<%String salInvalid=(String)request.getAttribute("salaryInvalid");
+if(salInvalid!=null){
+%>
+<center>
+<h2><%=salInvalid %></h2>
+</center>
+<%} %>
 <center>
 <h1><STRONG>ADMINISTRATOR &nbsp;</STRONG></h1>
 
