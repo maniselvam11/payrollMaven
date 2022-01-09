@@ -89,8 +89,9 @@ ADMIN CONTROLS
 <i class="fa fa-caret-down"></i>
 </button>
 <div class="dropdown-content" id="downNav">
-<a href="EmpShow.jsp">Employee Show</a>
+<a href="EmpShow.jsp">Show Active Employ</a>
 <a href="EmployAdd.jsp">Employee Add</a>
+<a href="EmpShowInactive.jsp">Show In-Active Employ</a>
 </div>
 </div>
 
@@ -129,8 +130,8 @@ ADMIN CONTROLS
 &#9776>SALARY
 </button>
 <div class="dropdown-content" id="downNav">
-<a href="Salary.jsp">Enter Salary Detail</a>
-<a href="SalaryReport.jsp">Salary Report</a>
+<a href="SalaryAdd.jsp">Enter Salary Detail</a>
+<a href="SalaryEmploy.jsp">Salary Report</a>
 </div>
 </div>
 
@@ -147,8 +148,8 @@ ADMIN CONTROLS
 </button>
 </div>
 
-<div class="dropdown" style="float:right">
-<button class="dropbtn">&#9776>LOGOUT</button>
+<div class="dropdown" style="float:right"><a href="index.jsp">
+<button class="dropbtn">&#9776>LOGOUT</button></a>
 </div>
 </div>
 </body>

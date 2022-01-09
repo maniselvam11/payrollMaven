@@ -21,13 +21,11 @@ public class ConnectionUtilImpl implements ConnectionDao{
 		
 			catch (SQLException e) {
 				e.getMessage();
-				System.out.println("url or username or password may wrong");
 
 			}
 		 
 		catch (ClassNotFoundException e) {
 			e.getMessage();
-			System.out.println("Driver jar does not there");
 		
 		}
 		return con;

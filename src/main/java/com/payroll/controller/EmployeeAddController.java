@@ -19,7 +19,7 @@ import com.payroll.model.Employee;
 @WebServlet("/empAdd")
 public class EmployeeAddController extends HttpServlet {
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 		String name=request.getParameter("EmployeeName");

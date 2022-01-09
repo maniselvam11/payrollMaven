@@ -6,13 +6,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.payroll.dao.GradeDaoImpl;
+import com.payroll.exception.EmployeeDelException;
+import com.payroll.exception.InvalidAmount;
 import com.payroll.model.Grade;
 
-/**
- * Servlet implementation class GradeUpdController
- */
 @WebServlet("/gradeUpd")
 public class GradeUpdController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
@@ -21,10 +21,33 @@ public class GradeUpdController extends HttpServlet {
 		long bonus=Long.parseLong(request.getParameter("bonus"));
 		long pf=Long.parseLong(request.getParameter("pf"));
 		long pt=Long.parseLong(request.getParameter("pt"));
+		int gradeId=(Integer)request.getAttribute("gradeId");
+		Grade grade=new Grade(gradeId,gradeName,basic,bonus,pf,pt);
 		GradeDaoImpl gradeDao=new GradeDaoImpl();
-		Grade grade=gradeDao.findGrade(gradeName);
-		int gradeId=gradeDao.findGradeID(grade);
-		gradeDao.updateGrade(basic, bonus, pf, pt,gradeName);
-		response.sendRedirect("GradeShow.jsp");
+		try {
+		if((basic>0)&&(bonus>0)&&(pf>0)&&(pt>0)) {
+			boolean flag=gradeDao.updateGrade(grade);
 
-	}}
+			if(flag!=false) {
+				response.sendRedirect("GradeShow.jsp");
+			}
+			else {
+				response.sendRedirect("Grade.jsp");
+			}
+			
+		}
+		else {
+			throw new InvalidAmount();
+		}
+		}
+		catch(InvalidAmount e) {
+			HttpSession session=request.getSession();
+			session.setAttribute("negativeValue", e.getMessage());
+			response.sendRedirect("GradeShow.jsp");
+			
+			
+		}
+		
+
+	}
+	}

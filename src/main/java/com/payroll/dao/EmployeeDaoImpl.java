@@ -38,9 +38,6 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			pstmt.setString(10,emp.getPanNo());
 			pstmt.setInt(11, emp.getDept().getDeptId());
 			result=pstmt.executeUpdate()>0;
-			System.out.println(result);
-//			System.out.println(pstmt.executeUpdate()>0?"value inserted successfully":"value not inserted");
-			//result=true;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -65,7 +62,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		while(rs.next())
 		{
 			Departments dept=deptDao.findDepartment(rs.getInt(12));
-			employee=new Employee(rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),dept);
+			employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),dept);
 		}
 		
 	} catch (SQLException e) {
@@ -78,13 +75,13 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	public void updateEmp(Employee employ)
 	{
 	
-		String insertQuery = "update employees set EMP_NAME=?,EMP_DOB=?,EMP_DOJ=?,EMP_ADDRESS=?,EMP_CITY=?,EMP_PINCODE=?,EMP_MOBILE_NO=?,EMP_STATE=?,EMP_EMAIL_ID=?,,EMP_PAN_NO=? where emp_id= ?";
+		String insertQuery =" update employees set EMP_NAME=?,EMP_DOB=?,EMP_DOJ=?,EMP_ADDRESS=?,EMP_CITY=?,EMP_PINCODE=?,EMP_MOBILE_NO=?,EMP_STATE=?,EMP_EMAIL_ID=?,EMP_PAN_NO=? where emp_id= ?";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		try {
-
 			PreparedStatement pstmt=con.prepareStatement(insertQuery);
 			pstmt.setString(1, employ.getEmpName());
+//			System.out.println(employ.getEmpName());
 			pstmt.setDate(2, new java.sql.Date(employ.getDob().getTime()));
 			pstmt.setDate(3, new java.sql.Date(employ.getDoj().getTime()));
 			pstmt.setString(4, employ.getAddress());
@@ -95,14 +92,12 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			pstmt.setString(9, employ.getMailId());
 			pstmt.setString(10, employ.getPanNo());
 			pstmt.setInt(11, employ.getEmpId());
+
 			int i=pstmt.executeUpdate();
 			
 			
-//			System.out.println(stmt.executeUpdate(insertQuery)>0?"Employee Updated Successfully":"employee not updated");
 		} catch (SQLException e) {
-			//catch the exception and get that message
 			e.printStackTrace();
-//			System.out.println("Employee not updated properly");
 		}
 		
 	}
@@ -123,9 +118,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 		}
 		 catch (Exception e) {
-			//catch the exception and get that message
-//			 e.printStackTrace();
-			 System.out.println(e.getMessage());
+			 e.printStackTrace();
 		}
 		return i;
 		
@@ -174,13 +167,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				Departments depart=deptDao.findDepartment(rs.getInt(12));
 				Employee employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),depart);
 				employeeList.add(employee);
-//				System.out.println(rs.getDate(3));
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-//		System.out.println(employeeList);
 
 		return employeeList;
 	}
@@ -199,7 +190,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			while(rs.next())
 			{
 				Departments depart=deptDao.findDepartment(rs.getInt(12));
-				Employee employee=new Employee(rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),depart);
+				Employee employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),depart);
 				employeeList.add(employee);
 			}
 			
@@ -246,14 +237,50 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			stmt.executeUpdate(deleteQuery);
 			
 			
-//			System.out.println("employee details are deleted successfully");
 
 		} catch (Exception e) {
 			//catch the exception and get that message
 			e.getMessage();
-//			System.out.println("employee details are not deleted ");
 		}
 	}
+	public int updateEmpStatus(Employee employ)
+	{
+	
+		String insertQuery =" update employees set STATUS='inactive' where emp_id= ?";
+		ConnectionUtilImpl connection=new ConnectionUtilImpl();
+		Connection con=connection.dbConnect();
+		int i=0;
+		try {
+			PreparedStatement pstmt=con.prepareStatement(insertQuery);
+			pstmt.setInt(1, employ.getEmpId());
+			i=pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return i;
+		
+	}
+	public int updateStatusActive(Employee employ)
+	{
+	
+		String insertQuery =" update employees set STATUS='active' where emp_id= ?";
+		ConnectionUtilImpl connection=new ConnectionUtilImpl();
+		Connection con=connection.dbConnect();
+		int i=0;
+		try {
+			PreparedStatement pstmt=con.prepareStatement(insertQuery);
+			pstmt.setInt(1, employ.getEmpId());
+			i=pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return i;
+		
+	} 
 	
 	
 	

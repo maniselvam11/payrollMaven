@@ -13,13 +13,21 @@
 <style>
    body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #2ECC71;
+    background-image: linear-gradient(to right, green , yellow);
     }
     
-    table,th,td{
-border:1px solid black;
-border-collapse:collapse;
+
+table {
+  border-collapse: collapse;
+  width: 100%;
 }
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
 </style>
 </head>
 <body>
@@ -29,13 +37,13 @@ border-collapse:collapse;
 <div>
 <table>
 <tr>
-<td>Employee Id</td>
-<td>Department Id</td>
-<td>Total Leave</td>
-<td>Grade Id</td>
-<td>Salary Date</td>
-<td>Gross Salary</td>
-<td>Total Salary</td>
+<td>EMPLOYEE ID</td>
+<td>DEPARTMENT ID</td>
+<td>TOTAL LEAVE</td>
+<td>GRADE ID</td>
+<td>SALARY DATE</td>
+<td>GROSS SALARY</td>
+<td>TOTAL SALARY</td>
 
 <%int employId=Integer.parseInt(request.getParameter("eId"));
 EmployeeDaoImpl employeeDao=new EmployeeDaoImpl();
@@ -67,7 +75,9 @@ int empId=employeeDao.findEmployeeID(salary.getEmpId());
 <br>
 
 <form>
+<center>
  <input type="button" value="Go back!" onclick="history.go(-1)">
+ </center>
 </form>
 <script>
 function showReport(){

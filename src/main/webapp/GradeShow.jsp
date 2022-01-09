@@ -12,28 +12,44 @@
     
      body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #2ECC71;
+    background-image: linear-gradient(to right, green , yellow);
     }
     
-    table,th,td{
-border:1px solid black;
-border-collapse:collapse;
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+a{
+text-decoration:none;
 }
     </style>
     <title>payroll</title>
 
 </head>
 <body>
-<h2>Show Grade</h2>
+<% String negative=(String)session.getAttribute("negativeValue");
+if(negative!=null) {
+%>
+<h2><%=negative %></h2>
+<%} %>
+
+<h2>SHOW GRADE</h2>
 <table>
 <tr>
-<td>Grade Name</td>
-<td>Grade Bonus</td>
-<td>Grade Basic</td>
-<td>Providient Fund</td>
-<td>Professional Tax</td>
-<td>Delete</td>
-<td>Edit</td>
+<td>GRADE NAME</td>
+<td>GRADE BONUS</td>
+<td>GRADE BASIC</td>
+<td>PROVIDENT FUND</td>
+<td>PROFESSIONAL TAX</td>
+<td>DELETE</td>
+<td>EDIT</td>
 </tr>
 
 
@@ -50,16 +66,20 @@ for(int i=0;i<gradeList.size();i++){
 	<td><%= grade.getGradeBasic() %></td>
 	<td><%= grade.getGradePf() %></td>
 	<td><%= grade.getGradePt() %></td>
-	<td><a href="GradeDel?gradeId=<%= gradeId %>">Delete</a></td>
-	<td><a href="GradeUpd.jsp?gradeId=<%= gradeId%>">Edit</a></td>
+	<td><a href="GradeDel?gradeId=<%= gradeId %>">DELETE</a></td>
+	<td><a href="GradeUpd.jsp?gradeId=<%= gradeId %>">EDIT</a></td>
 	
 	</tr>
 	
 
 <%} %>
 </table>
+<br>
+<center>
 <a href="AdminControl.jsp"><button type="button"><strong>Home Page</strong></button></a>
 
  <input type="button" value="Go back!" onclick="history.go(-1)">
+ </center>
+ 
 </body>
 </html>

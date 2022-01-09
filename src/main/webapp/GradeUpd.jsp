@@ -11,45 +11,57 @@
 <style type="text/css">
      body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #2ECC71;
+    background-image: linear-gradient(to right, green , yellow);
     }
     label{
     width:200px;
     display:inline-block;
     }
+     .formSty{
+    background-color: white;
+    border: 0px solid red;
+  	padding: 0px 20px;
+  	border-radius: 25px;
+  	width:30%;
+  	margin-left: 440px;
+  	background-color: #B9B087 ;
+  	margin-top:10%;
+  	}
 
 </style>
 </head>
 <body>
 <%int gradeId=Integer.parseInt(request.getParameter("gradeId"));
+session.setAttribute("gradeId", gradeId);
 GradeDaoImpl gradeDao=new GradeDaoImpl();
 Grade grade=gradeDao.findGrade(gradeId);
 
 %>
 
-<form action="gradeUpd" method="post">
-<label for="gradeName">Grade Name</label>
-<input type="text" id="gradeName" name="name" value="<%=grade.getGradeName() %>" autofocus="autofocus"><br><br>
+<form action="gradeUpd" class="formSty" >
+<br>
+<label for="gradeName">GRADE NAME</label>
+<input type="text" id="gradeName" min="1" name="name" value="<%=grade.getGradeName() %>" autofocus="autofocus"><br><br>
 
- <label for="gradeBasic">Basic Salary</label>
-<input type="number" id="gradeBasic" name="basic" value="<%=grade.getGradeBasic()%>"><br><br>
+ <label for="gradeBasic">BASIC SALARY</label>
+<input type="number" id="gradeBasic" min="1" name="basic" value="<%=grade.getGradeBasic()%>"><br><br>
 
- <label for="gradeBonus">Bonus Salary</label>
-<input type="number" id="gradeBonus" name="bonus" value="<%=grade.getGradeBonus()%>" ><br><br>
+ <label for="gradeBonus">BONUS SALARY</label>
+<input type="number" id="gradeBonus" min="1" name="bonus" value="<%=grade.getGradeBonus()%>" ><br><br>
 
- <label for="gradePf">Providient Fund</label>
-<input type="number" id="gradePf" name="pf" value="<%=grade.getGradePf()%>"><br><br>
+ <label for="gradePf">PROVIDENT FUND</label>
+<input type="number" id="gradePf" min="1" name="pf" value="<%=grade.getGradePf()%>"><br><br>
 
- <label for="gradePt">Professional Tax</label>
-<input type="number" id="gradePt" name="pt" value="<%=grade.getGradePt() %>" ><br><br>
-
+ <label for="gradePt">PROFESSIONAL TAX</label>
+<input type="number" id="gradePt" min="1" name="pt" value="<%=grade.getGradePt() %>" ><br><br>
+<center>
 <input type="submit">
+<input type="reset">
+<button onclick="history.back()">BACK</button>
+<a href="AdminControl.jsp"><button type="button"><strong>HOME</strong></button></a>
+<br>
+</center>
+<br>
 </form>
-<button onclick="history.back()">Go Back</button>
-<br>
-<br>
-<a href="AdminControl.jsp"><button type="button"><strong>Home Page</strong></button></a>
-
-
 </body>
 </html>

@@ -19,20 +19,13 @@ import com.payroll.model.Employee;
 
 @WebServlet("/empUpdate")
 public class EmployeeUpdController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-   
-    public EmployeeUpdController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+	
 
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String name=request.getParameter("name");
+		
 		Date dob=null;
 		Date doj=null;
 		try {
@@ -42,19 +35,24 @@ public class EmployeeUpdController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
+		
 		String address=request.getParameter("address");
+		
 		String city=request.getParameter("city");
 		long pincode=Long.parseLong(request.getParameter("pincode"));
 		long mobileNo=Long.parseLong(request.getParameter("mobile"));
 		String state=request.getParameter("state");
 		String email=request.getParameter("email");
+		
 		String panNo=request.getParameter("pan");
-		String departName=request.getParameter("dName");
+		int departId=Integer.parseInt(request.getParameter("dId"));
 		DepartmentsDaoImpl departDao=new DepartmentsDaoImpl();
-		Departments depart=departDao.findDepartment(departName);
+		Departments depart=departDao.findDepartment(departId);
 		EmployeeDaoImpl employ=new EmployeeDaoImpl();
-		Employee emp=new Employee(name,dob,doj,address,city,pincode,mobileNo,state,email,panNo,depart);
-		employ.updateEmp(emp);
+		Employee employee=employ.findEmploy(email);
+		int empId=employ.findEmployeeID(employee);
+		Employee emp=new Employee(empId,name,dob,doj,address,city,pincode,mobileNo,state,email,panNo,depart);
+		employ.updateEmp(emp);;
 		response.sendRedirect("EmpShow.jsp");
 		
 		}

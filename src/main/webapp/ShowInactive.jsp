@@ -7,10 +7,6 @@
 <title>payroll</title>
 </head>
 <body>
-<%String message=request.getParameter("message");
-String url=request.getParameter("url");%>
-<h1><%=message %></h1>
-<a href="<%=url%>"><h2>Go Back</h2></a>
 
 
 </body>

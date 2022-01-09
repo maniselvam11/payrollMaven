@@ -40,20 +40,28 @@ body {
 a {
 	text-decoration: none;
 }
+input{
+height: 25px; width : 200px;
+}
+
 </style>
 </head>
 <body>
-
+<%String userError=(String)session.getAttribute("invalid"); 
+if(userError!=null){
+	%>
+	<h2 style="color:#0BE3C6 " ><%=userError %></h2>
+<%}%>
 	<center>
-		<h1 style="color:#D35400"  >WELCOME</h1>
+		<h1 style="color:#0BE3C6 "  >WELCOME</h1>
 		&nbsp;&nbsp;&nbsp;
 
 		<div id="welcomeform" style="display: block;" >
-			<h1 style="color:#D35400"  >
+			<h1 style="color:#0BE3C6 "  >
 				<strong>EMPLOYEE MANAGER</strong>
 			</h1>
 				&nbsp;
-			<h1 style="color:#D35400" >
+			<h1 style="color:#35DC00" >
 				<STRONG>ADMINISTRATOR &nbsp; LOGIN</STRONG>
 			</h1>
 			<button class="big-btn" style="width: 10%; font-size: 20px;"
@@ -74,18 +82,18 @@ a {
 		<div id="loginform" style="display: none;">
 			<form action="login" method="post">
 
-				<div class="pageAlign">
+				<div class="pageAlign">-
 
 					<h2 style="color:#BDD3C7;">
 						LOGIN<br>
 					</h2>
-					<label for="mailId" style="color: #4CAF50;"><strong>EMAIL ID </strong></label><br> <input type="email"
+					<label for="mailId" style="color: #35DC00;"><strong>EMAIL ID </strong></label><br> <input type="email"
 						id="mailId" name="email" required placeholder="example@gmail.com"
-						pattern="[a-z][a-z0-9]+[@][a-z]+[.][a-z]+" style="border-radius: 8px;" autofocus>
+						pattern="[a-z][a-z0-9]+[@][a-z]+[.][a-z]+" style="border-radius: 10px;"  autofocus>
 							&nbsp;&nbsp;<br><br> 
 							
-							<label for="password" style="color: #4CAF50;"><strong>PASSWORD</strong> </label> <br>
-					<input type="password" id="password" name="pass" style="border-radius: 8px;left: 50%;right:50%;" required placeholder="*********"
+							<label for="password" style="color:#35DC00;"><strong>PASSWORD</strong> </label> <br>
+					<input type="password" id="password" name="pass" style="border-radius: 10px;left: 50%;right:50%;" required placeholder="*********"
 						pattern="[A-Za-z0-9@#.!&]{8,16}">
 					&nbsp;	&nbsp;<br><br>
 					<button  style="border-radius: 8px;" type="submit"  >submit</button>

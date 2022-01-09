@@ -57,11 +57,9 @@ public class SalaryCalculateDaoImpl {
 
 				Statement stmt=con.createStatement();
 				stmt.executeUpdate(insertQuery);
-//				System.out.println("Employee Updated Successfully");
 			} catch (SQLException e) {
 				//catch the exception and get that message
 				e.printStackTrace();
-//				System.out.println("Employee not updated properly");
 			}
 			
 		}

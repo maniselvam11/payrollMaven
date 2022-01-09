@@ -18,7 +18,6 @@ import com.payroll.model.Leave;
 public class LeaveDaoImpl {
 	public boolean insertLeave(Leave leave) {
 		String query="insert into leave_details (emp_id,leave_date,reason) values (?,?,?)";
-//		System.out.println(query);
 		boolean result=false;
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
@@ -55,13 +54,10 @@ public class LeaveDaoImpl {
 			ResultSet rs=stmt.executeQuery(showQuery);
 			while(rs.next())
 			{
-				System.out.println(rs.getInt(2));
 				Employee employ=employeeDaoImpl.findEmployee(rs.getInt(2));
-				System.out.println(employ);
 				
-				Leave leave=new Leave(employ,rs.getDate(3),rs.getString(4));
+				Leave leave=new Leave(rs.getInt(1),employ,rs.getDate(3),rs.getString(4));
 				leaveList.add(leave);
-				System.out.println(leave.getEmploy().getEmpId());
 				
 			}
 			
@@ -82,16 +78,11 @@ public class LeaveDaoImpl {
 		String findId="select leave_id from leave_details where EMP_ID = ? and leave_date = ? ";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
-		//		Statement stmt;
 		int id = 0;
 		try {
-//			stmt = con.createStatement();
 			PreparedStatement pstmt=con.prepareStatement(findId);
 			pstmt.setInt(1, empID);
 			pstmt.setDate(2, new java.sql.Date(leave.getLeaveDt().getTime()));
-			
-			//pstmt.executeQuery();
-			
 			
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -101,20 +92,16 @@ public class LeaveDaoImpl {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 		return id;
 	}
 	public  Leave findLeave(Date leaveDt,int empId) {
 		
-//		String qry="select * from leave_details where LEAVE_DATE = to_date('"+leaveDt+"','dd-MM-yyyy') and emp_id ="+empId;
 		String qry="select * from leave_details where LEAVE_DATE = ? and emp_id =  ?";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		
 		Leave leave=null;
 		try {
-//			Statement stmt=con.createStatement();
 			PreparedStatement pstmt=con.prepareStatement(qry);
 			pstmt.setDate(1, new java.sql.Date(leaveDt.getTime()));
 			EmployeeDaoImpl employeeDaoImpl=new EmployeeDaoImpl();
@@ -123,7 +110,6 @@ public class LeaveDaoImpl {
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				Employee emp=employeeDaoImpl.findEmployee(rs.getInt(2));
-//				System.out.println(emp);
 				 leave=new Leave(emp,rs.getDate(3),rs.getString(4));
 			}
 		} catch (SQLException e) {
@@ -167,7 +153,7 @@ public  Leave findLeave(int leaveId) {
 			ResultSet rs=stmt.executeQuery(qry);
 			while(rs.next()) {
 				Employee emp=employeeDaoImpl.findEmployee(rs.getInt(2));
-				 leave=new Leave(emp,rs.getDate(3),rs.getString(4));
+				 leave=new Leave(rs.getInt(1),emp,rs.getDate(3),rs.getString(4));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -176,6 +162,44 @@ public  Leave findLeave(int leaveId) {
 		return leave;
 		
 	}
+public int deleteLeave(Leave leave) {
+	String query="delete from leave_details where LEAVE_ID =?";
+	ConnectionUtilImpl connection=new ConnectionUtilImpl();
+	Connection con=connection.dbConnect();
+	PreparedStatement pstmt;
+	int i=0;
+	try {
+		pstmt = con.prepareStatement(query);
+		pstmt.setInt(1, leave.getLeaveId());
+		i=pstmt.executeUpdate();
+
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return i;
+	
+}
+public int updateLeave(Leave leave) {
+	String query="update leave_details set LEAVE_DATE=?,REASON=? where LEAVE_ID=?";
+	ConnectionUtilImpl connection=new ConnectionUtilImpl();
+	Connection con=connection.dbConnect();
+	PreparedStatement pstmt;
+	int i=0;
+	try {
+		pstmt = con.prepareStatement(query);
+		pstmt.setDate(1, new java.sql.Date(leave.getLeaveDt().getTime()));
+		pstmt.setString(2, leave.getLeaveReason());
+		pstmt.setInt(3, leave.getLeaveId());
+		i=pstmt.executeUpdate();
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return i;
+	
+	
+}
 
 
 	

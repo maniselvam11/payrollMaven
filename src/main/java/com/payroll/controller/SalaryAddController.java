@@ -30,11 +30,6 @@ public class SalaryAddController extends HttpServlet {
 		String deptName=request.getParameter("dName");
 		String selectTax=request.getParameter("tax");
 		String selectBonus=request.getParameter("bonus");
-		System.out.println(empID);
-		System.out.println(gradeName);
-		System.out.println(deptName);
-		System.out.println(selectTax);
-		System.out.println(selectBonus);
 		Date salaryDate=null;
 		try {
 			salaryDate=sdf.parse(request.getParameter("salDate"));

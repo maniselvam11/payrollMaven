@@ -11,26 +11,36 @@
 <style type="text/css">
  body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #2ECC71;
+    background-image: linear-gradient(to right, green , yellow);
     }
     
-    table,th,td{
-border:1px solid black;
-border-collapse:collapse;
+ table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+a{
+text-decoration:none;
 }
 
 </style>
 </head>
 <body>
-<h2>Show Department</h2>
+<h2>Department</h2>
 
 <table >
 <tr>
-<td>Department Id</td>
-<td>Department Name</td>
-<td>Grade Name</td>
-<td>Delete</td>
-<td>edit</td>
+<td>DEPARTMENT ID</td>
+<td>DEPARTMENT NAME</td>
+<td>GRADE NAME</td>
+<td>DELETE</td>
+<td>EDIT</td>
 </tr>
 
 
@@ -45,15 +55,17 @@ for(int i=0;i<departList.size();i++)
 <td><%=departments.getDeptId() %></td>
 <td><%=departments.getDeptName() %></td>
 <td><%=departments.getGrd().getGradeName()%></td>
-<td><a href="departDel?deptId=<%= departments.getDeptId() %>">Delete</a></td>
-<td><a href="DepartUpd.jsp?departId=<%= departments.getDeptId() %>">Edit</a></td>
+<td><a href="departDel?deptId=<%= departments.getDeptId() %>">DELETE</a></td>
+<td><a href="DepartUpd.jsp?departId=<%= departments.getDeptId() %>">EDIT</a></td>
 
 </tr>
 <%}%>
 </table>
-<form>
+<center>
+<br>
 <a href="AdminControl.jsp"><button type="button"><strong>Home Page</strong></button></a>
 <input type="button" value="Go back!" onclick="history.go(-1)">
-</form>
+</center>
+
 </body>
 </html>

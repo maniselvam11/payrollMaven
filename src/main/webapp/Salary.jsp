@@ -22,10 +22,10 @@ border-collapse:collapse;
 <h1><STRONG>ADMINISTRATOR &nbsp;</STRONG></h1>
 <div>
 <a href="SalaryAdd.jsp"><button  class="btn" style="width:10%; font-size : 20px;"><strong>Enter Salary Detail</strong></button></a>
-<a href="SalaryEmploy.jsp?employId=0"><button  class="btn" style="width:10%; font-size : 20px;" ><strong>Employee Report</strong></button></a>
+<a href="SalaryEmploy.jsp?employId=0"><button  class="btn" style="width:10%; font-size : 20px;" ><strong>EMPLOYEE REPORT</strong></button></a>
 <br>
 <br>
-<button onclick="history.back()">Go Back</button>
+<button onclick="history.back()">BACK</button>
 </div>
 
 </body>

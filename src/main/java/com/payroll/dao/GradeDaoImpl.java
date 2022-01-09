@@ -59,9 +59,9 @@ public class GradeDaoImpl {
 	}
 	
 	
-	public boolean updateGrade(Long basic,Long bonus,Long pf,Long pt,String gdName)
+	public boolean updateGrade(Grade grade)
 	{
-		String updateQuery = "update  grades set grade_basic=?,grade_bonus=?,grade_pf=?,grade_pt=? where grade_name=?";
+		String updateQuery = "update  grades set grade_basic=?,grade_bonus=?,grade_pf=?,grade_pt=?,grade_name=? where GRADE_ID=?";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		boolean result=false;
@@ -69,11 +69,12 @@ public class GradeDaoImpl {
 		try {
 
 			pstmt = con.prepareStatement(updateQuery);
-			pstmt.setLong(1,basic);
-			pstmt.setLong(2, bonus);
-			pstmt.setLong(3, pf);
-			pstmt.setLong(4, pt);
-			pstmt.setString(5, gdName);
+			pstmt.setLong(1,grade.getGradeBasic());
+			pstmt.setLong(2, grade.getGradeBonus());
+			pstmt.setLong(3, grade.getGradePf());
+			pstmt.setLong(4, grade.getGradePt());
+			pstmt.setString(5, grade.getGradeName());
+			pstmt.setInt(6, grade.getGradeId());
 			pstmt.executeUpdate();
 			result=true;
 
@@ -96,12 +97,10 @@ public class GradeDaoImpl {
 			pstmt = con.prepareStatement(deleteQuery);
 			pstmt.setInt(1, gradeId);
 			pstmt.executeUpdate();
-//			System.out.println("Grade Deleted Successfully");
 
 		} catch (SQLException e) {
 			//catch the exception and get that message
 			e.printStackTrace();
-//			System.out.println("Grade not Deleted properly");
 		}
 		return result;
 	}
@@ -141,7 +140,6 @@ public class GradeDaoImpl {
 			ResultSet rs=stmt.executeQuery(qry);
 			if(rs.next()) {
 				grossSalary=rs.getLong(1);
-//				System.out.println("Gross salary"+grossSalary);
 			}
 
 

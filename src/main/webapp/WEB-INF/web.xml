@@ -3,14 +3,26 @@
 	<servlet>
 		<description>
 		</description>
-		<display-name>EmployeeDelController</display-name>
-		<servlet-name>EmployeeDelController</servlet-name>
-		<servlet-class>com.payroll.controller.EmployeeDelController</servlet-class>
+		<display-name>LeaveDel</display-name>
+		<servlet-name>LeaveDel</servlet-name>
+		<servlet-class>com.payroll.controller.LeaveDelController</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>LeaveUpdController</display-name>
+		<servlet-name>LeaveUpdController</servlet-name>
+		<servlet-class>com.payroll.controller.LeaveUpdController</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>EmployeeDelController</servlet-name>
-		<url-pattern>/EmployeeDelController</url-pattern>
+		<servlet-name>LeaveDel</servlet-name>
+		<url-pattern>/LeaveDel</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LeaveUpdController</servlet-name>
+		<url-pattern>/LeaveUpdController</url-pattern>
+	</servlet-mapping>
+	
 	
 
 </web-app>

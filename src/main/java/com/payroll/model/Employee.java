@@ -7,6 +7,22 @@ public class Employee {
 	public int getEmpId() {
 		return empId;
 	}
+	public Employee(int empId, String empName, Date dob, Date doj, String address, String city, Long pincode,
+			Long mobileNo, String state, String mailId, String panNo, Departments dept) {
+		super();
+		this.empId = empId;
+		this.empName = empName;
+		this.dob = dob;
+		this.doj = doj;
+		this.address = address;
+		this.city = city;
+		this.pincode = pincode;
+		this.mobileNo = mobileNo;
+		this.state = state;
+		this.mailId = mailId;
+		this.panNo = panNo;
+		this.dept = dept;
+	}
 	public void setEmpId(int empId) {
 		this.empId = empId;
 	}
@@ -109,7 +125,6 @@ public class Employee {
 	}
 	@Override
 	public String toString() {
-		//System.out.format("%-15s%-12s%-12s%-15s%-15s%-8s%-12s%-15s%-25s%-15s%-10s",empName,dob,doj,address,city,pincode,mobileNo,state,mailId,panNo,dept);
 		
 		return "empName = " + empName + "\n dob = " + dob + "\n doj = " + doj + "\n address = " + address + "\n city = "
 				+ city + "\n pincode = " + pincode + "\n mobileNo = " + mobileNo + "\n state = " + state + "\n mailId = " + mailId
@@ -130,24 +145,7 @@ public class Employee {
 		this.panNo = panNo;
 		this.dept = dept;
 	}
-	public Employee(int empId, String empName, java.sql.Date dob, java.sql.Date doj, String address, 
-			String city, long pincode, long mobileNo, String state, String mailId, String panNo, 
-			Departments dept) {
-		super();
-		// TODO Auto-generated constructor stub
-		this.empId=empId;
-		this.empName = empName;
-		this.dob = dob;
-		this.doj = doj;
-		this.address = address;
-		this.city = city;
-		this.pincode = pincode;
-		this.mobileNo = mobileNo;
-		this.state = state;
-		this.mailId = mailId;
-		this.panNo = panNo;
-		this.dept = dept;
-	}
+	
 
 	
 	

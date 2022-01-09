@@ -10,13 +10,21 @@
 <style type="text/css">
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #2ECC71;
+    background-image: linear-gradient(to right, green , yellow);
     }
     
     label{
     width:200px;
     display:inline-block;
     }
+    .formSty{
+    background-color: white;
+  	padding: 0px 20px;
+  	border-radius: 25px;
+  	width:30%;
+  	margin-top:10%;
+  	background-color: #B9B087 ;
+  	}
     </style>
 </head>
 <body><center>
@@ -25,11 +33,15 @@ session.setAttribute("editDeptId", deptId);
 DepartmentsDaoImpl departDao=new DepartmentsDaoImpl();
 Departments department=departDao.findDepartment(deptId);
 %>
-<form action="deptUpd" >
-<label for="deptName">Department Name</label>
+<form action="deptUpd"  >
+<br><br>
+<div class="formSty">
+<br>
+<label for="deptName">DEPARTMENT NAME</label>
 <input type="text" id="deptName" name="name" autofocus="autofocus" value="<%=department.getDeptName() %>"><br><br>
-<center><input type="submit"></center>
-<button onclick="history.go(-1)">Go Back</button>
+<center><input type="submit"> <button onclick="history.go(-1)">GO BACK</button></center>
+<br>
+</div>
 </form>
 </center>
 </body>

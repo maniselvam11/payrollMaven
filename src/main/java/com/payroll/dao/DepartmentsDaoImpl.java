@@ -31,12 +31,10 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 			pstmt.setInt(3,gradID);
 			
 			pstmt.executeUpdate();
-//			System.out.println("Department Inserted Successfully");
 			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-//			System.out.println("Department not Inserted successfully");
 		}
 		
 		
@@ -80,12 +78,10 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 			pstmt.setString(1,depart.getDeptName());
 			pstmt.setLong(2, depart.getDeptId());
 			pstmt.executeUpdate();
-//			System.out.println("Department Updated Successfully");
 
 		} catch (SQLException e) {
 			//catch the exception and get that message
 			e.printStackTrace();
-//			System.out.println("Department not updated properly");
 		}
 	}
 	public boolean deleteDept(int  deptId)
@@ -103,7 +99,6 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 			pstmt.executeUpdate();
 
 		} catch (SQLException e) {
-			//catch the exception and get that message
 			e.printStackTrace();
 		}
 		return result;
@@ -141,12 +136,10 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 		Connection con=connection.dbConnect();		
 		Departments depart=null;
 		GradeDaoImpl gradeDaoImpl=new GradeDaoImpl();
-//		int grdId=GradeDaoImpl.findGradeID(grade);
 		try {
 			Statement stmt=con.createStatement();
 			ResultSet rs=stmt.executeQuery(query);
 			if(rs.next()) {
-//				System.out.println(rs.getInt(3));
 				Grade grade=gradeDaoImpl.findGrade(rs.getInt(3));
 				
 				depart=new Departments(rs.getInt(1),rs.getString(2),grade);
