@@ -5,7 +5,9 @@ import java.util.Objects;
 public class Departments {
 	private int deptId;
 	private String deptName;
+	
 	private Grade grd;
+	
 	public Departments() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -47,6 +49,7 @@ public class Departments {
 	public void setDeptName(String deptName) {
 		this.deptName = deptName;
 	}
+	
 	public Grade getGrd() {
 		return grd;
 	}

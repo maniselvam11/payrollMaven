@@ -10,6 +10,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>payroll</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
    body {
     font-family: Arial, Helvetica, sans-serif;
@@ -71,12 +73,12 @@ int empId=employeeDao.findEmployeeID(salary.getEmpId());
 </table>
 
 </div>
-<a href="AdminControl.jsp"><button type="button"><strong>Home Page</strong></button></a>
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>Home Page</strong></button></a>
 <br>
 
 <form>
 <center>
- <input type="button" value="Go back!" onclick="history.go(-1)">
+ <input type="button" value="Go back!" onclick="history.go(-1)" class="btn btn-primary">
  </center>
 </form>
 <script>

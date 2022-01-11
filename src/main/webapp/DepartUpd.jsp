@@ -7,6 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>payroll</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -39,7 +41,7 @@ Departments department=departDao.findDepartment(deptId);
 <br>
 <label for="deptName">DEPARTMENT NAME</label>
 <input type="text" id="deptName" name="name" autofocus="autofocus" value="<%=department.getDeptName() %>"><br><br>
-<center><input type="submit"> <button onclick="history.go(-1)">GO BACK</button></center>
+<center><input type="submit"> <button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button></center>
 <br>
 </div>
 </form>

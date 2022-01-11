@@ -7,6 +7,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>payroll</title>
 <style type="text/css">
  body {
@@ -28,10 +30,22 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 a{
 text-decoration:none;
 }
+#search{
+float: right;
+margin-top:10px;
+margin-right: 40px;
+}
 
 </style>
 </head>
 <body>
+<div id="search">
+<form action="departmentSearch.jsp">
+<input type="text" name="deptName" placeholder="search" autofocus="autofocus">
+<button type="submit" ><i class="fa fa-search"></i>
+</button>
+</form>
+</div>
 <h2>Department</h2>
 
 <table >
@@ -63,8 +77,8 @@ for(int i=0;i<departList.size();i++)
 </table>
 <center>
 <br>
-<a href="AdminControl.jsp"><button type="button"><strong>Home Page</strong></button></a>
-<input type="button" value="Go back!" onclick="history.go(-1)">
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>Home Page</strong></button></a>
+<input type="button" value="Go back!" onclick="history.go(-1)" class="btn btn-primary">
 </center>
 
 </body>

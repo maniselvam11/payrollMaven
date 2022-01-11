@@ -7,10 +7,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>payroll management</title>
+
 <style>
  body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url("images/work.jpg");
+    background-image: url("images/pexels-tima-miroshnichenko-6693655.jpg");
+    background-size: cover;
     }
 .navbar {
   overflow: hidden;
@@ -22,7 +24,7 @@
   font-size: 16px;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 4px 10px;
   text-decoration: none;
 }
 
@@ -72,10 +74,11 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 </style>
 </head>
 <body>
-<DIV>
+
    
 <marquee width="100%" direction="LEFT" height="100px" scrollamount="10" > <h1 style="color:rgb(240, 240, 240);" >
 ADMIN CONTROLS
@@ -96,7 +99,7 @@ ADMIN CONTROLS
 </div>
 
 <div class="dropdown" >
-<button class="dropbtn">
+<button class="dropbtn" >
 &#9776>DEPARTMENT
 </button>
 <div class="dropdown-content" id="downNav">
@@ -136,16 +139,11 @@ ADMIN CONTROLS
 </div>
 
 
-<div class="dropdown"  >
-<button class="dropbtn">
-&#9776>Contact 
-</button>
-</div>
-
 <div class="dropdown" >
+<a href="AboutUs.jsp">
 <button class="dropbtn">
-&#9776>About Us
-</button>
+&#9776>ABOUT US
+</button></a>
 </div>
 
 <div class="dropdown" style="float:right"><a href="index.jsp">

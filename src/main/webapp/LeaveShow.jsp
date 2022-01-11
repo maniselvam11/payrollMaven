@@ -10,6 +10,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>payroll</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
   body {
     font-family: Arial, Helvetica, sans-serif;
@@ -35,11 +37,12 @@ text-decoration:none;
 </style>
 </head>
 <body>
-<%String deleteLeave=(String)request.getAttribute("deleteLeave");
+<%String deleteLeave=(String)request.getAttribute("c");
 if(deleteLeave!=null){
 %>
 <center>
 <h2><%=deleteLeave %></h2></center>
+<%session.removeAttribute("negativeValue"); %>
 <%} %>
 
 <%String updLeave=(String)request.getAttribute("updLeave");
@@ -74,8 +77,8 @@ Leave leave=leaveList.get(i);
 <%}%>
 </table>
 <center>
-<a href="AdminControl.jsp"><button type="button"><strong>Home Page</strong></button></a>
-<input type="button" value="Go back!" onclick="history.go(-1)">
+<a href="AdminControl.jsp" class="btn btn-primary"><button type="button"><strong>Home Page</strong></button></a>
+<input type="button" value="Go back!" onclick="history.go(-1)" class="btn btn-primary">
 </center>
 </form>
 </body>

@@ -9,7 +9,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>payroll</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
     
      body {
@@ -22,14 +24,24 @@ table {
   width: 100%;
 }
 
-th, td {
+ td,th {
   text-align: left;
   padding: 8px;
 }
+tr:hover{
+background-color: lime;
+}
 
-tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(even) {
+background-color: #f2f2f2;
+}
 a{
 text-decoration:none;
+}
+#search{
+float: right;
+margin-top:10px;
+margin-right: 40px;
 }
     </style>
 </head>
@@ -38,26 +50,36 @@ text-decoration:none;
 if(deleteError!=null){
 %>
 	<h2><%=deleteError %></h2>
+	<%session.removeAttribute("delete"); %>
+	
 <%} %>
-
+<div id="search">
+<form action="searchEmployee.jsp">
+<input type="text" name="empName" placeholder="Search" autofocus="autofocus">
+<button type="submit">&#128269;</button>
+</form>
+</div>
 <div id="empShowForm" >
-<h2>EMPLOYEE</h2>
+<h2>ACTIVE EMPLOYEE</h2>
+
 <form >
-<table >
-<tr>
-<td>EMPLOYEE NAME</td>
-<td>DATE OF BIRTH</td>
-<td>DATE OF JOINING</td>
-<td>ADDRESS</td>
-<td>CITY</td>
-<td>PINCODE</td>
-<td>MOBILE NUMBER</td>
-<td>STATE</td>
+<table  >
+
+<tr >
+
+<td >EMPLOYEE NAME</td>
+<td >DATE OF BIRTH</td>
+<td >DATE OF JOINING</td>
+<td >ADDRESS</td>
+<td >CITY</td>
+<td >PINCODE</td>
+<td >MOBILE NUMBER</td>
+<td >STATE</td>
 <td>EMAIL ID</td>
-<td>PAN NUMBER</td>
-<td>DEPARTMENT NAME</td>
-<td>DELETE</td>
-<td>EDIT</td>
+<td >PAN NUMBER</td>
+<td >DEPARTMENT NAME</td>
+<td >DELETE</td>
+<td >EDIT</td>
 
 </tr>
 
@@ -70,28 +92,32 @@ for(int i=0;i<employeeList.size();i++)
 %>
 <tr>
 
-<td><%= emp.getEmpName() %></td>
-<td><%= emp.getDob() %></td>
-<td><%= emp.getDoj() %></td>
+<td ><%= emp.getEmpName() %></td>
+<td ><%= emp.getDob() %></td>
+<td ><%= emp.getDoj() %></td>
 <td><%= emp.getAddress() %></td>
-<td><%= emp.getCity() %></td>
-<td><%= emp.getPincode() %></td>
-<td><%= emp.getMobileNo() %></td>
-<td><%= emp.getState() %></td>
-<td><%= emp.getMailId() %></td>
-<td><%= emp.getPanNo() %></td>
-<td><%= emp.getDept().getDeptName()%></td>
-<td><a href="empDel?empId=<%= emp.getEmpId() %>">DELETE</a></td>
-<td><a href="EmployUpd.jsp?empId=<%= emp.getEmpId() %>">EDIT</a></td>
+<td ><%= emp.getCity() %></td>
+<td ><%= emp.getPincode() %></td>
+<td ><%= emp.getMobileNo() %></td>
+<td ><%= emp.getState() %></td>
+<td ><%= emp.getMailId() %></td>
+<td ><%= emp.getPanNo() %></td>
+<td ><%= emp.getDept().getDeptName()%></td>
+<td ><a href="empDel?empId=<%= emp.getEmpId() %>">DELETE</a></td>
+<td ><a href="EmployUpd.jsp?empId=<%= emp.getEmpId() %>">EDIT</a></td>
 </tr>
-<%} %> 
+<%} %>
 
 </table>
-<center>
-<button onclick="history.go(-1)">Go Back</button>
 
-<a href="AdminControl.jsp"><button type="button"><strong>HOME</strong></button></a>
+<br>
+<center>
+<button onclick="history.go(-1)" class="btn btn-primary">Go Back</button>
+
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>HOME</strong></button></a>
+<br><br>
 </center>
+
 </form>
 
 </div>

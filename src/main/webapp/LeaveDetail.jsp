@@ -5,6 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>payroll</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
   body {
@@ -47,9 +49,9 @@
 <center>
 <input type="submit">
 
-<button onclick="history.back()">BACK</button>
+<button onclick="history.back()" class="btn btn-primary">BACK</button>
 
-<a href="AdminControl.jsp"><button type="button"><strong>HOME</strong></button></a>
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>HOME</strong></button></a>
 
 </center>
 <br>

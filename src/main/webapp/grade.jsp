@@ -5,6 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>payroll</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
 
 body {
@@ -29,10 +31,15 @@ body {
 </style>
 </head>
 <body>
+
+
+
+
 <% String negative=(String)session.getAttribute("negativeValue");
 if(negative!=null) {
 %>
 <h2><%=negative %></h2>
+<%session.removeAttribute("negativeValue"); %>
 <%} %>
 
 <form action="gradeAdd">

@@ -21,7 +21,8 @@ public class GradeUpdController extends HttpServlet {
 		long bonus=Long.parseLong(request.getParameter("bonus"));
 		long pf=Long.parseLong(request.getParameter("pf"));
 		long pt=Long.parseLong(request.getParameter("pt"));
-		int gradeId=(Integer)request.getAttribute("gradeId");
+        HttpSession session=request.getSession();
+		int gradeId=(Integer)session.getAttribute("gradeId");
 		Grade grade=new Grade(gradeId,gradeName,basic,bonus,pf,pt);
 		GradeDaoImpl gradeDao=new GradeDaoImpl();
 		try {
@@ -41,9 +42,8 @@ public class GradeUpdController extends HttpServlet {
 		}
 		}
 		catch(InvalidAmount e) {
-			HttpSession session=request.getSession();
 			session.setAttribute("negativeValue", e.getMessage());
-			response.sendRedirect("GradeShow.jsp");
+			response.sendRedirect("GradeUpd.jsp");
 			
 			
 		}

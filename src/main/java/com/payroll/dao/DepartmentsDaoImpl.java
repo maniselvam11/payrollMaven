@@ -182,6 +182,34 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 		return depart;
 		
 	}
+	public List<Departments> searchDepartment(String deptName)
+	{
+		ConnectionUtilImpl connection=new ConnectionUtilImpl();
+		Connection con=connection.dbConnect();
+		String query="select * from departments where upper(DEPT_NAME) like '"+deptName.toUpperCase()+"%'";
+		ResultSet rs=null;
+		List<Departments> departmentList=new ArrayList<Departments>();
+
+		try {
+			PreparedStatement pstmt=con.prepareStatement(query);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				GradeDaoImpl gradeDao=new GradeDaoImpl();
+				Grade grade=gradeDao.findGrade(rs.getInt(3));
+				Departments department=new Departments(rs.getInt(1),rs.getString(2),grade);
+				departmentList.add(department);
+			}
+			
+			return departmentList;
+		}
+		catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return departmentList;
+		
+		
+		}
 	
 	
 	

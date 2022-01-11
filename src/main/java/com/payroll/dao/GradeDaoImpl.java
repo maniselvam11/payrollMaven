@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.payroll.model.Departments;
 import com.payroll.model.Employee;
 import com.payroll.model.Grade;
 
@@ -282,6 +283,32 @@ public class GradeDaoImpl {
 		
 		return professionalTax ;
 	}
+	public List<Grade> searchGrade(String grdName)
+	{
+		ConnectionUtilImpl connection=new ConnectionUtilImpl();
+		Connection con=connection.dbConnect();
+		String query="select * from grades where upper(GRADE_NAME) like '"+grdName.toUpperCase()+"%'";
+		ResultSet rs=null;
+		List<Grade> gradeList=new ArrayList<Grade>();
+
+		try {
+			PreparedStatement pstmt=con.prepareStatement(query);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				Grade grade=new Grade(rs.getInt(1),rs.getString(2),rs.getLong(3),rs.getLong(4),rs.getLong(5),rs.getLong(6));
+				gradeList.add(grade);
+			}
+			
+			return gradeList;
+		}
+		catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return gradeList;
+		
+		
+		}
 	
 	
 	

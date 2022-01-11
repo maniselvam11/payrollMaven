@@ -7,6 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>payroll</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <%int leaveId=Integer.parseInt(request.getParameter("leaveId"));
@@ -22,7 +24,7 @@ Leave leave=leaveDao.findLeave(leaveId);
 <label for="leaveDt">REASON</label>
 <input type="date" id="leaveDt"  name="reason" value="<%=leave.getLeaveReason() %>"><br><br>
 <input type="submit">
-<button onclick="history.go(-1)">GO BACK</button>
+<button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button>
 </center>
 </form>
 </body>

@@ -7,6 +7,13 @@ public class Employee {
 	public int getEmpId() {
 		return empId;
 	}
+	private String status;
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public Employee(int empId, String empName, Date dob, Date doj, String address, String city, Long pincode,
 			Long mobileNo, String state, String mailId, String panNo, Departments dept) {
 		super();
@@ -21,6 +28,24 @@ public class Employee {
 		this.state = state;
 		this.mailId = mailId;
 		this.panNo = panNo;
+		this.dept = dept;
+	}
+	
+	public Employee(int empId,  String empName, Date dob, Date doj, String address, String city,
+			Long pincode, Long mobileNo, String state, String mailId, String panNo, String status,Departments dept) {
+		super();
+		this.empId = empId;
+		this.empName = empName;
+		this.dob = dob;
+		this.doj = doj;
+		this.address = address;
+		this.city = city;
+		this.pincode = pincode;
+		this.mobileNo = mobileNo;
+		this.state = state;
+		this.mailId = mailId;
+		this.panNo = panNo;
+		this.status=status;
 		this.dept = dept;
 	}
 	public void setEmpId(int empId) {

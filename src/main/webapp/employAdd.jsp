@@ -7,6 +7,7 @@
 <html>
   <head>
     <title>payroll</title>
+
     <link rel="stylesheet" href="styles.css" />
     
     <style>
@@ -67,16 +68,16 @@
 <input type="text" pattern="[a-zA-z]+" name="deptName" placeholder="Enter Department Name"><br><br>
 <div>
 <center>
-<input type="submit">
+<input type="submit" class="btn btn-primary">
 
-<input type="reset">
+<input type="reset" class="btn btn-primary">
 </center>
 </form>
   <br>
-<a href="AdminControl.jsp"><button type="button"><strong>HOME</strong></button></a>
+<a href="AdminControl.jsp" ><button type="button" class="btn btn-primary"><strong>HOME</strong></button></a>
 
 
- <input type="button" value="Go back!" onclick="history.go(-1)">
+ <input type="button" value="Go back!" onclick="history.go(-1)" class="btn btn-primary">
 <br><br>
 </div>
 </div>
@@ -85,19 +86,16 @@
   
 </html>
 <script>
- today();
- function today(){
-     var today = new Date();
-     var dd = String(today.getDate()).padStart(2, '0');
-     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-     var yyyy = today.getFullYear();
-     var yyyy1= today.getFullYear()-24;
- mindate =yyyy1 + '-' + mm + '-'+ dd  ;
- maxdate =yyyy + '-' + mm + '-'+ dd  ;
- document.getElementById("dob").setAttribute("max",maxdate);
- document.getElementById("dob").setAttribute("min",mindate);
- document.getElementById("doj").setAttribute("max",maxdate);
- document.getElementById("doj").setAttribute("min",mindate);
- 
- }
+today();
+function today(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    var yyyy1= today.getFullYear()-24;
+maxdate =yyyy1 + '-' + mm + '-'+ dd  ;
+
+document.getElementById("dob").setAttribute("max",maxdate);
+
+}
 </script>

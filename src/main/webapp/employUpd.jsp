@@ -7,6 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Payroll</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
      body {
     font-family: Arial, Helvetica, sans-serif;
@@ -76,8 +78,8 @@ Employee employ=employDao.findEmployee(empId);
 
 <input type="text" id="deptName" name="dId" value="<%=employ.getDept().getDeptId() %>"><br><br>
 <center>
-<input type="submit">
-<button onclick="history.go(-1)">GO BACK</button>
+<input type="submit" class="btn btn-primary">
+<button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button>
 </center>
 <br>
 </div>
@@ -86,19 +88,16 @@ Employee employ=employDao.findEmployee(empId);
 </body>
 </html>
 <script>
- today();
- function today(){
-     var today = new Date();
-     var dd = String(today.getDate()).padStart(2, '0');
-     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-     var yyyy = today.getFullYear();
-     var yyyy1= today.getFullYear()-24;
- mindate =yyyy1 + '-' + mm + '-'+ dd  ;
- maxdate =yyyy + '-' + mm + '-'+ dd  ;
- document.getElementById("dob").setAttribute("max",maxdate);
- document.getElementById("dob").setAttribute("min",mindate);
- document.getElementById("doj").setAttribute("max",maxdate);
- document.getElementById("doj").setAttribute("min",mindate);
- 
- }
+today();
+function today(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    var yyyy1= today.getFullYear()-24;
+maxdate =yyyy1 + '-' + mm + '-'+ dd  ;
+
+document.getElementById("empDob").setAttribute("max",maxdate);
+
+}
 </script>

@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>payroll</title>
+<title>Payroll</title>
 </head>
 <body>
-
+<h2>Contact</h2>
 
 </body>
 </html>

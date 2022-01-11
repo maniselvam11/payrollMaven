@@ -31,16 +31,20 @@ text-decoration:none;
 }
     </style>
     <title>payroll</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 <body>
-<% String negative=(String)session.getAttribute("negativeValue");
-if(negative!=null) {
-%>
-<h2><%=negative %></h2>
-<%} %>
+<div id="search">
+<form action="gradeSearch.jsp">
+<input type="text" name="gradeName" placeholder="search" autofocus="autofocus">
+<button type="submit" ><i class="fa fa-search"></i>
+</button>
+</form>
+</div>
 
-<h2>SHOW GRADE</h2>
+<h2>GRADE</h2>
 <table>
 <tr>
 <td>GRADE NAME</td>
@@ -59,6 +63,7 @@ List<Grade> gradeList=gradeDao.showGrade();
 for(int i=0;i<gradeList.size();i++){
 	Grade grade=gradeList.get(i);
 	gradeId=gradeDao.findGradeID(grade);
+	out.print(gradeId);
 	%>
 	<tr>
 	<td><%= grade.getGradeName() %></td>
@@ -67,6 +72,7 @@ for(int i=0;i<gradeList.size();i++){
 	<td><%= grade.getGradePf() %></td>
 	<td><%= grade.getGradePt() %></td>
 	<td><a href="GradeDel?gradeId=<%= gradeId %>">DELETE</a></td>
+	
 	<td><a href="GradeUpd.jsp?gradeId=<%= gradeId %>">EDIT</a></td>
 	
 	</tr>
@@ -76,9 +82,9 @@ for(int i=0;i<gradeList.size();i++){
 </table>
 <br>
 <center>
-<a href="AdminControl.jsp"><button type="button"><strong>Home Page</strong></button></a>
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>Home Page</strong></button></a>
 
- <input type="button" value="Go back!" onclick="history.go(-1)">
+ <input type="button" value="Go back!" onclick="history.go(-1)" class="btn btn-primary">
  </center>
  
 </body>

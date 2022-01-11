@@ -8,6 +8,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>payroll</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
     
      body {
@@ -36,10 +38,11 @@ text-decoration:none;
 if(deleteError!=null){
 %>
 	<h2><%=deleteError %></h2>
+	<%session.removeAttribute("delete"); %>
 <%} %>
 
 <div id="empShowForm" >
-<h2>EMPLOYEE</h2>
+<h2>INACTIVE-EMPLOYEE</h2>
 <form >
 <table >
 <tr>
@@ -86,9 +89,9 @@ for(int i=0;i<employeeList.size();i++)
 
 </table>
 <center>
-<button onclick="history.go(-1)">Go Back</button>
+<button onclick="history.go(-1)" class="btn btn-primary">Go Back</button>
 
-<a href="AdminControl.jsp"><button type="button"><strong>HOME</strong></button></a>
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>HOME</strong></button></a>
 </center>
 </form>
 

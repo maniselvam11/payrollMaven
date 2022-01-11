@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Payroll</title>
 <style>
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	background: #2ECC71;
-	background-image: url("images/work.jpg");
-	
-
+	background-image: url("images/tezos-O5fxEDu0S5I-unsplash.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .big-btn { `
@@ -43,26 +43,54 @@ a {
 input{
 height: 25px; width : 200px;
 }
+#imgSty img{
+height: 75px;
+width:100px;
+
+}
+.pageAlign{
+ 
+    padding: 11Spx;
+    border-radius: 6px;
+    width:25%;
+}
+#headpayroll{
+position:absolute;
+margin-left:110px;
+margin-top:-50px;
+color:#F7DC6F;
+text-shadow: 2px 2px red;
+}
+#welcomeform{
+margin-top:300px;
+}
+#loginform{
+margin-top:300px;
+
+}
 
 </style>
 </head>
 <body>
-<%String userError=(String)session.getAttribute("invalid"); 
-if(userError!=null){
-	%>
-	<h2 style="color:#0BE3C6 " ><%=userError %></h2>
-<%}%>
-	<center>
-		<h1 style="color:#0BE3C6 "  >WELCOME</h1>
-		&nbsp;&nbsp;&nbsp;
 
+<%String userError=(String)session.getAttribute("invalid"); 
+if(userError!=null)
+{
+	%>
+	<h2 style="color:#F7DC6F " ><%=userError %></h2>
+	<%session.removeAttribute("invalid"); %>
+<%}%>
+
+	<div id="imgSty">
+	<img alt="" src="images/pngegg (1).png">
+
+	<center>
+	<h1 id="headpayroll" >PAYROLL MANAGEMENT</h1>
+		&nbsp;
 		<div id="welcomeform" style="display: block;" >
-			<h1 style="color:#0BE3C6 "  >
-				<strong>EMPLOYEE MANAGER</strong>
-			</h1>
-				&nbsp;
-			<h1 style="color:#35DC00" >
-				<STRONG>ADMINISTRATOR &nbsp; LOGIN</STRONG>
+		
+			<h1 style="color:#7D3C98  " >
+				<STRONG>ADMINISTRATOR &nbsp; </STRONG>
 			</h1>
 			<button class="big-btn" style="width: 10%; font-size: 20px;"
 				 onclick="showform()">
@@ -79,24 +107,24 @@ if(userError!=null){
 				loginform.style.display = "block";
 			}
 		</script>
+		
 		<div id="loginform" style="display: none;">
 			<form action="login" method="post">
 
-				<div class="pageAlign">-
+				<div class="pageAlign">
 
-					<h2 style="color:#BDD3C7;">
-						LOGIN<br>
-					</h2>
-					<label for="mailId" style="color: #35DC00;"><strong>EMAIL ID </strong></label><br> <input type="email"
+					<label for="mailId" style="color: #FDFEFE ;"><strong>EMAIL ID </strong></label><br> <input type="email"
 						id="mailId" name="email" required placeholder="example@gmail.com"
 						pattern="[a-z][a-z0-9]+[@][a-z]+[.][a-z]+" style="border-radius: 10px;"  autofocus>
 							&nbsp;&nbsp;<br><br> 
 							
-							<label for="password" style="color:#35DC00;"><strong>PASSWORD</strong> </label> <br>
+							<label for="password" style="color:#FDFEFE ;"><strong>PASSWORD</strong> </label> <br>
 					<input type="password" id="password" name="pass" style="border-radius: 10px;left: 50%;right:50%;" required placeholder="*********"
 						pattern="[A-Za-z0-9@#.!&]{8,16}">
 					&nbsp;	&nbsp;<br><br>
 					<button  style="border-radius: 8px;" type="submit"  >submit</button>
+					<br>
+					<br>
 				</div>
 			</form>
 
