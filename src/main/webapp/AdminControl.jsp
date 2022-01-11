@@ -139,13 +139,6 @@ ADMIN CONTROLS
 </div>
 
 
-<div class="dropdown" >
-<a href="AboutUs.jsp">
-<button class="dropbtn">
-&#9776>ABOUT US
-</button></a>
-</div>
-
 <div class="dropdown" style="float:right"><a href="index.jsp">
 <button class="dropbtn">&#9776>LOGOUT</button></a>
 </div>
