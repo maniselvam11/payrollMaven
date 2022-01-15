@@ -16,6 +16,10 @@ public String getMessage1() {
 	return "Invalid user-name & password";
 
 }
+public String getEmployAdd() {
+	return "Employee Not Added Successfully";
+	
+}
 
 
 }

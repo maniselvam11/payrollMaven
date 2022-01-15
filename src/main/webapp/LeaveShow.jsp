@@ -72,7 +72,7 @@ Leave leave=leaveList.get(i);
 <td><%=leave.getLeaveDt() %></td>
 <td><%=leave.getLeaveReason() %></td>
 <td><a href="empLeave?leaveId=<%=leave.getLeaveId() %>">DELETE</a></td>
-<td><a href="leaveUpd.jsp?leaveId=<%=leave.getLeaveId() %>">EDIT</a></td>
+<td><a href="LeaveUpd.jsp?leaveId=<%=leave.getLeaveId() %>">EDIT</a></td>
 </tr>
 <%}%>
 </table>

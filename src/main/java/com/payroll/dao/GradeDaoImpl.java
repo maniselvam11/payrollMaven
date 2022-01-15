@@ -48,9 +48,10 @@ public class GradeDaoImpl {
 			stmt = con.createStatement();
 			
 			ResultSet rs=stmt.executeQuery(findId);
-			while(rs.next()) {
+			if(rs.next()) {
 				id=rs.getInt(1);
-			}
+			}return id;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -131,7 +132,7 @@ public class GradeDaoImpl {
 	public  Long grossSalary(String grdName) 
 	{
 		
-		String qry="select (grade_basic + grade_bonus + grade_pt + grade_pf) gross from grades where grade_name = '"+grdName+"'";
+		String qry="select (grade_basic + grade_pf) gross from grades where grade_name = '"+grdName+"'";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		Statement stmt;
@@ -309,7 +310,5 @@ public class GradeDaoImpl {
 		
 		
 		}
-	
-	
 	
 }

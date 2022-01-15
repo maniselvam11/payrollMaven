@@ -1,6 +1,7 @@
 package com.payroll.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
@@ -29,15 +30,13 @@ public class EmployeeDelController extends HttpServlet {
 		int i=employeeDao.updateEmpStatus(employ);
 	
 		if(i>0) {
-			response.sendRedirect("EmpShowInactive.jsp");
-		
-		}
-		else {
-			response.sendRedirect("AdminControl.jsp");
+			PrintWriter out =response.getWriter();
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Employee Status Inactive');");
+			out.println("location='EmpShowInactive.jsp';");
+			out.println("</script>");
 		}
 	
-	
-		
 	}
 
 }

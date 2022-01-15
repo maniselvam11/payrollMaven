@@ -133,8 +133,9 @@ ADMIN CONTROLS
 &#9776>SALARY
 </button>
 <div class="dropdown-content" id="downNav">
-<a href="SalaryAdd.jsp">Enter Salary Detail</a>
+<a href="SalaryAdd.jsp?employId=0">Enter Salary Detail</a>
 <a href="SalaryEmploy.jsp">Salary Report</a>
+<a href="ShowSalaryEmploy.jsp">Show Salary Detail</a>
 </div>
 </div>
 

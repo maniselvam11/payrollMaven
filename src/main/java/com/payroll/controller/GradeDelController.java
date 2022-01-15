@@ -1,6 +1,8 @@
 package com.payroll.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +16,11 @@ public class GradeDelController extends HttpServlet {
 		 GradeDaoImpl gradeDao=new GradeDaoImpl();
 		int gradeId=Integer.parseInt(request.getParameter("gradeId"));
 		gradeDao.deleteGrade(gradeId);
-		response.sendRedirect("GradeShow.jsp");
+		PrintWriter out =response.getWriter();
+		out.println("<script type=\"text/javascript\">");
+		out.println("alert('Grade Deleted Successfully');");
+		out.println("location='GradeShow.jsp';");
+		out.println("</script>");
 		}
 
 }

@@ -9,6 +9,26 @@
 <title>payroll</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style type="text/css">
+     body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: linear-gradient(to right, green , yellow);
+    }
+    label{
+    width:200px;
+    display:inline-block;
+    }
+     .formSty{
+    background-color: white;
+  	padding: 0px 20px;
+  	border-radius: 25px;
+  	width:30%;
+  	margin-left: 440px;
+  	background-color: #B9B087 ;
+  	margin-top:10%;
+  	}
+
+</style>
 </head>
 <body>
 <%int leaveId=Integer.parseInt(request.getParameter("leaveId"));
@@ -17,13 +37,13 @@ session1.setAttribute("leaveId", leaveId);
 LeaveDaoImpl leaveDao=new LeaveDaoImpl();
 Leave leave=leaveDao.findLeave(leaveId);
 %>
-<form action="leaveUpd">
+<form action="leaveUpd" class="formSty">
 <center>
 <label for="leaveDt">LEAVE DATE</label>
 <input type="date" id="leaveDt"  name="leaveDate" value="<%=leave.getLeaveDt() %>"><br><br>
-<label for="leaveDt">REASON</label>
-<input type="date" id="leaveDt"  name="reason" value="<%=leave.getLeaveReason() %>"><br><br>
-<input type="submit">
+<label for="leaveRs">REASON</label>
+<input type="text" id="leaveRs"  name="reason" value="<%=leave.getLeaveReason() %>"><br><br>
+<input type="submit" class="btn btn-primary">
 <button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button>
 </center>
 </form>

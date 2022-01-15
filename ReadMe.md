@@ -1,48 +1,77 @@
-#Payroll Management
+# Payroll Management
 
 
-####objective
+#### objective
 *Salary Management*
 
 
-###Features
+### Features
+1.Employee
+
+2.Department
+
+3.Grade
+
+4.Salary
+
+5.Leave
 
 
+1. >Admin login
+ **UserName** :maniselvam11@gmail.com
+ 
+
+ **Password** :Maniselvam11@
 
 
-###Admin login
-(emailId & password) validate
+## Employee
+1.Show Active Employee
 
+2.Show Inactive Employee
 
-##Employee
-*Show Active Employee
-*Show Inactive Employee
-*Employee Add
-*Update Employee
-*Delete Employee
-*Search Employee
+3.Employee Add
 
-##Deaprtment
-*Show Department
-*Update Department
-*Delete Department
-*Search Department
+4.Update Employee
 
-##Grade
-*Grade Add
-*Grade Update
-*Grade Delete
-*Grade Show
-*Search Grade
+5.Delete Employee
 
-##Leave
-*Leave Add
-*Leave Update
-*Leave Show
-*Leave Delete
+6.Search Employee
 
-##Salary
-*Salary Apply
-*Search Particular Employee Salary
-*Salary Based on leave
-*Yearly tax Deducte
+## Department
+
+1.Show Department
+
+2.Update Department
+
+3.Delete Department
+
+4.Search Department
+
+## Grade
+1.Grade Add
+
+2.Grade Update
+
+3.Grade Delete
+
+4.Grade Show
+
+5.Search Grade
+
+## Leave
+1.Leave Add
+
+2.Leave Update
+
+3.Leave Show
+
+4.Leave Delete
+
+## Salary
+1.Salary Apply
+
+2.Search Particular Employee Salary
+
+3.Salary Based on leave
+
+4.Yearly tax Deducte

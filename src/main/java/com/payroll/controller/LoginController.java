@@ -23,9 +23,6 @@ import com.payroll.model.Admin;
 public class LoginController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		doGet(request, response);
-
 		
 		String mail=request.getParameter("email");
 		String password=request.getParameter("pass");
@@ -34,7 +31,14 @@ public class LoginController extends HttpServlet {
 		boolean adminFlag=adminDaoImpl.validateAdmin(admin);
 		try {
 			if(adminFlag){
-				response.sendRedirect("AdminControl.jsp");
+				
+				
+				PrintWriter out =response.getWriter();
+				
+				out.println("<script type=\"text/javascript\">");
+    			out.println("alert('Login Successfully');");
+    			out.println("location='AdminControl.jsp';");
+    			out.println("</script>");
 			}
 			else {
 				throw new EmployeeDelException();

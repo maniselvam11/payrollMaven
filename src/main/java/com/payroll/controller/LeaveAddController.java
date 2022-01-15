@@ -1,6 +1,7 @@
 package com.payroll.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,13 +38,14 @@ public class LeaveAddController extends HttpServlet {
 			LeaveDaoImpl leaveDao=new LeaveDaoImpl();
 			
 			leaveDao.insertLeave(leave);
-			response.sendRedirect("AdminControl.jsp");
+			PrintWriter out =response.getWriter();
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Leave Added Successfully');");
+			out.println("location='AdminControl.jsp';");
+			out.println("</script>");
 			
 		}
-		else {
-			response.sendError(1, "Employee Id Not Found");
-			
-		}
+		
 			
 		}
 	

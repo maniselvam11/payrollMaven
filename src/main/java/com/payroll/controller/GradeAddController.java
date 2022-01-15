@@ -1,6 +1,8 @@
 package com.payroll.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,10 +32,15 @@ public class GradeAddController extends HttpServlet {
 			Grade gradeAdd=new Grade(gradeName,basic,bonus,pf,pt);
 			boolean flag=gradeDao.insertGrade(gradeAdd);
 			if(flag!=false) {
-				response.sendRedirect("GradeShow.jsp");
+				PrintWriter out =response.getWriter();
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Grade Added Successfully');");
+				out.println("location='GradeShow.jsp';");
+				out.println("</script>");
 			}
 			else {
 				response.sendRedirect("Grade.jsp");
+				
 			}
 			}
 			

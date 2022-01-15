@@ -1,6 +1,7 @@
 package com.payroll.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,9 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.payroll.dao.DepartmentsDaoImpl;
 import com.payroll.dao.EmployeeDaoImpl;
+import com.payroll.exception.EmployeeDelException;
 import com.payroll.model.Departments;
 import com.payroll.model.Employee;
 
@@ -47,11 +50,22 @@ public class EmployeeAddController extends HttpServlet {
 		Employee employ=new Employee(name,dob,doj,address,city,pincode,mobileNumber,state,mailId,panNo,depart);
 		EmployeeDaoImpl employDao=new EmployeeDaoImpl();
 		boolean empResult=employDao.insertEmp(employ);
+		try {
+			
 		if(empResult!=false) {
-			response.sendRedirect("AdminControl.jsp");
+			PrintWriter out =response.getWriter();
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Employee Added Successfully');");
+			out.println("location='AdminControl.jsp';");
+			out.println("</script>");
 		}
 		else{
+			throw new EmployeeDelException(); 
 			
+		}}
+		catch(EmployeeDelException e) {
+			HttpSession session=request.getSession();
+			session.setAttribute("employInvalid", e.getEmployAdd());
 			response.sendRedirect("EmployAdd.jsp");
 			
 		}

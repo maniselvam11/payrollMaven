@@ -4,39 +4,40 @@ import java.util.Date;
 import java.util.Objects;
 
 public class EmpSalary {
-	private Employee empId;
-	private Departments deptId;
+	private Employee emp;
+	private Departments dept;
 	
 	private int totalLeave;
-	private Grade gradeId;
-	private Date salaryDt;
+	private Grade grade;
 	private Long gross;
 	private Long salary;
-	public Employee getEmpId() {
-		return empId;
+	private Date salaryDate;
+	public Date getSalaryDate() {
+		return salaryDate;
+	}
+	public void setSalaryDate(Date salaryDate) {
+		this.salaryDate = salaryDate;
+	}
+	public Employee getEmp() {
+		return emp;
 	}
 	public void setEmpId(Employee empId) {
-		this.empId = empId;
+		this.emp = emp;
 	}
-	public Departments getDeptId() {
-		return deptId;
+	public Departments getDept() {
+		return dept;
 	}
-	public void setDeptId(Departments deptId) {
-		this.deptId = deptId;
+	public void setDept(Departments dept) {
+		this.dept = dept;
 	}
-	public Grade getGradeId() {
-		return gradeId;
+	public Grade getGrade() {
+		return grade;
 	}
-	public void setGradeId(Grade gradeId) {
-		this.gradeId = gradeId;
+	public void setGradeId(Grade grade) {
+		this.grade = grade;
 	}
 	
-	public Date getSalaryDt() {
-		return salaryDt;
-	}
-	public void setSalaryDt(Date salaryDt) {
-		this.salaryDt = salaryDt;
-	}
+
 	public Long getGross() {
 		return gross;
 	}
@@ -51,7 +52,7 @@ public class EmpSalary {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(deptId, empId, gradeId, gross, salary, salaryDt);
+		return Objects.hash(dept, emp, grade, gross, salary);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -62,26 +63,27 @@ public class EmpSalary {
 		if (getClass() != obj.getClass())
 			return false;
 		EmpSalary other = (EmpSalary) obj;
-		return Objects.equals(deptId, other.deptId) && Objects.equals(empId, other.empId)
-				&& Objects.equals(gradeId, other.gradeId) && Objects.equals(gross, other.gross)
-				&& Objects.equals(salary, other.salary) && Objects.equals(salaryDt, other.salaryDt);
+		return Objects.equals(dept, other.dept) && Objects.equals(emp, other.emp)
+				&& Objects.equals(grade, other.grade) && Objects.equals(gross, other.gross)
+				&& Objects.equals(salary, other.salary) ;
 	}
 	@Override
 	public String toString() {
-		return "empId=" + empId + "\n deptId=" + deptId + "\n gradeId=" + gradeId + "\n salaryDt=" + salaryDt
+		return "emp=" + emp + "\n dept=" + dept + "\n grade=" + grade + "\n "
 				+ "\n gross=" + gross + "\n salary=" + salary + "\n";
 	}
 	
-	public EmpSalary(Employee empId, Departments deptId,  int totalLeave,Grade gradeId, Date salaryDt, Long gross,
-			Long salary) {
+
+	public EmpSalary(Employee empId, Departments deptId, int totalLeave, Grade gradeId, Long gross, Long salary,
+			Date salaryDate) {
 		super();
-		this.empId = empId;
-		this.deptId = deptId;
-		this.gradeId = gradeId;
+		this.emp= empId;
+		this.dept = deptId;
 		this.totalLeave = totalLeave;
-		this.salaryDt = salaryDt;
+		this.grade = gradeId;
 		this.gross = gross;
 		this.salary = salary;
+		this.salaryDate = salaryDate;
 	}
 	public int getTotalLeave() {
 		return totalLeave;
@@ -92,6 +94,17 @@ public class EmpSalary {
 	public EmpSalary() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public EmpSalary(Employee emp, Departments department, int leave, Grade grade,Date date, long gross,
+			long total) {
+		super();
+		this.emp= emp;
+		this.dept = department;
+		this.totalLeave = leave;
+		this.grade = grade;
+		this.gross = gross;
+		this.salary = total;
+		this.salaryDate = date;
 	}
 	
 	

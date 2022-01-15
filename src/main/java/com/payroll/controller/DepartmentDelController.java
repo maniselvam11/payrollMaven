@@ -1,6 +1,8 @@
 package com.payroll.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +20,13 @@ public class DepartmentDelController extends HttpServlet {
 		int departId=Integer.parseInt(request.getParameter("deptId"));
 		DepartmentsDaoImpl departmentDao=new DepartmentsDaoImpl();
 		departmentDao.deleteDept(departId);
-		response.sendRedirect("DepartShow.jsp");
+		PrintWriter out =response.getWriter();
+		
+		out.println("<script type=\"text/javascript\">");
+		out.println("alert('Department Deleted Successfully');");
+		out.println("location='DepartShow.jsp';");
+		out.println("</script>");
+		
 	}
 
 }

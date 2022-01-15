@@ -1,3 +1,4 @@
+<%@page import="com.payroll.model.Departments"%>
 <%@page import="com.payroll.model.Employee"%>
 <%@page import="com.payroll.dao.EmployeeDaoImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -39,48 +40,28 @@ if(salInvalid!=null){
 </center>
 <%} %>
 
+<%String InvalidEnter=(String)request.getAttribute("invalidSal");
+if(InvalidEnter!=null){
+%>
+<h2><%=InvalidEnter %></h2>
+<%session.removeAttribute("InvalidEnter"); %>
 
+<%} %>
 <center>
 <h1><STRONG>ADMINISTRATOR &nbsp;</STRONG></h1>
 
-<form action="salaryInsert" class="formSty" >
+<form action="SalaryApprove.jsp" class="formSty" >
 <br>
 <label for="employId">EMPLOYEE ID</label>
-<input type="number" name="eId" id="employId" min="1" pattern="[a-zA-Z\s]+" placeholder="enter employ Id"><br><br>
-<label for="gradeName">GRADE NAME</label>
-<input type="text" name="gName" id="gradeName" pattern="[a-zA-Z\s]+" placeholder="enter Grade Name"><br><br>
-<label for="deptName">DEPARTMENT NAME</label>
-<input type="text" name="dName" id="deptName" pattern="[a-zA-Z\s]+"><br><br>
-<label for="salDate">SALARY DATE</label>
-<input type="date" name="salDate" id="salaryDate" ><br><br>
+<input type="number" name="eId" id="employId" min="1" pattern="[0-9]+" placeholder="enter employ Id"><br><br>
 
-
-
-<label for="taxDeducte">Professional Tax</label>
-
-<select name="tax" id="pf">
-  <option value="yes">Yes</option>
-  <option value="no">No</option>
- 
-</select>
-
-<br><br>
-<label for="monthBonus">Month Bonus</label>
-
-<select name="bonus" id="monthBonus">
-  <option value="yes">Yes</option>
-  <option value="no">No</option>
- 
-</select>
-<br>
-<br>
 <input type="reset" class="btn btn-primary">
 <input type="submit" class="btn btn-primary">
 <button onclick="history.back()" class="btn btn-primary">BACK</button>
 <a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>HOME</strong></button></a>
 <br><br>
-</center>
 </form>
+</center>
 </body>
 </html>
 <script>
@@ -90,12 +71,10 @@ function today(){
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
-    var yyyy1= today.getFullYear()+2;
-    mindate =yyyy + '-' + mm + '-'+ dd  ;
-    maxdate =yyyy1 + '-' + mm + '-'+ dd  ;
-document.getElementById("salaryDate").setAttribute("min",mindate);
+    var yyyy1= today.getFullYear()-24;
+maxdate =yyyy1 + '-' + mm + '-'+ dd  ;
+
 document.getElementById("salaryDate").setAttribute("max",maxdate);
+
 }
-
-
 </script>

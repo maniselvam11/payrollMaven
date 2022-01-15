@@ -309,6 +309,53 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		
 		
 		}
+	public String employStatus(int empId) {
+		
+		String query="select status from employees where emp_id=?";
+		ConnectionUtilImpl connection =new ConnectionUtilImpl();
+		Connection con=connection.dbConnect();
+		String status=null;
+		try {
+			PreparedStatement pstmt=con.prepareStatement(query);
+			pstmt.setInt(1, empId);
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()) {
+				status=rs.getString(1);
+			}
+			return status;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return status;
+		
+	}
+public Date todayDate() {
+		
+		String query="select sysdate from dual";
+		ConnectionUtilImpl connection =new ConnectionUtilImpl();
+		Connection con=connection.dbConnect();
+		Date today=null;
+		try {
+			PreparedStatement pstmt=con.prepareStatement(query);
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()) {
+				today=rs.getDate(1);
+			}
+			return today;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return today;
+		
+	}
 	
 	
 }

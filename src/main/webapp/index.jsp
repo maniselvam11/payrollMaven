@@ -68,6 +68,24 @@ margin-top:300px;
 margin-top:300px;
 
 }
+.checkBox {
+position: relative;
+left:-30px;
+}
+.checkBox input{
+height: 20px;
+width:20px;
+}
+.showPassword{
+position: relative;
+left:12px;
+top:-4px;
+
+}
+.submitBtn{
+position: relative;
+top: 10px;
+}
 
 </style>
 </head>
@@ -121,8 +139,12 @@ if(userError!=null)
 							<label for="password" style="color:#FDFEFE ;"><strong>PASSWORD</strong> </label> <br>
 					<input type="password" id="password" name="pass" style="border-radius: 10px;left: 50%;right:50%;" required placeholder="*********"
 						pattern="[A-Za-z0-9@#.!&]{8,16}">
-					&nbsp;	&nbsp;<br><br>
-					<button  style="border-radius: 8px;" type="submit"  >submit</button>
+					&nbsp;	
+					<div class="checkBox">
+					<input type="checkbox" onclick="myFunction()">
+					<label class="showPassword">Show Password</label> 
+					</div>
+					<button  style="border-radius: 8px;" type="submit" class="submitBtn" >submit</button>
 					<br>
 					<br>
 				</div>
@@ -133,3 +155,13 @@ if(userError!=null)
 	</center>
 </body>
 </html>
+<script>
+function myFunction() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>

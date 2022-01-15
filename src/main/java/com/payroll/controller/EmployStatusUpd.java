@@ -1,6 +1,8 @@
 package com.payroll.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,10 +20,11 @@ public class EmployStatusUpd extends HttpServlet {
 		Employee employ=employeeDao.findEmployee(empId);
 		int i=employeeDao.updateStatusActive(employ);
 		if(i!=0) {
-			response.sendRedirect("EmpShow.jsp");
-		}
-		else {
-			response.sendRedirect("EmpShowInactive.jsp");
+			PrintWriter out =response.getWriter();
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('Employee Status Updated ');");
+			out.println("location='EmpShow.jsp';");
+			out.println("</script>");
 		}
 		
 		

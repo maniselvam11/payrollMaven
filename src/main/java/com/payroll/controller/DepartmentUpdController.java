@@ -1,6 +1,8 @@
 package com.payroll.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,8 +29,11 @@ public class DepartmentUpdController extends HttpServlet {
 		Departments deprt=department.findDepartment(deptID);
 		deprt.setDeptName(departName);
 		department.updateDept(deprt);
-		response.sendRedirect("DepartShow.jsp");
-		
+		PrintWriter out =response.getWriter();
+		out.println("<script type=\"text/javascript\">");
+		out.println("alert('Department Updated Successfully');");
+		out.println("location='DepartShow.jsp';");
+		out.println("</script>");
 		
 	}
 

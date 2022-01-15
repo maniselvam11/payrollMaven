@@ -33,16 +33,16 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 </style>
 </head>
 <body>
-<h1><STRONG>ADMINISTRATOR &nbsp;</STRONG></h1>
+<h2>ADMINISTRATOR &nbsp;</h2>
 
 
 <div>
 <table>
 <tr>
 <td>EMPLOYEE ID</td>
-<td>DEPARTMENT ID</td>
+<td>DEPARTMENT Name</td>
 <td>TOTAL LEAVE</td>
-<td>GRADE ID</td>
+<td>GRADE Name</td>
 <td>SALARY DATE</td>
 <td>GROSS SALARY</td>
 <td>TOTAL SALARY</td>
@@ -55,17 +55,16 @@ if(employ!=null)
 SalaryCalculateDaoImpl salaryCal=new SalaryCalculateDaoImpl();
 EmpSalary salary=salaryCal.salaryDetail(employId);
 GradeDaoImpl gradeDao=new GradeDaoImpl();
-int gradeId=gradeDao.findGradeID(salary.getGradeId());
-int empId=employeeDao.findEmployeeID(salary.getEmpId());
+
 %>
 </tr>
 
 <tr>
-<td><%= empId %></td>
-<td><%= salary.getDeptId().getDeptId()%></td>
+<td><%= salary.getEmp().getEmpId() %></td>
+<td><%= salary.getDept().getDeptName()%></td>
 <td><%= salary.getTotalLeave() %></td>
-<td><%=  gradeId%></td>
-<td><%= salary.getSalaryDt() %></td>
+<td><%= salary.getGrade().getGradeName()%></td>
+<td><%= salary.getSalaryDate() %></td>
 <td><%= salary.getGross() %></td>
 <td><%= salary.getSalary() %></td>
 </tr>
@@ -73,11 +72,12 @@ int empId=employeeDao.findEmployeeID(salary.getEmpId());
 </table>
 
 </div>
-<a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>Home Page</strong></button></a>
+
 <br>
 
 <form>
 <center>
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>Home Page</strong></button></a>
  <input type="button" value="Go back!" onclick="history.go(-1)" class="btn btn-primary">
  </center>
 </form>

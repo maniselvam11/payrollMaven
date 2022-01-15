@@ -1,6 +1,7 @@
 package com.payroll.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -53,8 +54,11 @@ public class EmployeeUpdController extends HttpServlet {
 		int empId=employ.findEmployeeID(employee);
 		Employee emp=new Employee(empId,name,dob,doj,address,city,pincode,mobileNo,state,email,panNo,depart);
 		employ.updateEmp(emp);;
-		response.sendRedirect("EmpShow.jsp");
-		
+		PrintWriter out =response.getWriter();
+		out.println("<script type=\"text/javascript\">");
+		out.println("alert('Employee Updated Successfully');");
+		out.println("location='EmpShow.jsp';");
+		out.println("</script>");
 		}
 
 }

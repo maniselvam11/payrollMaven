@@ -1,8 +1,11 @@
 package com.payroll.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -29,18 +32,13 @@ public class SalaryAddController extends HttpServlet {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-		int empID = Integer.parseInt(request.getParameter("eId"));
+		int empID = Integer.parseInt(request.getParameter("empId"));
 		String gradeName = request.getParameter("gName");
 		String deptName = request.getParameter("dName");
 		String selectTax = request.getParameter("tax");
 		String selectBonus = request.getParameter("bonus");
-		Date salaryDate = null;
-		try {
-			salaryDate = sdf.parse(request.getParameter("salDate"));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+
 		EmployeeDaoImpl empDao = new EmployeeDaoImpl();
 		Employee emp = empDao.findEmployee(empID);
 
@@ -52,13 +50,6 @@ public class SalaryAddController extends HttpServlet {
 
 		LeaveDaoImpl leaveDao = new LeaveDaoImpl();
 		int leaveDays = leaveDao.leaveDays(empID);
-		Date salaryDt = null;
-		try {
-			salaryDt = sdf.parse(request.getParameter("salDate"));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		String pfCheck = request.getParameter("tax");
 		String monthBonus = request.getParameter("monthBonus");
 
@@ -70,78 +61,131 @@ public class SalaryAddController extends HttpServlet {
 		long pf = gradeDao.providentFund(gradeName);
 		SalaryCalculateDaoImpl salaryCal = new SalaryCalculateDaoImpl();
 
-		if (selectTax.equals("yes")) {
-			if (selectBonus.equals("yes")) {
-				long salaryBonus = (((basicSalary + bonus + pt) - (leaveDays * perDaySalary)) - pf);
-				boolean result = salaryCal.insertSalary(emp, grade, depart, leaveDays, salaryDt, grossSalary,
-						salaryBonus);
-				try {
-					if (result != false) {
+		Date salaryDt = salaryCal.salaryNxtMonth(empID);
+		String status = empDao.employStatus(empID);
+		System.out.println(status);
 
-						response.sendRedirect("Salary.jsp");
+		Date todayDate = empDao.todayDate();
+		try {
+			
+		if(salaryDt==null) {
+			salaryDt=todayDate;
+		}
+		if (todayDate.compareTo(salaryDt) == 0)  {
+			System.out.println("1 if ");
+			if (status.equals("active")) {
+				System.out.println("2 if");
+				if (selectTax.equals("yes")) {
+					System.out.println("3 if");
+					if (selectBonus.equals("yes")) {
+						System.out.println("4 if");
+						long salaryBonus = (((grossSalary + bonus) - (leaveDays * perDaySalary)) - pt);
+						System.out.println(perDaySalary);
+						System.out.println(leaveDays);
+						boolean result = salaryCal.insertSalary(emp, grade, depart, leaveDays, grossSalary,
+								salaryBonus);
+						try {
+							if (result != false) {
+								System.out.println("5 if");
+
+								PrintWriter out = response.getWriter();
+								out.println("<script type=\"text/javascript\">");
+								out.println("alert('Salary Added Successfully');");
+								out.println("location='AdminControl.jsp';");
+								out.println("</script>");
+							} else {
+								throw new SalaryInvalidException();
+							}
+						} catch (SalaryInvalidException e) {
+							HttpSession session = request.getSession();
+							session.setAttribute("salaryInvalid", e.getMessage());
+							response.sendRedirect("SalaryAdd.jsp");
+
+						}
 					} else {
-						throw new SalaryInvalidException();
+						long salary = (((grossSalary) - (leaveDays * perDaySalary)) - pt);
+						boolean result = salaryCal.insertSalary(emp, grade, depart, leaveDays, grossSalary, salary);
+						try {
+							if (result != false) {
+								PrintWriter out = response.getWriter();
+								out.println("<script type=\"text/javascript\">");
+								out.println("alert('Salary Added Successfully');");
+								out.println("location='AdminControl.jsp';");
+								out.println("</script>");
+							} else {
+								throw new SalaryInvalidException();
+							}
+						} catch (SalaryInvalidException e) {
+							HttpSession session = request.getSession();
+							session.setAttribute("salaryInvalid", e.getMessage());
+							response.sendRedirect("SalaryAdd.jsp");
+						}
 					}
-				} catch (SalaryInvalidException e) {
-					HttpSession session = request.getSession();
-					session.setAttribute("salaryInvalid", e.getMessage());
-					response.sendRedirect("SalaryAdd.jsp");
-				}
-			} else {
-				long salary = (((basicSalary + pt) - (leaveDays * perDaySalary)) - pf);
-				boolean result = salaryCal.insertSalary(emp, grade, depart, leaveDays, salaryDt, grossSalary, salary);
-				try {
-					if (result != false) {
-						response.sendRedirect("Salary.jsp");
+
+				} else {
+					if (selectBonus.equals("yes")) {
+						long salaryBonus = (((grossSalary + bonus) - (leaveDays * perDaySalary)));
+
+						boolean result = salaryCal.insertSalary(emp, grade, depart, leaveDays, grossSalary,
+								salaryBonus);
+						try {
+
+							if (result != false) {
+								PrintWriter out = response.getWriter();
+								out.println("<script type=\"text/javascript\">");
+								out.println("alert('Salary Added Successfully');");
+								out.println("location='AdminControl.jsp';");
+								out.println("</script>");
+							} else {
+								throw new SalaryInvalidException();
+
+							}
+						} catch (SalaryInvalidException e) {
+							HttpSession session = request.getSession();
+							session.setAttribute("salaryInvalid", e.getMessage());
+							response.sendRedirect("SalaryAdd.jsp");
+						}
 					} else {
-						throw new SalaryInvalidException();
+						long salary = (((grossSalary) - (leaveDays * perDaySalary)));
+
+						boolean result = salaryCal.insertSalary(emp, grade, depart, leaveDays, grossSalary, salary);
+						try {
+
+							if (result == true) {
+								PrintWriter out = response.getWriter();
+								out.println("<script type=\"text/javascript\">");
+								out.println("alert('Salary Added Successfully');");
+								out.println("location='AdminControl.jsp';");
+								out.println("</script>");
+
+							}
+
+							else {
+								throw new SalaryInvalidException();
+							}
+						} catch (SalaryInvalidException e) {
+							HttpSession session = request.getSession();
+							session.setAttribute("salaryInvalid", e.getMessage());
+							response.sendRedirect("SalaryAdd.jsp");
+						}
+
 					}
-				} catch (SalaryInvalidException e) {
-					HttpSession session = request.getSession();
-					session.setAttribute("salaryInvalid", e.getMessage());
-					response.sendRedirect("SalaryAdd.jsp");
+
 				}
+
 			}
-
-		} else {
-			if (selectBonus.equals("yes")) {
-				long salaryBonus = (((basicSalary + bonus + pt) - (leaveDays * perDaySalary)));
-
-				boolean result = salaryCal.insertSalary(emp, grade, depart, leaveDays, salaryDt, grossSalary,
-						salaryBonus);
-				try {
-
-					if (result != false) {
-						response.sendRedirect("Salary.jsp");
-					} else {
-						throw new SalaryInvalidException();
-
-					}
-				} catch (SalaryInvalidException e) {
-					HttpSession session = request.getSession();
-					session.setAttribute("salaryInvalid", e.getMessage());
-					response.sendRedirect("SalaryAdd.jsp");
-				}
-			} 
 			else {
-				long salary = (((basicSalary + pt) - (leaveDays * perDaySalary)));
-
-				boolean result = salaryCal.insertSalary(emp, grade, depart, leaveDays, salaryDt, grossSalary, salary);
-				try {
-
-					if (result == true) {
-						response.sendRedirect("Salary.jsp");
-					} else {
-						throw new SalaryInvalidException();
-					}
-				} catch (SalaryInvalidException e) {
-					HttpSession session = request.getSession();
-					session.setAttribute("salaryInvalid", e.getMessage());
-					response.sendRedirect("SalaryAdd.jsp");
-				}
-
+				throw new SalaryInvalidException();
 			}
 
+		} 
+		else {
+			throw new SalaryInvalidException();
+		}}
+		catch(SalaryInvalidException e) {
+			HttpSession session=request.getSession();
+			session.setAttribute("invalidSal", e.getSalMessage());
+			response.sendRedirect("SalaryAdd.jsp");
 		}
 
 	}

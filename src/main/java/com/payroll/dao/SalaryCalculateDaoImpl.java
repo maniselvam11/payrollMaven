@@ -16,7 +16,7 @@ import com.payroll.model.Leave;
 
 public class SalaryCalculateDaoImpl {
 
-		public  boolean insertSalary(Employee emp,Grade grade,Departments department,int noOfLeave,Date salaryDt,long grossSalary,long totalSalary) {
+		public  boolean insertSalary(Employee emp,Grade grade,Departments department,int noOfLeave,long grossSalary,long totalSalary) {
 			boolean result=false;
 			EmployeeDaoImpl employeeDaoImpl=new EmployeeDaoImpl();
 			DepartmentsDaoImpl departmentDao=new DepartmentsDaoImpl();
@@ -26,7 +26,7 @@ public class SalaryCalculateDaoImpl {
 			int gradeID=gradeDaoImpl.findGradeID(grade);
 			LeaveDaoImpl leaveDaoImpl=new LeaveDaoImpl();
 			
-			String query="insert into salarys (EMP_ID,DEPT_ID,TOTAL_LEAVE,GRADE_ID,PAID_DATE,GROSS_SALARY,TOTAL_SALARY) values(?,?,?,?,?,?,?)";
+			String query="insert into salarys (EMP_ID,DEPT_ID,TOTAL_LEAVE,GRADE_ID,GROSS_SALARY,TOTAL_SALARY,nextpay_date) values(?,?,?,?,?,?,sysdate+30)";
 			ConnectionUtilImpl connection=new ConnectionUtilImpl();
 			Connection con=connection.dbConnect();
 			try {
@@ -35,9 +35,8 @@ public class SalaryCalculateDaoImpl {
 				pstmt.setInt(2, deptID);
 				pstmt.setInt(3, noOfLeave);
 				pstmt.setInt(4, gradeID);
-				pstmt.setDate(5, new java.sql.Date(salaryDt.getTime()));
-				pstmt.setLong(6, grossSalary);
-				pstmt.setLong(7, totalSalary);
+				pstmt.setLong(5, grossSalary);
+				pstmt.setLong(6, totalSalary);
 				pstmt.executeQuery();
 				result=true;
 				return result;	
@@ -85,7 +84,7 @@ public class SalaryCalculateDaoImpl {
 					Departments department=departmentDao.findDepartment(rs.getInt(3));
 					Grade grade=gradeDaoImpl.findGrade(rs.getInt(5));
 					
-					EmpSalary empSalary=new EmpSalary(employ,department,rs.getInt(4),grade,new java.sql.Date(rs.getDate(6).getTime()),rs.getLong(7),rs.getLong(8));
+					EmpSalary empSalary=new EmpSalary(employ,department,rs.getInt(3),grade,rs.getLong(7),rs.getLong(8),rs.getDate(6));
 					salaryList.add(empSalary);
 				}
 				
@@ -103,7 +102,6 @@ public class SalaryCalculateDaoImpl {
 			try {
 				PreparedStatement pstmt=con.prepareStatement(query);
 				pstmt.setInt(1, empId);
-				Statement stmt=con.createStatement();
 				ResultSet rs=pstmt.executeQuery();
 				while(rs.next()) {
 					EmployeeDaoImpl empDao=new EmployeeDaoImpl();
@@ -124,6 +122,45 @@ public class SalaryCalculateDaoImpl {
 			return salary;
 			
 			}
+		public Date salaryDate(int empId) {
+			String query="select paid_date from salarys where EMP_ID=?";
+			ConnectionUtilImpl connection=new ConnectionUtilImpl();
+			Connection con=connection.dbConnect();
+			Date paidDt=null;
+			try {
+				PreparedStatement pstmt=con.prepareStatement(query);
+				pstmt.setInt(1, empId);
+				ResultSet rs=pstmt.executeQuery();
+				while(rs.next()) {
+					paidDt=rs.getDate(1);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return paidDt;
+			
+			}
+		public Date salaryNxtMonth(int empId) {
+			String query="select NEXTPAY_DATE from salarys where EMP_ID=?";
+			ConnectionUtilImpl connection=new ConnectionUtilImpl();
+			Connection con=connection.dbConnect();
+			Date paidDt=null;
+			try {
+				PreparedStatement pstmt=con.prepareStatement(query);
+				pstmt.setInt(1, empId);
+				ResultSet rs=pstmt.executeQuery();
+				while(rs.next()) {
+					paidDt=rs.getDate(1);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return paidDt;
+			
+			}
+		
 		
 	
 	}
