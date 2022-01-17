@@ -37,7 +37,18 @@ text-decoration:none;
 </style>
 </head>
 <body>
-<%String deleteLeave=(String)request.getAttribute("c");
+<div>
+<form action="searchLeaveDt.jsp">
+<label for="leaveFrom">FromDate</label>
+<input type="date" id="leaveFrom" name="fromDt">
+<label for="leaveTo">ToDate</label>
+<input type="date" id="leaveTo" name="toDate">
+<button type="submit"  class="btn btn-primary">&#128269;</button>
+</form>
+
+
+</div>
+<%String deleteLeave=(String)session.getAttribute("deleteLeave");
 if(deleteLeave!=null){
 %>
 <center>
@@ -54,7 +65,7 @@ if(updLeave!=null){
 <%} %>
 
 <table>
-<tr>
+<tr class="bg-primary">
 <td>EMPLOYEE NAME</td>
 <td>LEAVE DATE</td>
 <td>REASON</td>

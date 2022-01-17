@@ -21,7 +21,7 @@ import com.payroll.model.Employee;
 
 @WebServlet("/empAdd")
 public class EmployeeAddController extends HttpServlet {
-	
+
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
@@ -43,12 +43,19 @@ public class EmployeeAddController extends HttpServlet {
 		String state=request.getParameter("state");
 		String mailId=request.getParameter("mailId");
 		String panNo=request.getParameter("panNo");
-		String deptName=request.getParameter("deptName");
+		int deptId=Integer.parseInt(request.getParameter("deptId"));
 		DepartmentsDaoImpl departDao=new DepartmentsDaoImpl();
-		Departments depart=departDao.findDepartment(deptName);
+		Departments depart=departDao.findDepartment(deptId);
 //		System.out.println(name+dob+doj+address+city+pincode+mobileNumber+state+mailId+panNo+deptName);
 		Employee employ=new Employee(name,dob,doj,address,city,pincode,mobileNumber,state,mailId,panNo,depart);
 		EmployeeDaoImpl employDao=new EmployeeDaoImpl();
+		Employee employee=employDao.findEmploy(deptId);
+		try {
+			
+		
+		if(employee==null) {
+			
+		
 		boolean empResult=employDao.insertEmp(employ);
 		try {
 			
@@ -68,6 +75,15 @@ public class EmployeeAddController extends HttpServlet {
 			session.setAttribute("employInvalid", e.getEmployAdd());
 			response.sendRedirect("EmployAdd.jsp");
 			
+		}}
+		else {
+			
+			throw new EmployeeDelException();
+		}}
+		catch(EmployeeDelException e) {
+			HttpSession session=request.getSession();
+			session.setAttribute("employalready", e.getMessage3());
+			response.sendRedirect("EmployAdd.jsp");
 		}
 		
 	}

@@ -13,8 +13,9 @@
 <style>
    body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
-    }
+	background-image: url("images/carlos-muza-hpjSkU2UYSU-unsplash.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;    }
      .formSty{
     background-color: white;
   	padding: 0px 20px;
@@ -23,6 +24,15 @@
   	background-color: #B9B087 ;
   	margin-top:10%;
   	}
+  	.formSty {
+    background-color: white;
+    padding: 0px 20px;
+    border-radius: 25px;
+    width: 30%;
+    background-color: #d8dfe9;
+    margin-top: 10%;
+    margin-left: 737px;
+}
   	label{
     width:150px;
     display:inline-block;
@@ -31,7 +41,7 @@
 </style>
 </head>
 <body>
-<%String salInvalid=(String)request.getAttribute("salaryInvalid");
+<%String salInvalid=(String)session.getAttribute("salaryInvalid");
 if(salInvalid!=null){
 %>
 <center>

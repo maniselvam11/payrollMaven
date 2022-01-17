@@ -14,28 +14,28 @@ import com.payroll.model.Employee;
 import com.payroll.model.Grade;
 
 public class DepartmentsDaoImpl implements DepartmentDao{
-	public void insertDep(Departments dprt) 
+	public int insertDep(Departments dprt) 
 	
 	{	
-		String insertQuery="insert into departments  values (?,?,?)";
+		String insertQuery="insert into departments (DEPT_NAME,GRADE_ID) values (?,?)";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
-		GradeDaoImpl gradeDaoImpl=new GradeDaoImpl();
+		int i=0;
 		try {
 			
-			int gradID=gradeDaoImpl.findGradeID(dprt.getGrd());
 
 			PreparedStatement pstmt=con.prepareStatement(insertQuery);
-			pstmt.setInt(1, dprt.getDeptId());
-			pstmt.setString(2, dprt.getDeptName());
-			pstmt.setInt(3,gradID);
+			pstmt.setString(1, dprt.getDeptName());
+			pstmt.setInt(2,dprt.getGrd().getGradeId());
 			
-			pstmt.executeUpdate();
+			i=pstmt.executeUpdate();
 			
 			
-		} catch (SQLException e) {
+		}
+		catch (SQLException e){
 			e.printStackTrace();
 		}
+		return i;
 		
 		
 		}
@@ -210,6 +210,36 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 		
 		
 		}
+
+	public Departments findDepartment(String deptName,int GrdId)
+	{
+		
+		GradeDaoImpl gradeDao=new GradeDaoImpl();
+		
+		
+		String query="select * from departments where dept_name= '"+deptName+"' and GRADE_ID='"+GrdId+"'";
+		Grade grade=gradeDao.findGrade(GrdId);
+		ConnectionUtilImpl connection=new ConnectionUtilImpl();
+		Connection con=connection.dbConnect();
+		Departments depart=null;
+		GradeDaoImpl gradeDaoImpl=new GradeDaoImpl();
+
+		try {
+			Statement stmt=con.createStatement();
+			ResultSet rs=stmt.executeQuery(query);
+			if(rs.next()) {
+				
+				depart=new Departments(rs.getInt(1),rs.getString(2),grade);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return depart;
+	}
 	
 	
 	

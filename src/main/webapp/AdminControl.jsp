@@ -103,6 +103,7 @@ ADMIN CONTROLS
 &#9776>DEPARTMENT
 </button>
 <div class="dropdown-content" id="downNav">
+<a href="DepartmentAdd.jsp">Department Add</a>
 <a href="DepartShow.jsp">Department Show</a>
 </div>
 </div>

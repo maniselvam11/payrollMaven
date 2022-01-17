@@ -39,16 +39,16 @@
 <form action="LeaveAdd" class="formSty"  >
 <h2>ADD LEAVE</h2>
 <label for="employId">EMPLOYEE ID</label>
-<input type="number" name="empId" id="employId" pattern="[0-9]+" placeholder="enter employ ID"><br><br>
+<input type="number" name="empId" min="1" id="employId" pattern="[0-9]+" placeholder="enter employ ID"><br><br>
 
-<label for="leaveDate">LEAVE DATE</label>
+<label for="leaveDate">LEAVE DATE</label><br>
 <input type="date" name="lDate" id="leaveDate" ><br><br>
 
 <label for="leaveReason"> REASON</label>
 <input type="text" name="reason" id="leaveReason" placeholder="enter leave reason"><br><br>
 <center>
-<input type="submit">
-
+<input type="submit" class="btn btn-primary">
+<input type="reset" class="btn btn-primary">
 <button onclick="history.back()" class="btn btn-primary">BACK</button>
 
 <a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>HOME</strong></button></a>
@@ -60,3 +60,17 @@
 
 </body>
 </html>
+<script>
+today();
+function today(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    var yyyy1= today.getFullYear()-1;
+maxdate =yyyy + '-' + mm + '-'+ dd  ;
+mindate =yyyy1 + '-' + mm + '-'+ dd  ;
+document.getElementById("leaveDate").setAttribute("max",maxdate);
+document.getElementById("leaveDate").setAttribute("min",mindate);
+}
+</script>

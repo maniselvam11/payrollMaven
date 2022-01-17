@@ -63,7 +63,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		{
 			Departments dept=deptDao.findDepartment(rs.getInt(12));
 			employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),dept);
-		}
+		}return employee;
 		
 	} catch (SQLException e) {
 		
@@ -216,7 +216,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		while(rs.next())
 		{
 			Departments dept=deptDao.findDepartment(rs.getInt(12));
-			employee=new Employee(rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),dept);
+			employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),dept);
 		}
 		
 	} catch (SQLException e) {
@@ -356,6 +356,32 @@ public Date todayDate() {
 		return today;
 		
 	}
+public Employee findEmploy(int deptId)
+{
+	String findEmployeeQuery="select * from employees where DEPT_ID=?";
+	ConnectionUtilImpl connection=new ConnectionUtilImpl();
+	Connection con=connection.dbConnect();
+	DepartmentsDaoImpl deptDao=new DepartmentsDaoImpl();
+
+	Employee employee=null;
+try {
+	PreparedStatement pstmt=con.prepareStatement(findEmployeeQuery);
+	pstmt.setInt(1, deptId);
+	ResultSet rs=pstmt.executeQuery();
+	
+	while(rs.next())
+	{
+		Departments dept=deptDao.findDepartment(rs.getInt(12));
+		employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),dept);
+	}
+	
+} catch (SQLException e) {
+	
+	e.getMessage();
+}
+	return employee;
+}
+
 	
 	
 }

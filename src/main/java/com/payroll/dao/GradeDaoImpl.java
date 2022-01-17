@@ -163,7 +163,7 @@ public class GradeDaoImpl {
 			Statement stmt=con.createStatement();
 			ResultSet rs=stmt.executeQuery(qry);
 			while(rs.next()) {
-				 grd=new Grade(rs.getString(2),rs.getLong(3),rs.getLong(4),rs.getLong(5),rs.getLong(6));
+				 grd=new Grade(rs.getInt(1),rs.getString(2),rs.getLong(3),rs.getLong(4),rs.getLong(5),rs.getLong(6));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -183,8 +183,9 @@ public class GradeDaoImpl {
 			Statement stmt=con.createStatement();
 			ResultSet rs=stmt.executeQuery(qry);
 			while(rs.next()) {
-				 grd=new Grade(rs.getString(2),rs.getLong(3),rs.getLong(4),rs.getLong(5),rs.getLong(6));
+				 grd=new Grade(rs.getInt(1),rs.getString(2),rs.getLong(3),rs.getLong(4),rs.getLong(5),rs.getLong(6));
 			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

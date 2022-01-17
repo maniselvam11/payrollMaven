@@ -49,7 +49,7 @@ margin-right: 40px;
 </head>
 <body>
 <table>
-<tr>
+<tr class="bg-primary">
 <td>Employee Id</td>
 <td>Department Name</td>
 <td>Grade Name</td>

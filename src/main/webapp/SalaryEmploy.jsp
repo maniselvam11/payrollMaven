@@ -8,19 +8,22 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
-body {
+   body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+    background-image: url("images/pexels-nataliya-vaitkevich-6863183.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
-     .formSty{
+     .formSty {
     background-color: white;
-  	padding: 0px 20px;
-  	border-radius: 20px;
-  	width:30%;
-  	margin-left: 440px;
-  	background-color: #B9B087 ;
-  	margin-top:10%;
-  	}
+    padding: 0px 20px;
+    border-radius: 100px;
+    width: 30%;
+    margin-left: 440px;
+    background-color: #85c5ff;
+    margin-top: 60px;
+    margin-left: 25px;
+}
     </style>
 </head>
 <body>

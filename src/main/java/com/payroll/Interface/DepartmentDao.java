@@ -7,7 +7,7 @@ import java.util.List;
 import com.payroll.model.Departments;
 
 public interface DepartmentDao {
-	public void insertDep(Departments dprt) ;
+	public int insertDep(Departments dprt) ;
 	public  int findDepartmentID(Departments dept);
 	public void updateDept(Departments depart);
 	public boolean deleteDept(int  deptId);

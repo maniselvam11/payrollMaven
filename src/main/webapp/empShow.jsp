@@ -16,7 +16,9 @@
     
      body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+    background-image: url("images/pexels-nataliya-vaitkevich-6863183.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
     
 table {
@@ -43,6 +45,7 @@ float: right;
 margin-top:10px;
 margin-right: 40px;
 }
+
     </style>
 </head>
 <body>
@@ -55,17 +58,25 @@ if(deleteError!=null){
 <%} %>
 <div id="search">
 <form action="searchEmployee.jsp">
-<input type="text" name="empName" placeholder="Search" autofocus="autofocus">
-<button type="submit">&#128269;</button>
+<div class="input-group">
+
+<input type="search" name="empName" placeholder="Search Employee Name" class="form-control"  autofocus="autofocus">
+
+<button type="submit"  class="btn btn-primary">&#128269;</button>
+</div>
 </form>
+
+
 </div>
 <div id="empShowForm" >
-<h2>ACTIVE EMPLOYEE</h2>
+<h3 class="text-warning">ACTIVE EMPLOYEE</h3>
+&nbsp;&nbsp;
 
 <form >
-<table  >
+<div class="gridtable">
+<table >
 
-<tr >
+<tr class="bg-primary">
 
 <td >EMPLOYEE NAME</td>
 <td >DATE OF BIRTH</td>
@@ -90,6 +101,7 @@ for(int i=0;i<employeeList.size();i++)
 {
 	Employee emp=employeeList.get(i);
 %>
+
 <tr>
 
 <td ><%= emp.getEmpName() %></td>
@@ -103,12 +115,13 @@ for(int i=0;i<employeeList.size();i++)
 <td ><%= emp.getMailId() %></td>
 <td ><%= emp.getPanNo() %></td>
 <td ><%= emp.getDept().getDeptName()%></td>
-<td ><a href="empDel?empId=<%= emp.getEmpId() %>">DELETE</a></td>
+<td ><a href="empDel?empId=<%= emp.getEmpId() %>" >DELETE</a></td>
 <td ><a href="EmployUpd.jsp?empId=<%= emp.getEmpId() %>">EDIT</a></td>
 </tr>
 <%} %>
 
 </table>
+</div>
 
 <br>
 <center>

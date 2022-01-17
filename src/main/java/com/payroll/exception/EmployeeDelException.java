@@ -20,6 +20,10 @@ public String getEmployAdd() {
 	return "Employee Not Added Successfully";
 	
 }
+public String getMessage3() {
+	return "That Grade Employee Already their";
+	
+}
 
 
 }

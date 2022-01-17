@@ -14,7 +14,9 @@
     
      body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+    background-image: url("images/pexels-nataliya-vaitkevich-6863259.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
     
 table {
@@ -42,10 +44,10 @@ if(deleteError!=null){
 <%} %>
 
 <div id="empShowForm" >
-<h2>INACTIVE-EMPLOYEE</h2>
+<h3  class="text-info">INACTIVE-EMPLOYEE</h3>
 <form >
-<table >
-<tr>
+<table class="table">
+<tr   class="bg-primary">
 <td>EMPLOYEE NAME</td>
 <td>DATE OF BIRTH</td>
 <td>DATE OF JOINING</td>

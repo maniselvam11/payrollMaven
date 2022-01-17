@@ -38,7 +38,7 @@ text-decoration:none;
 <body>
 <div id="search">
 <form action="gradeSearch.jsp">
-<input type="text" name="gradeName" placeholder="search" autofocus="autofocus">
+<input type="text" name="gradeName" placeholder="search Grade" autofocus="autofocus">
 <button type="submit" ><i class="fa fa-search"></i>
 </button>
 </form>
@@ -46,7 +46,7 @@ text-decoration:none;
 
 <h2>GRADE</h2>
 <table>
-<tr>
+<tr class="bg-primary">
 <td>GRADE NAME</td>
 <td>GRADE BONUS</td>
 <td>GRADE BASIC</td>

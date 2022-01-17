@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -200,8 +201,32 @@ public int updateLeave(Leave leave) {
 	
 	
 }
-
-
+public List<Leave> searchLeave(Date fromDt,Date toDate){
+	ConnectionUtilImpl connection=new ConnectionUtilImpl();
+	Connection con=connection.dbConnect();
+	String searchQuery="select * from leave_details where LEAVE_DATE  between ? and ?";
+	List<Leave> leaveList=new ArrayList<Leave>();
+	ResultSet rs=null;
+	try {
+		PreparedStatement pstmt=con.prepareStatement(searchQuery);
+		pstmt.setDate(1,new java.sql.Date (fromDt.getTime()));
+		pstmt.setDate(2,new java.sql.Date(toDate.getTime()));
+		rs=pstmt.executeQuery();
+		while(rs.next()) {
+			EmployeeDaoImpl employDao=new EmployeeDaoImpl();
+			Employee employ=employDao.findEmploy(rs.getInt(2));
+			Leave leave=new Leave(rs.getInt(1),employ,rs.getDate(3),rs.getString(4));
+			leaveList.add(leave);
+			
+		}
+		return leaveList;
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
+	return leaveList;
+	
+}
 
 }

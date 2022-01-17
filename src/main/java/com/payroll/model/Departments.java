@@ -18,6 +18,13 @@ public class Departments {
 		this.deptName = deptName;
 		this.grd = grd;
 	}
+	
+	public Departments(String deptName, Grade grade) {
+		// TODO Auto-generated constructor stub
+		super();
+		this.deptName = deptName;
+		this.grd = grade;
+	}
 	@Override
 	public String toString() {
 		return "deptId = " + deptId + "\n deptName = " + deptName + "\n grd = " + grd +"\n";

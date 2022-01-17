@@ -63,7 +63,6 @@ public class SalaryAddController extends HttpServlet {
 
 		Date salaryDt = salaryCal.salaryNxtMonth(empID);
 		String status = empDao.employStatus(empID);
-		System.out.println(status);
 
 		Date todayDate = empDao.todayDate();
 		try {
@@ -72,21 +71,14 @@ public class SalaryAddController extends HttpServlet {
 			salaryDt=todayDate;
 		}
 		if (todayDate.compareTo(salaryDt) == 0)  {
-			System.out.println("1 if ");
 			if (status.equals("active")) {
-				System.out.println("2 if");
 				if (selectTax.equals("yes")) {
-					System.out.println("3 if");
 					if (selectBonus.equals("yes")) {
-						System.out.println("4 if");
 						long salaryBonus = (((grossSalary + bonus) - (leaveDays * perDaySalary)) - pt);
-						System.out.println(perDaySalary);
-						System.out.println(leaveDays);
 						boolean result = salaryCal.insertSalary(emp, grade, depart, leaveDays, grossSalary,
 								salaryBonus);
 						try {
 							if (result != false) {
-								System.out.println("5 if");
 
 								PrintWriter out = response.getWriter();
 								out.println("<script type=\"text/javascript\">");

@@ -50,7 +50,7 @@ if(negative!=null) {
 <div class="formDiv">
 <br>
 <label for="gradeNa">GRADE NAME</label>
-<input type="text" name="gradeName" id="gradeNa" pattern="[a-zA-z\s]+" min="1" placeholder="enter grade Name" autofocus="autofocus"><br><br>
+<input type="text" name="gradeName" id="gradeNa" pattern="[a-zA-z\s]+" placeholder="enter grade Name" autofocus="autofocus"><br><br>
 <label for="gradeBasic">BASIC SALARY</label>
 <input type="number" name="basic" id="gradeBasic" pattern="[0-9]+" min="1" placeholder="enter basic salary"><br><br>
 <label for="gradeBonus">GRADE BONUS</label>

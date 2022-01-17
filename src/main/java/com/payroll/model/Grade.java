@@ -85,7 +85,7 @@ public class Grade {
 	}
 	@Override
 	public String toString() {
-		return "GradeName = " + gradeName + "\n gradeBonus = " + gradeBonus
+		return "GradeId= "+gradeId+"\nGradeName = " + gradeName + "\n gradeBonus = " + gradeBonus
 				+ "\n gradeBasic=" + gradeBasic + "\n gradePf=" + gradePf + "\n gradePt=" + gradePt + "\n";
 	}
 	

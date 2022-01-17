@@ -51,7 +51,7 @@ Grade grade=gradeDao.findGrade(gradeId);
 <form action="gradeUpd" class="formSty" >
 <br>
 <label for="gradeName">GRADE NAME</label>
-<input type="text" id="gradeName" min="1" name="name" value="<%=grade.getGradeName() %>" autofocus="autofocus"><br><br>
+<input type="text" id="gradeName"  name="name" value="<%=grade.getGradeName() %>" autofocus="autofocus"><br><br>
 
  <label for="gradeBasic">BASIC SALARY</label>
 <input type="number" id="gradeBasic" min="1" name="basic" value="<%=grade.getGradeBasic()%>"><br><br>

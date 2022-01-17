@@ -1,3 +1,5 @@
+<%@page import="com.payroll.model.Departments"%>
+<%@page import="com.payroll.dao.DepartmentsDaoImpl"%>
 <%@page import="com.payroll.model.Employee"%>
 <%@page import="java.util.List"%>
 <%@page import="com.payroll.dao.EmployeeDaoImpl"%>
@@ -7,14 +9,18 @@
 <html>
   <head>
     <title>payroll</title>
+    
 
     <link rel="stylesheet" href="styles.css" />
+    
     
     <style>
     
      body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+    background-image: url("images/employ.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
     label{
     width:200px;
@@ -23,25 +29,32 @@
     .empDiv{
     text-align: center;
     }
-     .formSty{
+     .formSty {
     background-color: white;
-    border: 0px solid red;
-  	padding: 0px 20px;
-  	border-radius: 25px;
-  	width:30%;
-  	margin-left: 440px;
-  	background-color: #B9B087 ;
-  	}
+    border: 0px solid #ddbfbf;
+    padding: 0px 20px;
+    border-radius: 25px;
+    width: 30%;
+    margin-left: 440px;
+    background-color: #ccd1d4;
+}
    
     </style>
     
   </head>
   <body>
   
-  <%String empAdd=(String)request.getAttribute("employInvalid");
+  <%String empAdd=(String)session.getAttribute("employInvalid");
   if(empAdd!=null){
 	  %>
 	  <h2><%=empAdd %></h2>
+  <%} %>
+  
+  
+    <%String emp=(String)session.getAttribute("employalready");
+  if(emp!=null){
+	  %>
+	  <h2><%=emp %></h2>
   <%} %>
   
   <div class="empDiv">
@@ -51,6 +64,7 @@
 
 <form action="empAdd" class="formSty" >
 <br>
+<div>
 <label for="name">NAME</label>
 <input type="text" pattern="[a-zA-z\s]+" id="name" name="EmployeeName" placeholder="Enter your name" autofocus="autofocus"><br><br>
 <label for="dob" >DATE OF BIRTH</label>
@@ -71,11 +85,16 @@
 <input type="email" pattern="[a-z][a-z0-9]+[@][a-z]+[.][a-z]+" id="mailId" name="mailId" placeholder="Enter employ mail"><br><br>
 <label for="panNumber">PAN NUMBER</label>
 <input type="text" pattern="[a-zA-z0-9]+{10}" maxlength="10" id="panNumber" name="panNo" placeholder="Enter Pan Number"><br><br>
-<label for="departmentName">DEPARTMENT NAME</label>
-<input type="text" pattern="[a-zA-z]+" name="deptName" placeholder="Enter Department Name"><br><br>
+<label for="departId">DEPARTMENT ID</label>
+<input type="number" min="1" pattern="[0-9]+" name="deptId" placeholder="Enter Department Id"><br><br>
+
+</div>
+
+
+
 <div>
 <center>
-<input type="submit" class="btn btn-primary">
+<button type="submit" class="btn btn-primary">Submit</button>
 
 <input type="reset" class="btn btn-primary">
 </center>
@@ -111,7 +130,7 @@ function today(){
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
-    var yyyy1= today.getFullYear()-1;
+    var yyyy1= today.getFullYear()-10;
 maxdate =yyyy + '-' + mm + '-'+ dd  ;
 mindate =yyyy1 + '-' + mm + '-'+ dd  ;
 document.getElementById("doj").setAttribute("max",maxdate);
