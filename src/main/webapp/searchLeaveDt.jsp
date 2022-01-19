@@ -12,10 +12,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Search Leave Date</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
      body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+    background-image: url("images/pexels-masood-aslami-10786529.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
     
 table {

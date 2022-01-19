@@ -31,10 +31,17 @@ public class GradeAddController extends HttpServlet {
 		DepartmentsDaoImpl departDao=new DepartmentsDaoImpl();
 		Departments department=departDao.findDepartment(deptId);
 		GradeDaoImpl gradeDao=new GradeDaoImpl();
+		Grade grade=gradeDao.findGrade(gradeName, deptId);
+		
+		try {
+		if(grade==null) {
+			
+		
+			
 		try{
 			if((basic>0)&&(bonus>0)&&(pf>0)&&(pt>0)) {
 		
-			Grade gradeAdd=new Grade(department,gradeName,basic,bonus,pf,pt);
+			Grade gradeAdd=new Grade(department,gradeName,bonus,basic,pf,pt);
 			boolean flag=gradeDao.insertGrade(gradeAdd);
 			if(flag!=false) {
 				PrintWriter out =response.getWriter();
@@ -59,7 +66,16 @@ public class GradeAddController extends HttpServlet {
 			session.setAttribute("negativeValue", e.getMessage());
 			response.sendRedirect("Grade.jsp");
 			
+		}}
+		else {
+			throw new InvalidAmount();
+		}}
+		catch(InvalidAmount e) {
+			HttpSession session=request.getSession();
+			session.setAttribute("alreadyGrade", e.getMessage1());
+			response.sendRedirect("Grade.jsp");
 		}
+		
 		
 	
 	}

@@ -11,7 +11,9 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+     background-image: url("images/tyler-franta-iusJ25iYu1c-unsplash.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
     a{
     text-decoration: none;
@@ -26,7 +28,7 @@ body {
   	border-radius: 25px;
   	width:30%;
   	margin-left: 1%;
-  	background-color: #B9B087 ;
+  	background-color: #857f78 ;
   	}
 </style>
 </head>
@@ -42,6 +44,12 @@ if(negative!=null) {
 <%session.removeAttribute("negativeValue"); %>
 <%} %>
 
+<%String gradeExist=(String)session.getAttribute("alreadyGrade");
+if(gradeExist!=null){
+%>
+<h2><%= gradeExist%></h2>
+<%session.removeAttribute("alreadyGrade");
+}%>
 <form action="gradeAdd">
 <div id="gradeAdd" >
 <center>
@@ -62,14 +70,18 @@ if(negative!=null) {
 <label for="deptId">DEPARTMENT ID</label>
 <input type="number" name="deptId" id="deptId" pattern="[0-9]+" min="1" placeholder="enter department id "><br><br>
 
-<center><input type="submit">
-<button onclick="history.go(-1)">BACK</button>
+<center><input type="submit" class="btn btn-primary">
+
+</form>
+<button onclick="history.go(-1)" class="btn btn-primary">BACK</button>
+
+
 </center>
 <br><br>
+
+</center>
 </div>
 
 </div>
-</center>
-</form>
 </body>
 </html>

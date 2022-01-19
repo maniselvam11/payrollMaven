@@ -59,7 +59,7 @@
   
   <div class="empDiv">
  
-  <h3>Employee ADD</h3>
+  <h3>ADD Employee </h3>
   
 
 <form action="empAdd" class="formSty" method="get" >
@@ -74,21 +74,21 @@
 <label for="address">ADDRESS</label>
 <input type="text" pattern="[a-zA-z0-9/,\s]+" id="address" name="address" placeholder="Enter Address"><br><br>
 <label for="city">CITY</label>
-<input type="text" pattern="[a-zA-z]+" id="city" name="city" placeholder="Enter city"><br><br>
+<input type="text" pattern="[a-zA-z\s]+" id="city" name="city" placeholder="Enter city"><br><br>
 <label for="pincode">PINCODE</label>
 <input type="number"  maxlength="6" id="pincode" name="pincode" placeholder="pincode"><br><br>
 <label for="mobileno">MOBILE NUMBER</label>
-<input type="number" pattern="[0-9]{10}" id="mobileno" maxlength="10" name="mobileNumber" placeholder="Enter MobileNumber"><br><br>
+<input type="number" pattern="[0-9]{10}" id="mobileno" maxlength="10"  name="mobileNumber" placeholder="Enter MobileNumber"><br><br>
 <label for="state">STATE</label>
-<input type="text" pattern="[a-zA-z]+" id="state" name="state" placeholder="Enter State"><br><br>
+<input type="text" pattern="[a-zA-z\s]+" id="state" name="state" placeholder="Enter State"><br><br>
 <label for="mailId">EMAIL ID</label>
 <input type="email" pattern="[a-z][a-z0-9]+[@][a-z]+[.][a-z]+" id="mailId" name="mailId" placeholder="Enter employ mail"><br><br>
 <label for="panNumber">PAN NUMBER</label>
 <input type="text" pattern="[a-zA-z0-9]+{10}" maxlength="10" id="panNumber" name="panNo" placeholder="Enter Pan Number"><br><br>
-<label for="departId">DEPARTMENT ID</label>
-<input type="number" min="1" pattern="[0-9]+" name="deptId" placeholder="Enter Department Id"><br><br>
-<label for="gradeId">GRADE ID</label>
-<input type="number" min="1" pattern="[0-9]+" name="grdId" placeholder="Enter grade Id"><br><br>
+<label for="departName">DEPARTMENT NAME</label>
+<input type="text"  pattern="[a-zA-Z\s]+" name="deptName" placeholder="Enter Department Name"><br><br>
+<label for="gradeName">GRADE NAME</label>
+<input type="text"  pattern="[a-zA-Z\s]+" name="grdName" placeholder="Enter grade Name"><br><br>
 
 
 </div>

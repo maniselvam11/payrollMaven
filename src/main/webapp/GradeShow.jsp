@@ -13,9 +13,11 @@
     margin-left: 1045px;
     margin-top: 10px;
 }
-     body {
+    body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+    background-image: url("images/pexels-masood-aslami-10786529.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
     
 table {
@@ -30,7 +32,11 @@ th, td {
 
 tr:nth-child(even) {background-color: #f2f2f2;}
 a{
-text-decoration:none;
+text-decoration: none;
+}
+.h2, h2 {
+    margin-left: 600px;
+    font-size: 2rem;
 }
     </style>
     <title>payroll</title>
@@ -51,8 +57,9 @@ text-decoration:none;
 <tr class="bg-primary">
 <td>GRADE ID</td>
 <td>GRADE NAME</td>
-<td>GRADE BONUS</td>
 <td>GRADE BASIC</td>
+<td>GRADE BONUS</td>
+
 <td>PROVIDENT FUND</td>
 <td>PROFESSIONAL TAX</td>
 <td>DEPARTMENT NAME</td>
@@ -70,12 +77,13 @@ for(int i=0;i<gradeList.size();i++){
 	<tr>
 	<td><%=grade.getGradeId() %></td>
 	<td><%= grade.getGradeName() %></td>
-	<td><%= grade.getGradeBonus() %></td>
 	<td><%= grade.getGradeBasic() %></td>
+	<td><%= grade.getGradeBonus() %></td>
+	
 	<td><%= grade.getGradePf() %></td>
 	<td><%= grade.getGradePt() %></td>
 	<td><%=grade.getDepartment().getDeptName() %>
-	<td><a href="GradeDel?gradeId=<%= grade.getGradeId() %>">DELETE</a></td>
+	<td><a href="GradeDel?gradeId=<%= grade.getGradeId() %>" >DELETE</a></td>
 	
 	<td><a href="GradeUpd.jsp?gradeId=<%= grade.getGradeId() %>">EDIT</a></td>
 	

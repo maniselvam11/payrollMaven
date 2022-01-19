@@ -10,23 +10,26 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
-body {
+ body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+    background-image: url("images/thought-catalog-505eectW54k-unsplash.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
     
     label{
     width:200px;
     display:inline-block;
     }
-    .formSty{
+    .formSty {
     background-color: white;
-  	padding: 0px 20px;
-  	border-radius: 25px;
-  	width:30%;
-  	margin-top:10%;
-  	background-color: #B9B087 ;
-  	}
+    padding: 0px 20px;
+    border-radius: 25px;
+    width: 30%;
+    margin-top: 3%;
+    margin-left: 650px;
+    background-color: #c8c9c2;
+}
     </style>
 </head>
 <body><center>
@@ -41,10 +44,11 @@ Departments department=departDao.findDepartment(deptId);
 <br>
 <label for="deptName">DEPARTMENT NAME</label>
 <input type="text" id="deptName" name="name" autofocus="autofocus" value="<%=department.getDeptName() %>"><br><br>
-<center><input type="submit"> <button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button></center>
-<br>
-</div>
+<input type="submit"class="btn btn-primary">
+
 </form>
+ <button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button></center>
+
 </center>
 </body>
 </html>

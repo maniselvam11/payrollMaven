@@ -15,7 +15,9 @@
 <style>
    body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+    background-image: url("images/pexels-masood-aslami-10786529.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
     
 
@@ -38,7 +40,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 
 <div>
 <table>
-<tr>
+<tr class="bg-primary">
 <td>EMPLOYEE ID</td>
 <td>DEPARTMENT Name</td>
 <td>TOTAL LEAVE</td>

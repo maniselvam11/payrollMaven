@@ -57,7 +57,7 @@ if(InvalidEnter!=null){
 <%session.removeAttribute("DateSal"); %>
 
 <%} %>
-<center>
+
 <h1><STRONG>ADMINISTRATOR &nbsp;</STRONG></h1>
 
 <form action="SalaryApprove.jsp" class="formSty" >
@@ -67,11 +67,11 @@ if(InvalidEnter!=null){
 
 <input type="reset" class="btn btn-primary">
 <input type="submit" class="btn btn-primary">
-<button onclick="history.back()" class="btn btn-primary">BACK</button>
-<a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>HOME</strong></button></a>
+
+
 <br><br>
 </form>
-</center>
+
 </body>
 </html>
 <script>

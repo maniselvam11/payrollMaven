@@ -100,12 +100,12 @@ for(int i=0;i<employeeList.size();i++)
 
 </table>
 <center>
+
+</form>
 <button onclick="history.go(-1)" class="btn btn-primary">Go Back</button>
 
 <a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>HOME</strong></button></a>
 </center>
-</form>
-
 </div>
 <br>
 </body>

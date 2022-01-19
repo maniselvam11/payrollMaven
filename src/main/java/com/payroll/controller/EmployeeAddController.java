@@ -34,7 +34,7 @@ public class EmployeeAddController extends HttpServlet {
 			 dob=sdf.parse(request.getParameter("dob"));
 			 doj=sdf.parse(request.getParameter("doj"));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		String address=request.getParameter("address");
@@ -44,15 +44,16 @@ public class EmployeeAddController extends HttpServlet {
 		String state=request.getParameter("state");
 		String mailId=request.getParameter("mailId");
 		String panNo=request.getParameter("panNo");
-		int deptId=Integer.parseInt(request.getParameter("deptId"));
-		int grdId=Integer.parseInt(request.getParameter("grdId"));
+		String DeptName=request.getParameter("deptName");
+		
+		String grdName=request.getParameter("grdName");
 		DepartmentsDaoImpl departDao=new DepartmentsDaoImpl();
-		Departments depart=departDao.findDepartment(deptId);
+		Departments depart=departDao.findDepartment(DeptName);
 		GradeDaoImpl gradeDao=new GradeDaoImpl();
-		Grade grade=gradeDao.findGrade(grdId);
+		Grade grade=gradeDao.findGrade(grdName, depart.getDeptId());
 		Employee employ=new Employee(name,dob,doj,address,city,pincode,mobileNumber,state,mailId,panNo,depart,grade);
 		EmployeeDaoImpl employDao=new EmployeeDaoImpl();
-		Employee employee=employDao.findEmploy(deptId,grdId);
+		Employee employee=employDao.findEmploy(depart.getDeptId(),grade.getGradeId());
 		try {
 			
 		

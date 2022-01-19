@@ -95,12 +95,12 @@ Employee employ=employDao.findEmployee(empId);
 
 <center>
 <input type="submit" class="btn btn-primary">
-<button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button>
-</center>
+
 <br>
 </div>
 </form>
-
+<button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button>
+</center>
 </body>
 </html>
 <script>

@@ -13,9 +13,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
-  body {
+ body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+    background-image: url("images/pexels-masood-aslami-10786529.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
     
 	table {
@@ -89,10 +91,13 @@ Leave leave=leaveList.get(i);
 </tr>
 <%}%>
 </table>
+
+</form>
 <center>
-<a href="AdminControl.jsp" class="btn btn-primary"><button type="button"><strong>Home Page</strong></button></a>
+
+
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>HOME</strong></button></a>
 <input type="button" value="Go back!" onclick="history.go(-1)" class="btn btn-primary">
 </center>
-</form>
 </body>
 </html>

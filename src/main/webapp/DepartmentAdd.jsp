@@ -10,7 +10,7 @@
 <style>
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url("carlos-muza-hpjSkU2UYSU-unsplash.jpg");
+    background-image: url("images/pexels-anna-nekrashevich-6801874.jpg");
     background-repeat: no-repeat;
 	background-size: cover;
     }
@@ -19,14 +19,15 @@ body {
     width:200px;
     display:inline-block;
     }
-    .formSty{
+    .formSty {
     background-color: white;
-  	padding: 0px 20px;
-  	border-radius: 25px;
-  	width:30%;
-  	margin-top:10%;
-  	background-color: #B9B087 ;
-  	}
+    padding: 0px 20px;
+    border-radius: 25px;
+    width: 30%;
+    margin-top: 5%;
+    background-color: #b3bac2;
+    margin-left: -684px;
+}
   	</style>
 </head>
 <body>
@@ -45,10 +46,12 @@ if(deptError!=null){
 <br>
 <label for="deptName">DEPARTMENT NAME</label>
 <input type="text" id="deptName" name="dptname" autofocus="autofocus" ><br><br>
-<center><input type="submit"> <button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button></center>
+<input type="submit" class="btn btn-primary">
+<input type="reset" class="btn btn-primary">
 <br>
 </div>
 </form>
+
 </center>
 
 </body>

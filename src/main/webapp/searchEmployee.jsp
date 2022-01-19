@@ -15,9 +15,10 @@
 <style>
      body {
     font-family: Arial, Helvetica, sans-serif;
-background-image: url("images/pexels-johny-rebel-the-explorer-panda-396036.jpg");
+    background-image: url("images/pexels-masood-aslami-10786529.jpg");
     background-repeat: no-repeat;
-	background-size: cover;    }
+	background-size: cover;
+    }
     
 table {
   border-collapse: collapse;

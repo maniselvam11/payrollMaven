@@ -10,4 +10,10 @@ public class InvalidAmount extends Exception{
 		return "Negative values are not allowed";
 	
 	}
+	public String getMessage1() {
+		// TODO Auto-generated method stub
+		return "That Department Grade Already exist";
+	
+	}
+	
 }

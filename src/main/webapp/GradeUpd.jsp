@@ -13,7 +13,9 @@
 <style type="text/css">
      body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+     background-image: url("images/tyler-franta-iusJ25iYu1c-unsplash.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
     label{
     width:200px;
@@ -25,7 +27,7 @@
   	border-radius: 25px;
   	width:30%;
   	margin-left: 440px;
-  	background-color: #B9B087 ;
+  	background-color: #a7bce3 ;
   	margin-top:10%;
   	}
 
@@ -67,11 +69,11 @@ Grade grade=gradeDao.findGrade(gradeId);
 <center>
 <input type="submit" class="btn btn-primary">
 <input type="reset" class="btn btn-primary">
+
+</form>
 <button onclick="history.back()" class="btn btn-primary">BACK</button>
 <a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>HOME</strong></button></a>
-<br>
+
 </center>
-<br>
-</form>
 </body>
 </html>

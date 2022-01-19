@@ -12,7 +12,9 @@
   <style type="text/css">
      body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+    background-image: url("images/pexels-anna-nekrashevich-6801874.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
     label{
     width:200px;
@@ -24,7 +26,7 @@
   	border-radius: 25px;
   	width:30%;
   	margin-left: 440px;
-  	background-color: #B9B087 ;
+  	background-color: #b4b7c3 ;
   	margin-top:10%;
   	}
 
@@ -44,8 +46,9 @@ Leave leave=leaveDao.findLeave(leaveId);
 <label for="leaveRs">REASON</label>
 <input type="text" id="leaveRs"  name="reason" value="<%=leave.getLeaveReason() %>"><br><br>
 <input type="submit" class="btn btn-primary">
+
+</form>
 <button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button>
 </center>
-</form>
 </body>
 </html>

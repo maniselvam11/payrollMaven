@@ -13,7 +13,9 @@
 <style type="text/css">
  body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+    background-image: url("images/pexels-masood-aslami-10786529.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
     
  table {

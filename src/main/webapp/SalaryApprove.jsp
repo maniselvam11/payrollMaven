@@ -8,22 +8,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Salary Approve</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style type="text/css">
-     body {
+    body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+    background-image: url("images/pexels-anna-nekrashevich-6801874.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
     }
     label{
     width:200px;
     display:inline-block;
     }
-     .formSty{
+     .style{
     background-color: white;
   	padding: 0px 20px;
   	border-radius: 25px;
   	width:30%;
   	margin-left: 440px;
-  	background-color: #B9B087 ;
+  	background-color: #b1c3e7 ;
   	margin-top:10%;
   	}
   	
@@ -37,7 +41,7 @@
 		Departments department=employ.getDept();
 		String departName=department.getDeptName();
 		String grdName=employ.getGrade().getGradeName();%>
-<form action="salaryInsert" class="formSty">
+<form action="salaryInsert" class="style">
 <div id="salsty">
 <br>
 
@@ -71,15 +75,12 @@
 <br>
 <input type="reset" class="btn btn-primary">
 <button type="submit" class="btn btn-primary">Submit</button>
+
+
+</form>
 <button onclick="history.back()" class="btn btn-primary">BACK</button>
 <a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>HOME</strong></button></a>
 <br><br>
 </div>
-</form>
-
-
-
-
-
 </body>
 </html>
