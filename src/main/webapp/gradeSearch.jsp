@@ -8,6 +8,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>search grade</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
      body {
     font-family: Arial, Helvetica, sans-serif;
@@ -35,13 +37,14 @@ background-color: #f2f2f2;
 <body>
 <h2>Search Grade</h2>
 <table>
-<tr>
-<td>Grade ID</td>
-<td>Grade Name</td>
-<td>Basic</td>
-<td>Bonus</td>
-<td>Provident Fund</td>
-<td>Professional Tax</td>
+<tr class="bg-primary">
+<td>GRADE ID</td>
+<td>GRADE NAME</td>
+<td>BASIC</td>
+<td>BONUS</td>
+<td>PROVIDENT FUND</td>
+<td>PROFESSIONAL TAX</td>
+<td>DEPARTMENT NAME</td>
 </tr>
 
 <%
@@ -60,9 +63,14 @@ for(int i=0;i<listGrade.size();i++){
 <td><%=grade.getGradeBonus() %></td>
 <td><%=grade.getGradePf() %></td>
 <td><%=grade.getGradePt() %></td>
+<td><%=grade.getDepartment().getDeptName()%></td>
 </tr>
 <%} %>
 </table>
+<center>
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>Home Page</strong></button></a>
 
+ <input type="button" value="Go back!" onclick="history.go(-1)" class="btn btn-primary">
+ </center>
 </body>
 </html>

@@ -50,8 +50,8 @@ margin-right: 40px;
 <body>
 <table>
 <tr class="bg-primary">
-<td>Employee Id</td>
-<td>Department Name</td>
+<td>EMPLOYEE ID</td>
+<td>DEPARTMENT NAME</td>
 <td>Grade Name</td>
 <td>Total Leave</td>
 <td>Salary Date</td>

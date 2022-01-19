@@ -36,7 +36,7 @@
 		Employee employ=employDao.findEmployee(empId);
 		Departments department=employ.getDept();
 		String departName=department.getDeptName();
-		String grdName=department.getGrd().getGradeName();%>
+		String grdName=employ.getGrade().getGradeName();%>
 <form action="salaryInsert" class="formSty">
 <div id="salsty">
 <br>
@@ -51,7 +51,7 @@
 <input type="text" name="dName" id="deptName" value="<%=departName%>"><br><br>
 
 
-<label for="taxDeducte">Professional Tax</label>
+<label for="taxDeducte">PROFESSIONAL TAX</label>
 
 <select name="tax" id="pf">
   <option value="yes">Yes</option>
@@ -60,7 +60,7 @@
 </select>
 
 <br><br>
-<label for="monthBonus">Month Bonus</label>
+<label for="monthBonus">MONTH BONUS</label>
 
 <select name="bonus" id="monthBonus">
   <option value="yes">Yes</option>

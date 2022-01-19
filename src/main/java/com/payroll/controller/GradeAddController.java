@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.payroll.dao.DepartmentsDaoImpl;
 import com.payroll.dao.GradeDaoImpl;
 import com.payroll.exception.InvalidAmount;
+import com.payroll.model.Departments;
 import com.payroll.model.Grade;
 
 /**
@@ -25,11 +27,14 @@ public class GradeAddController extends HttpServlet {
 		long bonus=Long.parseLong(request.getParameter("bonus"));
 		long pf=Long.parseLong(request.getParameter("pf"));
 		long pt=Long.parseLong(request.getParameter("pt"));
+		int deptId=Integer.parseInt(request.getParameter("deptId"));
+		DepartmentsDaoImpl departDao=new DepartmentsDaoImpl();
+		Departments department=departDao.findDepartment(deptId);
 		GradeDaoImpl gradeDao=new GradeDaoImpl();
 		try{
 			if((basic>0)&&(bonus>0)&&(pf>0)&&(pt>0)) {
 		
-			Grade gradeAdd=new Grade(gradeName,basic,bonus,pf,pt);
+			Grade gradeAdd=new Grade(department,gradeName,basic,bonus,pf,pt);
 			boolean flag=gradeDao.insertGrade(gradeAdd);
 			if(flag!=false) {
 				PrintWriter out =response.getWriter();

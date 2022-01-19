@@ -59,6 +59,9 @@ if(negative!=null) {
 <input type="number" name="pf" id="gradePf" pattern="[0-9]+" min="1" placeholder="enter providient fund "><br><br>
 <label for="gradePt">PROFESSIONAL TAX</label>
 <input type="number" name="pt" id="gradePt" pattern="[0-9]+" min="1" placeholder="enter Professional tax "><br><br>
+<label for="deptId">DEPARTMENT ID</label>
+<input type="number" name="deptId" id="deptId" pattern="[0-9]+" min="1" placeholder="enter department id "><br><br>
+
 <center><input type="submit">
 <button onclick="history.go(-1)">BACK</button>
 </center>

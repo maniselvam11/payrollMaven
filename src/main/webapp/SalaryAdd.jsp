@@ -41,20 +41,20 @@
 </style>
 </head>
 <body>
-<%String salInvalid=(String)session.getAttribute("salaryInvalid");
+<%String salInvalid=(String)session.getAttribute("salaryEntry");
 if(salInvalid!=null){
 %>
 <center>
 <h2><%=salInvalid %></h2>
-<%session.removeAttribute("salaryInvalid"); %>
+<%session.removeAttribute("salaryEntry"); %>
 </center>
 <%} %>
 
-<%String InvalidEnter=(String)request.getAttribute("invalidSal");
+<%String InvalidEnter=(String)request.getAttribute("DateSal");
 if(InvalidEnter!=null){
 %>
 <h2><%=InvalidEnter %></h2>
-<%session.removeAttribute("InvalidEnter"); %>
+<%session.removeAttribute("DateSal"); %>
 
 <%} %>
 <center>

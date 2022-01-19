@@ -7,7 +7,7 @@ import com.payroll.model.Employee;
 public interface EmployeeDao {
 	public  boolean insertEmp(Employee emp);
 	public  Employee findEmployee(int empId);
-	public void updateEmp(Employee employ);
+	public int updateEmp(Employee employ);
 	public int deleteEmp(int  empId);
 	public int findEmployeeID(Employee emp);
 	public List<Employee> showEmployee();

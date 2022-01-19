@@ -33,6 +33,12 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 a{
 text-decoration:none;
 }
+.text-info {
+    margin-top: 10px;
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-info-rgb),var(--bs-text-opacity))!important;
+    margin-left: 69px;
+}
     </style>
 </head>
 <body>
@@ -48,6 +54,7 @@ if(deleteError!=null){
 <form >
 <table class="table">
 <tr   class="bg-primary">
+<td>EMPLOYEE ID</td>
 <td>EMPLOYEE NAME</td>
 <td>DATE OF BIRTH</td>
 <td>DATE OF JOINING</td>
@@ -59,6 +66,7 @@ if(deleteError!=null){
 <td>EMAIL ID</td>
 <td>PAN NUMBER</td>
 <td>DEPARTMENT NAME</td>
+<td>GRADE NAME</td>
 <td>Status</td>
 
 </tr>
@@ -72,7 +80,7 @@ for(int i=0;i<employeeList.size();i++)
 	
 %>
 <tr>
-
+<td><%=emp.getEmpId() %></td>
 <td><%= emp.getEmpName() %></td>
 <td><%= emp.getDob() %></td>
 <td><%= emp.getDoj() %></td>
@@ -84,6 +92,7 @@ for(int i=0;i<employeeList.size();i++)
 <td><%= emp.getMailId() %></td>
 <td><%= emp.getPanNo() %></td>
 <td><%= emp.getDept().getDeptName()%></td>
+<td><%=emp.getGrade().getGradeName() %></td>
 
 <td><a href="EmpStatus?statusId=<%= emp.getEmpId() %>">Active</a></td>
 </tr>

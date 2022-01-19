@@ -7,7 +7,7 @@ public class SalaryInvalidException extends Exception {
 	 
  }
 	public String getSalMessage() {
-		return "Salary not Approved";
+		return "Employee Salary Approve after 30 days";
 		
 	}
 }

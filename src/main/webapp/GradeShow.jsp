@@ -9,7 +9,10 @@
 <meta charset="ISO-8859-1">
 
 <style>
-    
+    #search {
+    margin-left: 1045px;
+    margin-top: 10px;
+}
      body {
     font-family: Arial, Helvetica, sans-serif;
     background-image: linear-gradient(to right, green , yellow);
@@ -39,41 +42,42 @@ text-decoration:none;
 <div id="search">
 <form action="gradeSearch.jsp">
 <input type="text" name="gradeName" placeholder="search Grade" autofocus="autofocus">
-<button type="submit" ><i class="fa fa-search"></i>
-</button>
+<button type="submit"  class="btn btn-primary">&#128269;</button>
 </form>
 </div>
 
 <h2>GRADE</h2>
 <table>
 <tr class="bg-primary">
+<td>GRADE ID</td>
 <td>GRADE NAME</td>
 <td>GRADE BONUS</td>
 <td>GRADE BASIC</td>
 <td>PROVIDENT FUND</td>
 <td>PROFESSIONAL TAX</td>
+<td>DEPARTMENT NAME</td>
 <td>DELETE</td>
 <td>EDIT</td>
 </tr>
 
 
 <%GradeDaoImpl gradeDao=new GradeDaoImpl();
-int gradeId=0;
 List<Grade> gradeList=gradeDao.showGrade();
 for(int i=0;i<gradeList.size();i++){
 	Grade grade=gradeList.get(i);
-	gradeId=gradeDao.findGradeID(grade);
-	out.print(gradeId);
+	
 	%>
 	<tr>
+	<td><%=grade.getGradeId() %></td>
 	<td><%= grade.getGradeName() %></td>
 	<td><%= grade.getGradeBonus() %></td>
 	<td><%= grade.getGradeBasic() %></td>
 	<td><%= grade.getGradePf() %></td>
 	<td><%= grade.getGradePt() %></td>
-	<td><a href="GradeDel?gradeId=<%= gradeId %>">DELETE</a></td>
+	<td><%=grade.getDepartment().getDeptName() %>
+	<td><a href="GradeDel?gradeId=<%= grade.getGradeId() %>">DELETE</a></td>
 	
-	<td><a href="GradeUpd.jsp?gradeId=<%= gradeId %>">EDIT</a></td>
+	<td><a href="GradeUpd.jsp?gradeId=<%= grade.getGradeId() %>">EDIT</a></td>
 	
 	</tr>
 	

@@ -6,13 +6,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Payroll</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<title>Payroll</title>
+
 <style>
      body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
+    background-image: url("images/image3.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;    }
+    
     }
     label{
     width:200px;
@@ -24,12 +28,19 @@
     }
     .formSty{
     background-color: white;
-    border: 2px solid red;
   	padding: 0px 20px;
   	border-radius: 25px;
   	width:30%;
   	margin-left: 440px;
-  	background-color: #B9B087 ;}
+  	background-color: #B9B087 ;
+  	text-decoration: none;}
+.text-warning {
+    margin-left: 495px;
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-warning-rgb),var(--bs-text-opacity))!important;
+    margin-top: 24px;
+}
+
 
 </style>
 
@@ -39,8 +50,9 @@
 EmployeeDaoImpl employDao=new EmployeeDaoImpl();
 Employee employ=employDao.findEmployee(empId);
 %>
+<h3 class="text-warning">EMPLOYEE UPDATE</h3><br><br>
+
 <form action="empUpdate" class="updSty">
-<h2>EMPLOYEE UPDATE</h2><br><br>
 <div class="formSty">
 <br>
   <label for="empName">EMPLOYEE NAME</label>
@@ -77,6 +89,10 @@ Employee employ=employDao.findEmployee(empId);
 <label for="empDepart">DEPARTMENT ID</label>
 
 <input type="text" id="deptName" name="dId" value="<%=employ.getDept().getDeptId() %>"><br><br>
+
+<label for="gradeId">GRADE ID</label>
+<input type="number" min="1"  name="grdId" value="<%=employ.getGrade().getGradeId()%>"><br><br>
+
 <center>
 <input type="submit" class="btn btn-primary">
 <button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button>

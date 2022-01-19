@@ -10,7 +10,7 @@
 <style>
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url("pexels-johny-rebel-the-explorer-panda-396036.jpg");
+    background-image: url("carlos-muza-hpjSkU2UYSU-unsplash.jpg");
     background-repeat: no-repeat;
 	background-size: cover;
     }
@@ -45,8 +45,6 @@ if(deptError!=null){
 <br>
 <label for="deptName">DEPARTMENT NAME</label>
 <input type="text" id="deptName" name="dptname" autofocus="autofocus" ><br><br>
-<label for="grdName">GRADE NAME</label>
-<input type="text" id="grdName" name="gradeName"  ><br><br>
 <center><input type="submit"> <button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button></center>
 <br>
 </div>

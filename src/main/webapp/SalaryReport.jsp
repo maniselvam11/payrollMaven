@@ -47,6 +47,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 <td>GROSS SALARY</td>
 <td>TOTAL SALARY</td>
 
+
 <%int employId=Integer.parseInt(request.getParameter("eId"));
 EmployeeDaoImpl employeeDao=new EmployeeDaoImpl();
 Employee employ=employeeDao.findEmployee(employId);
@@ -67,6 +68,7 @@ GradeDaoImpl gradeDao=new GradeDaoImpl();
 <td><%= salary.getSalaryDate() %></td>
 <td><%= salary.getGross() %></td>
 <td><%= salary.getSalary() %></td>
+
 </tr>
 <%} %>
 </table>

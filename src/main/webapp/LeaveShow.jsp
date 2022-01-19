@@ -66,6 +66,7 @@ if(updLeave!=null){
 
 <table>
 <tr class="bg-primary">
+<td>EMPLOYEE ID</td>
 <td>EMPLOYEE NAME</td>
 <td>LEAVE DATE</td>
 <td>REASON</td>
@@ -79,6 +80,7 @@ for(int i=0;i<leaveList.size();i++){
 Leave leave=leaveList.get(i);
 %>
 <tr>
+<td><%=leave.getEmploy().getEmpId() %></td>
 <td><%=leave.getEmploy().getEmpName()%></td>
 <td><%=leave.getLeaveDt() %></td>
 <td><%=leave.getLeaveReason() %></td>

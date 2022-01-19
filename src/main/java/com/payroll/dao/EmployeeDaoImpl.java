@@ -20,7 +20,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	{
 		boolean result=false;
 		String insertQuery="insert into employees (emp_name,emp_dob,emp_doj,emp_address,emp_city,emp_pincode,emp_mobile_no,"
-				+ "emp_state,emp_email_id,emp_pan_no,dept_id) values (?,?,?,?,?,?,?,?,?,?,?)";
+				+ "emp_state,emp_email_id,emp_pan_no,dept_id,GRADE_ID) values (?,?,?,?,?,?,?,?,?,?,?,?)";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		try {
@@ -37,6 +37,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			pstmt.setString(9, emp.getMailId());
 			pstmt.setString(10,emp.getPanNo());
 			pstmt.setInt(11, emp.getDept().getDeptId());
+			pstmt.setInt(12, emp.getGrade().getGradeId());
 			result=pstmt.executeUpdate()>0;
 			
 		} catch (SQLException e) {
@@ -60,9 +61,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		ResultSet rs=pstmt.executeQuery();
 		
 		while(rs.next())
-		{
+		{	GradeDaoImpl gradeDao =new GradeDaoImpl();
+			Grade grade=gradeDao.findGrade(rs.getInt(13));
 			Departments dept=deptDao.findDepartment(rs.getInt(12));
-			employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),dept);
+			employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),dept,grade);
 		}return employee;
 		
 	} catch (SQLException e) {
@@ -72,16 +74,16 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		return employee;
 	}
 	
-	public void updateEmp(Employee employ)
+	public int updateEmp(Employee employ)
 	{
 	
-		String insertQuery =" update employees set EMP_NAME=?,EMP_DOB=?,EMP_DOJ=?,EMP_ADDRESS=?,EMP_CITY=?,EMP_PINCODE=?,EMP_MOBILE_NO=?,EMP_STATE=?,EMP_EMAIL_ID=?,EMP_PAN_NO=? where emp_id= ?";
+		String insertQuery =" update employees set EMP_NAME=?,EMP_DOB=?,EMP_DOJ=?,EMP_ADDRESS=?,EMP_CITY=?,EMP_PINCODE=?,EMP_MOBILE_NO=?,EMP_STATE=?,EMP_EMAIL_ID=?,EMP_PAN_NO=? ,DEPT_ID=?,GRADE_ID=?where emp_id= ?";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
+		int i=0;
 		try {
 			PreparedStatement pstmt=con.prepareStatement(insertQuery);
 			pstmt.setString(1, employ.getEmpName());
-//			System.out.println(employ.getEmpName());
 			pstmt.setDate(2, new java.sql.Date(employ.getDob().getTime()));
 			pstmt.setDate(3, new java.sql.Date(employ.getDoj().getTime()));
 			pstmt.setString(4, employ.getAddress());
@@ -91,14 +93,17 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			pstmt.setString(8, employ.getState());
 			pstmt.setString(9, employ.getMailId());
 			pstmt.setString(10, employ.getPanNo());
-			pstmt.setInt(11, employ.getEmpId());
+			pstmt.setInt(11, employ.getDept().getDeptId());
+			pstmt.setInt(12, employ.getGrade().getGradeId());
+			pstmt.setInt(13, employ.getEmpId());
 
-			int i=pstmt.executeUpdate();
+			i=pstmt.executeUpdate();
 			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return i;
 		
 	}
 	
@@ -163,9 +168,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			Statement stmt=con.createStatement();
 			ResultSet rs=stmt.executeQuery(showQuery);
 			while(rs.next())
-			{
+			{	GradeDaoImpl gradeDao=new GradeDaoImpl();
+				Grade grade=gradeDao.findGrade(rs.getInt(13));
 				Departments depart=deptDao.findDepartment(rs.getInt(12));
-				Employee employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),depart);
+				Employee employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),depart,grade);
 				employeeList.add(employee);
 			}
 			
@@ -188,9 +194,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			Statement stmt=con.createStatement();
 			ResultSet rs=stmt.executeQuery(showQuery);
 			while(rs.next())
-			{
+			{	GradeDaoImpl gradeDao=new GradeDaoImpl();
+				Grade grade=gradeDao.findGrade(rs.getInt(13));
 				Departments depart=deptDao.findDepartment(rs.getInt(12));
-				Employee employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),depart);
+				Employee employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),depart,grade);
 				employeeList.add(employee);
 			}
 			
@@ -215,8 +222,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		
 		while(rs.next())
 		{
+			GradeDaoImpl gradeDao=new GradeDaoImpl();
+			Grade grade=gradeDao.findGrade(rs.getInt(13));
 			Departments dept=deptDao.findDepartment(rs.getInt(12));
-			employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),dept);
+			employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),dept,grade);
 		}
 		
 	} catch (SQLException e) {
@@ -282,7 +291,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		
 	} 
 	public List<Employee> searchEmployee(String empName)
-	{
+	{	
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		String query="select * from employees where upper(EMP_NAME) like '"+empName.toUpperCase()+"%'";
@@ -293,9 +302,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			PreparedStatement pstmt=con.prepareStatement(query);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
+				GradeDaoImpl gradeDao=new GradeDaoImpl();
+				Grade grade=gradeDao.findGrade(rs.getInt(13));
 				DepartmentsDaoImpl departDao=new DepartmentsDaoImpl();
 				Departments department=departDao.findDepartment(rs.getInt(12));
-				Employee employ=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12),department);
+				Employee employ=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),department,grade,rs.getString(14));
 				employeeList.add(employ);
 			}
 			
@@ -356,9 +367,9 @@ public Date todayDate() {
 		return today;
 		
 	}
-public Employee findEmploy(int deptId)
+public Employee findEmploy(int deptId,int grdId)
 {
-	String findEmployeeQuery="select * from employees where DEPT_ID=?";
+	String findEmployeeQuery="select * from employees where DEPT_ID=? and GRADE_ID=?";
 	ConnectionUtilImpl connection=new ConnectionUtilImpl();
 	Connection con=connection.dbConnect();
 	DepartmentsDaoImpl deptDao=new DepartmentsDaoImpl();
@@ -367,12 +378,15 @@ public Employee findEmploy(int deptId)
 try {
 	PreparedStatement pstmt=con.prepareStatement(findEmployeeQuery);
 	pstmt.setInt(1, deptId);
+	pstmt.setInt(2, grdId);
 	ResultSet rs=pstmt.executeQuery();
 	
 	while(rs.next())
 	{
 		Departments dept=deptDao.findDepartment(rs.getInt(12));
-		employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),dept);
+		GradeDaoImpl gradeDao=new GradeDaoImpl();
+		Grade grade=gradeDao.findGrade(grdId);
+		employee=new Employee(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getDate(4),rs.getString(5),rs.getString(6),rs.getLong(7),rs.getLong(8),rs.getString(9),rs.getString(10),rs.getString(11),dept,grade,rs.getString(14));
 	}
 	
 } catch (SQLException e) {

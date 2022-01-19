@@ -63,7 +63,7 @@ margin-right: 40px;
 <tr class="bg-primary">
 <td>DEPARTMENT ID</td>
 <td>DEPARTMENT NAME</td>
-<td>GRADE NAME</td>
+
 <td>DELETE</td>
 <td>EDIT</td>
 </tr>
@@ -79,7 +79,7 @@ for(int i=0;i<departList.size();i++)
 <tr>
 <td><%=departments.getDeptId() %></td>
 <td><%=departments.getDeptName() %></td>
-<td><%=departments.getGrd().getGradeName()%></td>
+
 <td><a href="departDel?deptId=<%= departments.getDeptId() %>">DELETE</a></td>
 <td><a href="DepartUpd.jsp?departId=<%= departments.getDeptId() %>">EDIT</a></td>
 

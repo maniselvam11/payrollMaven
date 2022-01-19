@@ -62,7 +62,7 @@
   <h3>Employee ADD</h3>
   
 
-<form action="empAdd" class="formSty" >
+<form action="empAdd" class="formSty" method="get" >
 <br>
 <div>
 <label for="name">NAME</label>
@@ -87,6 +87,9 @@
 <input type="text" pattern="[a-zA-z0-9]+{10}" maxlength="10" id="panNumber" name="panNo" placeholder="Enter Pan Number"><br><br>
 <label for="departId">DEPARTMENT ID</label>
 <input type="number" min="1" pattern="[0-9]+" name="deptId" placeholder="Enter Department Id"><br><br>
+<label for="gradeId">GRADE ID</label>
+<input type="number" min="1" pattern="[0-9]+" name="grdId" placeholder="Enter grade Id"><br><br>
+
 
 </div>
 

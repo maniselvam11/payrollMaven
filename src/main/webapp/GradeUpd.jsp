@@ -50,10 +50,9 @@ Grade grade=gradeDao.findGrade(gradeId);
 
 <form action="gradeUpd" class="formSty" >
 <br>
-<label for="gradeName">GRADE NAME</label>
-<input type="text" id="gradeName"  name="name" value="<%=grade.getGradeName() %>" autofocus="autofocus"><br><br>
 
- <label for="gradeBasic">BASIC SALARY</label>
+
+<label for="gradeBasic">BASIC SALARY</label>
 <input type="number" id="gradeBasic" min="1" name="basic" value="<%=grade.getGradeBasic()%>"><br><br>
 
  <label for="gradeBonus">BONUS SALARY</label>
@@ -64,6 +63,7 @@ Grade grade=gradeDao.findGrade(gradeId);
 
  <label for="gradePt">PROFESSIONAL TAX</label>
 <input type="number" id="gradePt" min="1" name="pt" value="<%=grade.getGradePt() %>" ><br><br>
+
 <center>
 <input type="submit" class="btn btn-primary">
 <input type="reset" class="btn btn-primary">

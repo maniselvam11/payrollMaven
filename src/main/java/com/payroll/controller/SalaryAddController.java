@@ -42,23 +42,22 @@ public class SalaryAddController extends HttpServlet {
 		EmployeeDaoImpl empDao = new EmployeeDaoImpl();
 		Employee emp = empDao.findEmployee(empID);
 
-		GradeDaoImpl gradeDao = new GradeDaoImpl();
-		Grade grade = gradeDao.findGrade(gradeName);
+		
 
 		DepartmentsDaoImpl departDao = new DepartmentsDaoImpl();
+		
 		Departments depart = departDao.findDepartment(deptName);
-
+		
+		
+		GradeDaoImpl gradeDao = new GradeDaoImpl();
+		Grade grade = gradeDao.findGrade(gradeName, depart.getDeptId());
+		
 		LeaveDaoImpl leaveDao = new LeaveDaoImpl();
 		int leaveDays = leaveDao.leaveDays(empID);
-		String pfCheck = request.getParameter("tax");
-		String monthBonus = request.getParameter("monthBonus");
-
-		long grossSalary = gradeDao.grossSalary(gradeName);
-		long perDaySalary = gradeDao.perDaySalary(gradeName);
-		long basicSalary = gradeDao.basicSalary(gradeName);
-		long bonus = gradeDao.bonus(gradeName);
-		long pt = gradeDao.professionalTax(gradeName);
-		long pf = gradeDao.providentFund(gradeName);
+		long grossSalary = gradeDao.grossSalary(gradeName,depart.getDeptId());
+		long perDaySalary = gradeDao.perDaySalary(gradeName,depart.getDeptId());
+		long bonus = gradeDao.bonus(gradeName,depart.getDeptId());
+		long pt = gradeDao.professionalTax(gradeName,depart.getDeptId());
 		SalaryCalculateDaoImpl salaryCal = new SalaryCalculateDaoImpl();
 
 		Date salaryDt = salaryCal.salaryNxtMonth(empID);
@@ -79,7 +78,6 @@ public class SalaryAddController extends HttpServlet {
 								salaryBonus);
 						try {
 							if (result != false) {
-
 								PrintWriter out = response.getWriter();
 								out.println("<script type=\"text/javascript\">");
 								out.println("alert('Salary Added Successfully');");
@@ -157,7 +155,7 @@ public class SalaryAddController extends HttpServlet {
 							}
 						} catch (SalaryInvalidException e) {
 							HttpSession session = request.getSession();
-							session.setAttribute("salaryInvalid", e.getMessage());
+							session.setAttribute("salaryEntry", e.getMessage());
 							response.sendRedirect("SalaryAdd.jsp");
 						}
 
@@ -176,7 +174,7 @@ public class SalaryAddController extends HttpServlet {
 		}}
 		catch(SalaryInvalidException e) {
 			HttpSession session=request.getSession();
-			session.setAttribute("invalidSal", e.getSalMessage());
+			session.setAttribute("DateSal", e.getSalMessage());
 			response.sendRedirect("SalaryAdd.jsp");
 		}
 

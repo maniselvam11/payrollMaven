@@ -4,6 +4,24 @@ import java.util.Objects;
 
 public class Grade {
 	private int gradeId;
+	private Departments department;
+	public Grade(int gradeId, Departments department, String gradeName,  long gradeBasic,long gradeBonus, long gradePf,
+			long gradePt) {
+		super();
+		this.gradeId = gradeId;
+		this.department = department;
+		this.gradeName = gradeName;
+		this.gradeBonus = gradeBonus;
+		this.gradeBasic = gradeBasic;
+		this.gradePf = gradePf;
+		this.gradePt = gradePt;
+	}
+	public Departments getDepartment() {
+		return department;
+	}
+	public void setDepartment(Departments department) {
+		this.department = department;
+	}
 	public Grade(int gradeId, String gradeName, long gradeBonus, long gradeBasic, long gradePf, long gradePt) {
 		super();
 		this.gradeId = gradeId;
@@ -66,6 +84,17 @@ public class Grade {
 	}
 
 
+	public Grade(Departments department, String gradeName, long gradeBonus, long gradeBasic, long gradePf,
+			long gradePt) {
+		super();
+		this.department = department;
+		this.gradeName = gradeName;
+		this.gradeBonus = gradeBonus;
+		this.gradeBasic = gradeBasic;
+		this.gradePf = gradePf;
+		this.gradePt = gradePt;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(gradeBasic, gradeBonus, gradeName, gradePf, gradePt);
@@ -85,8 +114,9 @@ public class Grade {
 	}
 	@Override
 	public String toString() {
-		return "GradeId= "+gradeId+"\nGradeName = " + gradeName + "\n gradeBonus = " + gradeBonus
-				+ "\n gradeBasic=" + gradeBasic + "\n gradePf=" + gradePf + "\n gradePt=" + gradePt + "\n";
+		return "Grade [gradeId=" + gradeId + ", department=" + department + ", gradeName=" + gradeName + ", gradeBonus="
+				+ gradeBonus + ", gradeBasic=" + gradeBasic + ", gradePf=" + gradePf + ", gradePt=" + gradePt + "]";
 	}
+	
 	
 }

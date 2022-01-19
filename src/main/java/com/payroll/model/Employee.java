@@ -4,18 +4,21 @@ import java.util.Objects;
 
 public class Employee {
 	private int empId;
-	public int getEmpId() {
-		return empId;
-	}
+	private String empName;
 	private String status;
+	
 	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Employee(int empId, String empName, Date dob, Date doj, String address, String city, Long pincode,
-			Long mobileNo, String state, String mailId, String panNo, Departments dept) {
+			Long mobileNo, String state, String mailId, String panNo, Departments dept, Grade grade) {
 		super();
 		this.empId = empId;
 		this.empName = empName;
@@ -29,12 +32,32 @@ public class Employee {
 		this.mailId = mailId;
 		this.panNo = panNo;
 		this.dept = dept;
+		this.grade = grade;
 	}
 	
-	public Employee(int empId,  String empName, Date dob, Date doj, String address, String city,
-			Long pincode, Long mobileNo, String state, String mailId, String panNo, String status,Departments dept) {
+	public Employee(String name, Date dob2, Date doj2, String address2, String city2, long pincode2, long mobileNumber,
+			String state2, String mailId2, String panNo2, Departments depart, Grade grade2) {
 		super();
-		this.empId = empId;
+		this.empName=name;
+		this.dob = dob2;
+		this.doj = doj2;
+		this.address = address2;
+		this.city = city2;
+		this.pincode = pincode2;
+		this.mobileNo = mobileNumber;
+		this.state = state2;
+		this.mailId = mailId2;
+		this.panNo = panNo2;
+		this.dept = depart;
+		this.grade = grade2;
+		
+		
+		
+}
+	public Employee( String empName, Date dob, Date doj, String address, String city, Long pincode,
+			Long mobileNo, String state, String mailId, String panNo, Departments dept, Grade grade) {
+		super();
+		
 		this.empName = empName;
 		this.dob = dob;
 		this.doj = doj;
@@ -45,23 +68,63 @@ public class Employee {
 		this.state = state;
 		this.mailId = mailId;
 		this.panNo = panNo;
-		this.status=status;
 		this.dept = dept;
+		this.grade = grade;
+	}
+	public Employee(int int1, String string, Date date,Date date2, String string2, String string3,
+			long long1, long long2, String string4, String string5, String string6, Departments department,
+			Grade grade2, String string7) {
+		// TODO Auto-generated constructor stub
+		this.empId = int1;
+		this.empName = string;
+		this.dob = date;
+		this.doj = date2;
+		this.address = string2;
+		this.city = string3;
+		this.pincode = long1;
+		this.mobileNo = long2;
+		this.state = string4;
+		this.mailId = string5;
+		this.panNo = string6;
+		this.dept = department;
+		this.grade = grade2;
+		this.status=string7;
+		
+		
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(address, city, dept, dob, doj, empId, empName, grade, mailId, mobileNo, panNo, pincode,
+				state);
+	}
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", empName=" + empName + ", dob=" + dob + ", doj=" + doj + ", address="
+				+ address + ", city=" + city + ", pincode=" + pincode + ", mobileNo=" + mobileNo + ", state=" + state
+				+ ", mailId=" + mailId + ", panNo=" + panNo + ", dept=" + dept + ", grade=" + grade + "]";
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		return Objects.equals(address, other.address) && Objects.equals(city, other.city)
+				&& Objects.equals(dept, other.dept) && Objects.equals(dob, other.dob) && Objects.equals(doj, other.doj)
+				&& empId == other.empId && Objects.equals(empName, other.empName) && Objects.equals(grade, other.grade)
+				&& Objects.equals(mailId, other.mailId) && Objects.equals(mobileNo, other.mobileNo)
+				&& Objects.equals(panNo, other.panNo) && Objects.equals(pincode, other.pincode)
+				&& Objects.equals(state, other.state);
+	}
+	public int getEmpId() {
+		return empId;
 	}
 	public void setEmpId(int empId) {
 		this.empId = empId;
 	}
-	private String empName;
-	private Date dob;
-	private Date doj;
-	private String address;
-	private String city;
-	private Long pincode;
-	private Long mobileNo;
-	private String state;
-	private String mailId;
-	private String panNo;
-	private Departments dept;
 	public String getEmpName() {
 		return empName;
 	}
@@ -128,48 +191,23 @@ public class Employee {
 	public void setDept(Departments dept) {
 		this.dept = dept;
 	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(address, city, dept, dob, doj, empName, mailId, mobileNo, panNo, pincode, state);
+	public Grade getGrade() {
+		return grade;
 	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Employee other = (Employee) obj;
-		return Objects.equals(address, other.address) && Objects.equals(city, other.city)
-				&& Objects.equals(dept, other.dept) && Objects.equals(dob, other.dob)
-				&& Objects.equals(doj, other.doj) && Objects.equals(empName, other.empName)
-				&& Objects.equals(mailId, other.mailId) && Objects.equals(mobileNo, other.mobileNo)
-				&& Objects.equals(panNo, other.panNo) && Objects.equals(pincode, other.pincode)
-				&& Objects.equals(state, other.state);
+	public void setGrade(Grade grade) {
+		this.grade = grade;
 	}
-	@Override
-	public String toString() {
-		
-		return "empName = " + empName + "\n dob = " + dob + "\n doj = " + doj + "\n address = " + address + "\n city = "
-				+ city + "\n pincode = " + pincode + "\n mobileNo = " + mobileNo + "\n state = " + state + "\n mailId = " + mailId
-				+ "\n panNo = " + panNo + "\n dept = " + dept +"\n" ;
-	}
-	public Employee(String empName, Date dob, Date doj, String address, String city, Long pincode, Long mobileNo,
-			String state, String mailId, String panNo, Departments dept) {
-		super();
-		this.empName = empName;
-		this.dob = dob;
-		this.doj = doj;
-		this.address = address;
-		this.city = city;
-		this.pincode = pincode;
-		this.mobileNo = mobileNo;
-		this.state = state;
-		this.mailId = mailId;
-		this.panNo = panNo;
-		this.dept = dept;
-	}
+	private Date dob;
+	private Date doj;
+	private String address;
+	private String city;
+	private Long pincode;
+	private Long mobileNo;
+	private String state;
+	private String mailId;
+	private String panNo;
+	private Departments dept;
+	private Grade grade;
 	
 
 	

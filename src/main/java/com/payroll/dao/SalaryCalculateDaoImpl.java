@@ -37,7 +37,7 @@ public class SalaryCalculateDaoImpl {
 				pstmt.setInt(4, gradeID);
 				pstmt.setLong(5, grossSalary);
 				pstmt.setLong(6, totalSalary);
-				pstmt.executeQuery();
+				pstmt.executeUpdate();
 				result=true;
 				return result;	
 			} catch (SQLException e) {

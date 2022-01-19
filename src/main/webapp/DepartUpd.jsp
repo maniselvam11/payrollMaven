@@ -35,7 +35,7 @@ session.setAttribute("editDeptId", deptId);
 DepartmentsDaoImpl departDao=new DepartmentsDaoImpl();
 Departments department=departDao.findDepartment(deptId);
 %>
-<form action="deptUpd"  >
+<form action="deptUpd" method="get" >
 <br><br>
 <div class="formSty">
 <br>

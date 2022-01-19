@@ -15,9 +15,11 @@ import javax.servlet.http.HttpSession;
 
 import com.payroll.dao.DepartmentsDaoImpl;
 import com.payroll.dao.EmployeeDaoImpl;
+import com.payroll.dao.GradeDaoImpl;
 import com.payroll.exception.EmployeeDelException;
 import com.payroll.model.Departments;
 import com.payroll.model.Employee;
+import com.payroll.model.Grade;
 
 @WebServlet("/empAdd")
 public class EmployeeAddController extends HttpServlet {
@@ -31,7 +33,6 @@ public class EmployeeAddController extends HttpServlet {
 		try {
 			 dob=sdf.parse(request.getParameter("dob"));
 			 doj=sdf.parse(request.getParameter("doj"));
-			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,12 +45,14 @@ public class EmployeeAddController extends HttpServlet {
 		String mailId=request.getParameter("mailId");
 		String panNo=request.getParameter("panNo");
 		int deptId=Integer.parseInt(request.getParameter("deptId"));
+		int grdId=Integer.parseInt(request.getParameter("grdId"));
 		DepartmentsDaoImpl departDao=new DepartmentsDaoImpl();
 		Departments depart=departDao.findDepartment(deptId);
-//		System.out.println(name+dob+doj+address+city+pincode+mobileNumber+state+mailId+panNo+deptName);
-		Employee employ=new Employee(name,dob,doj,address,city,pincode,mobileNumber,state,mailId,panNo,depart);
+		GradeDaoImpl gradeDao=new GradeDaoImpl();
+		Grade grade=gradeDao.findGrade(grdId);
+		Employee employ=new Employee(name,dob,doj,address,city,pincode,mobileNumber,state,mailId,panNo,depart,grade);
 		EmployeeDaoImpl employDao=new EmployeeDaoImpl();
-		Employee employee=employDao.findEmploy(deptId);
+		Employee employee=employDao.findEmploy(deptId,grdId);
 		try {
 			
 		

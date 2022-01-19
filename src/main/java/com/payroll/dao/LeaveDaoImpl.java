@@ -214,7 +214,7 @@ public List<Leave> searchLeave(Date fromDt,Date toDate){
 		rs=pstmt.executeQuery();
 		while(rs.next()) {
 			EmployeeDaoImpl employDao=new EmployeeDaoImpl();
-			Employee employ=employDao.findEmploy(rs.getInt(2));
+			Employee employ=employDao.findEmployee(rs.getInt(2));
 			Leave leave=new Leave(rs.getInt(1),employ,rs.getDate(3),rs.getString(4));
 			leaveList.add(leave);
 			

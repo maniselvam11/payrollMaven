@@ -23,12 +23,9 @@ public class DepartmentAddController extends HttpServlet {
 			throws ServletException, IOException {
 
 		String deptName = request.getParameter("dptname");
-		String grdName = request.getParameter("gradeName");
 		DepartmentsDaoImpl departDao = new DepartmentsDaoImpl();
-		GradeDaoImpl gradeDao = new GradeDaoImpl();
-		Grade grade = gradeDao.findGrade(grdName);
-		Departments department = new Departments(deptName, grade);
-		Departments depart = departDao.findDepartment(deptName, grade.getGradeId());
+		Departments department = new Departments(deptName);
+		Departments depart = departDao.findDepartment(deptName);
 		try {
 			if (depart == null) {
 

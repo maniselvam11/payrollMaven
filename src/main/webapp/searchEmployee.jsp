@@ -15,8 +15,9 @@
 <style>
      body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: linear-gradient(to right, green , yellow);
-    }
+background-image: url("images/pexels-johny-rebel-the-explorer-panda-396036.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;    }
     
 table {
   border-collapse: collapse;
@@ -30,6 +31,10 @@ table {
 tr:hover{
 background-color: lime;
 }
+#seaID {
+    margin-left: 568px;
+}
+
 
 tr:nth-child(even) {
 background-color: #f2f2f2;
@@ -37,10 +42,11 @@ background-color: #f2f2f2;
 </style>
 </head>
 <body>
-
+<div id="seaID">
 <h2>Search Employee</h2>
+</div>
 <table>
-<tr>
+<tr class="bg-primary">
 <td>EMPLOY ID</td>
 <td>EMPLOY NAME</td>
 <td>DOB</td>
@@ -54,6 +60,7 @@ background-color: #f2f2f2;
 <td>PAN NUMBER</td>
 <td>STATUS</td>
 <td>DEPARTMENT NAME</td>
+<td>GRADE NAME</td>
 
 </tr>
 
@@ -81,6 +88,7 @@ for(int i=0;i<employeeList.size();i++)
 	<td><%=employ.getPanNo() %></td>
 	<td><%=employ.getStatus() %></td>
 	<td><%=employ.getDept().getDeptName() %></td>
+	<td><%=employ.getGrade().getGradeName() %></td>
 	</tr>
 	
 </div>

@@ -46,6 +46,8 @@ margin-top:10px;
 margin-right: 40px;
 }
 
+
+
     </style>
 </head>
 <body>
@@ -77,7 +79,7 @@ if(deleteError!=null){
 <table >
 
 <tr class="bg-primary">
-
+<td>EMPLOYEE ID</td>
 <td >EMPLOYEE NAME</td>
 <td >DATE OF BIRTH</td>
 <td >DATE OF JOINING</td>
@@ -89,6 +91,7 @@ if(deleteError!=null){
 <td>EMAIL ID</td>
 <td >PAN NUMBER</td>
 <td >DEPARTMENT NAME</td>
+<td>GRADE NAME</td>
 <td >DELETE</td>
 <td >EDIT</td>
 
@@ -103,7 +106,7 @@ for(int i=0;i<employeeList.size();i++)
 %>
 
 <tr>
-
+<td><%=emp.getEmpId() %></td>
 <td ><%= emp.getEmpName() %></td>
 <td ><%= emp.getDob() %></td>
 <td ><%= emp.getDoj() %></td>
@@ -115,6 +118,7 @@ for(int i=0;i<employeeList.size();i++)
 <td ><%= emp.getMailId() %></td>
 <td ><%= emp.getPanNo() %></td>
 <td ><%= emp.getDept().getDeptName()%></td>
+<td><%=emp.getGrade().getGradeName() %>
 <td ><a href="empDel?empId=<%= emp.getEmpId() %>" >DELETE</a></td>
 <td ><a href="EmployUpd.jsp?empId=<%= emp.getEmpId() %>">EDIT</a></td>
 </tr>

@@ -17,7 +17,7 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 	public int insertDep(Departments dprt) 
 	
 	{	
-		String insertQuery="insert into departments (DEPT_NAME,GRADE_ID) values (?,?)";
+		String insertQuery="insert into departments (DEPT_NAME) values (?)";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		int i=0;
@@ -26,7 +26,7 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 
 			PreparedStatement pstmt=con.prepareStatement(insertQuery);
 			pstmt.setString(1, dprt.getDeptName());
-			pstmt.setInt(2,dprt.getGrd().getGradeId());
+			
 			
 			i=pstmt.executeUpdate();
 			
@@ -45,8 +45,7 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 	{
 		GradeDaoImpl gradeDaoImpl=new GradeDaoImpl();
 
-		int grdID=gradeDaoImpl.findGradeID(dept.getGrd());
-		String findId="select dept_id from departments where dept_name = '"+dept.getDeptName()+"' and grade_id ="+grdID;
+		String findId="select dept_id from departments where dept_name = '"+dept.getDeptName()+"'";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		Statement stmt;
@@ -117,8 +116,7 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 			ResultSet rs=stmt.executeQuery(showQuery);
 			while(rs.next())
 			{
-			 Grade grde=gradeDaoImpl.findGrade(rs.getInt(3));
-				Departments department=new Departments(rs.getInt(1),rs.getString(2),grde);
+				Departments department=new Departments(rs.getInt(1),rs.getString(2));
 				departmentList.add(department);
 			}
 			
@@ -135,14 +133,11 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();		
 		Departments depart=null;
-		GradeDaoImpl gradeDaoImpl=new GradeDaoImpl();
 		try {
 			Statement stmt=con.createStatement();
 			ResultSet rs=stmt.executeQuery(query);
 			if(rs.next()) {
-				Grade grade=gradeDaoImpl.findGrade(rs.getInt(3));
-				
-				depart=new Departments(rs.getInt(1),rs.getString(2),grade);
+				depart=new Departments(rs.getInt(1),rs.getString(2));
 				
 			}
 			
@@ -162,15 +157,12 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 		Departments depart=null;
 		GradeDaoImpl gradeDaoImpl=new GradeDaoImpl();
 
-//		int grdId=GradeDaoImpl.findGradeID(grade);
 		try {
 			Statement stmt=con.createStatement();
 			ResultSet rs=stmt.executeQuery(query);
 			if(rs.next()) {
-//				System.out.println(rs.getInt(3));
-				Grade grade=gradeDaoImpl.findGrade(rs.getInt(3));
 				
-				depart=new Departments(rs.getInt(1),rs.getString(2),grade);
+				depart=new Departments(rs.getInt(1),rs.getString(2));
 				
 			}
 			
@@ -194,9 +186,8 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 			PreparedStatement pstmt=con.prepareStatement(query);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				GradeDaoImpl gradeDao=new GradeDaoImpl();
-				Grade grade=gradeDao.findGrade(rs.getInt(3));
-				Departments department=new Departments(rs.getInt(1),rs.getString(2),grade);
+				
+				Departments department=new Departments(rs.getInt(1),rs.getString(2));
 				departmentList.add(department);
 			}
 			
@@ -211,35 +202,35 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 		
 		}
 
-	public Departments findDepartment(String deptName,int GrdId)
-	{
-		
-		GradeDaoImpl gradeDao=new GradeDaoImpl();
-		
-		
-		String query="select * from departments where dept_name= '"+deptName+"' and GRADE_ID='"+GrdId+"'";
-		Grade grade=gradeDao.findGrade(GrdId);
-		ConnectionUtilImpl connection=new ConnectionUtilImpl();
-		Connection con=connection.dbConnect();
-		Departments depart=null;
-		GradeDaoImpl gradeDaoImpl=new GradeDaoImpl();
-
-		try {
-			Statement stmt=con.createStatement();
-			ResultSet rs=stmt.executeQuery(query);
-			if(rs.next()) {
-				
-				depart=new Departments(rs.getInt(1),rs.getString(2),grade);
-				
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return depart;
-	}
+//	public Departments findDepartment(String deptName)
+//	{
+//		
+//		GradeDaoImpl gradeDao=new GradeDaoImpl();
+//		
+//		
+//		String query="select * from departments where dept_name= '"+deptName+"' ";
+//		Grade grade=gradeDao.findGrade(GrdId);
+//		ConnectionUtilImpl connection=new ConnectionUtilImpl();
+//		Connection con=connection.dbConnect();
+//		Departments depart=null;
+//		GradeDaoImpl gradeDaoImpl=new GradeDaoImpl();
+//
+//		try {
+//			Statement stmt=con.createStatement();
+//			ResultSet rs=stmt.executeQuery(query);
+//			if(rs.next()) {
+//				
+//				depart=new Departments(rs.getInt(1),rs.getString(2));
+//				
+//			}
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		return depart;
+//	}
 	
 	
 	

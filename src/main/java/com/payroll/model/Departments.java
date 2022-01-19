@@ -6,32 +6,32 @@ public class Departments {
 	private int deptId;
 	private String deptName;
 	
-	private Grade grd;
+
 	
 	public Departments() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Departments(int deptId, String deptName, Grade grd) {
+	public Departments(int deptId, String deptName) {
 		super();
 		this.deptId = deptId;
 		this.deptName = deptName;
-		this.grd = grd;
+		
 	}
 	
-	public Departments(String deptName, Grade grade) {
+	public Departments(String deptName) {
 		// TODO Auto-generated constructor stub
 		super();
 		this.deptName = deptName;
-		this.grd = grade;
+		
 	}
 	@Override
 	public String toString() {
-		return "deptId = " + deptId + "\n deptName = " + deptName + "\n grd = " + grd +"\n";
+		return "deptId = " + deptId + "\n deptName = " + deptName + "\n";
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(deptId, deptName, grd);
+		return Objects.hash(deptId, deptName);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -42,7 +42,7 @@ public class Departments {
 		if (getClass() != obj.getClass())
 			return false;
 		Departments other = (Departments) obj;
-		return deptId == other.deptId && Objects.equals(deptName, other.deptName) && Objects.equals(grd, other.grd);
+		return deptId == other.deptId && Objects.equals(deptName, other.deptName) ;
 	}
 	public int getDeptId() {
 		return deptId;
@@ -57,12 +57,7 @@ public class Departments {
 		this.deptName = deptName;
 	}
 	
-	public Grade getGrd() {
-		return grd;
-	}
-	public void setGrd(Grade grd) {
-		this.grd = grd;
-	}
+	
 	
 
 }

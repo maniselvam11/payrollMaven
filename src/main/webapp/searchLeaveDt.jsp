@@ -51,13 +51,12 @@ catch(Exception e){
 	e.getStackTrace();
 }
 
-out.print(toDate);
-out.print(fromDt);
+
 LeaveDaoImpl leaveDao=new LeaveDaoImpl();
 List<Leave> leaveList=leaveDao.searchLeave(fromDt, toDate); %>
 <table>
 
-<tr>
+<tr class="bg-primary">
 <td>LEAVE ID</td>
 <td>EMPLOYEE ID</td>
 <td>LEAVE DATE</td>
@@ -79,5 +78,10 @@ for(int i=0;i<leaveList.size();i++){
 <%}%>
 
 </table>
+<center>
+<br>
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary"><strong>Home Page</strong></button></a>
+<input type="button" value="Go back!" onclick="history.go(-1)" class="btn btn-primary">
+</center>
 </body>
 </html>
