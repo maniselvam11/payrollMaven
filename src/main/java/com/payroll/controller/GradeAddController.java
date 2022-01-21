@@ -27,11 +27,12 @@ public class GradeAddController extends HttpServlet {
 		long bonus=Long.parseLong(request.getParameter("bonus"));
 		long pf=Long.parseLong(request.getParameter("pf"));
 		long pt=Long.parseLong(request.getParameter("pt"));
-		int deptId=Integer.parseInt(request.getParameter("deptId"));
+		String deptName=request.getParameter("deptNa");
+		
 		DepartmentsDaoImpl departDao=new DepartmentsDaoImpl();
-		Departments department=departDao.findDepartment(deptId);
+		Departments department=departDao.findDepartment(deptName);
 		GradeDaoImpl gradeDao=new GradeDaoImpl();
-		Grade grade=gradeDao.findGrade(gradeName, deptId);
+		Grade grade=gradeDao.findGrade(gradeName, department.getDeptId());
 		
 		try {
 		if(grade==null) {

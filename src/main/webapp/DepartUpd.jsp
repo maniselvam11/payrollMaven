@@ -32,7 +32,14 @@
 }
     </style>
 </head>
-<body><center>
+<body>
+<%String deptUpd=(String)request.getParameter("deptUpdData");
+if(deptUpd!=null){
+%>
+<h3><%=deptUpd %></h3>
+<%session.removeAttribute("deptUpdData"); %>
+<%} %>
+<center>
 <%int deptId=Integer.parseInt(request.getParameter("departId"));
 session.setAttribute("editDeptId", deptId);
 DepartmentsDaoImpl departDao=new DepartmentsDaoImpl();

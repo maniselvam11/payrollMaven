@@ -11,4 +11,12 @@ public class DepartmentException extends Exception{
 		return "Department Grade already exist";
 		
 	}
+	public String deptNotUpdate() {
+		return "Department Not Updated Successfully";
+		
+	}
+	public String deptDelete() {
+		return "Department not deleted Successfully";
+		
+	}
 }

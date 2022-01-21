@@ -16,9 +16,14 @@
     
      body {
     font-family: Arial, Helvetica, sans-serif;
-    background-image: url("images/pexels-nataliya-vaitkevich-6863183.jpg");
-    background-repeat: no-repeat;
-	background-size: cover;
+    background-image: url("images/pexels-nataliya-vaitkevich-6863183.jpg") ;
+    background-repeat:no-repeat center center fixed;
+   
+  background-size: cover;
+  height: 100%;
+  
+	
+  
     }
     
 table {
@@ -56,6 +61,13 @@ if(deleteError!=null){
 %>
 	<h2><%=deleteError %></h2>
 	<%session.removeAttribute("delete"); %>
+	
+<%} %>
+<%String delEmp=(String)session.getAttribute("employDel");
+if(delEmp!=null){
+%>
+	<h2><%=delEmp %></h2>
+	<%session.removeAttribute("employDel"); %>
 	
 <%} %>
 <div id="search">

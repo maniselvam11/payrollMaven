@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.payroll.dao.DepartmentsDaoImpl;
+import com.payroll.exception.DepartmentException;
 import com.payroll.model.Departments;
 
 /**
@@ -28,12 +29,26 @@ public class DepartmentUpdController extends HttpServlet {
 		int deptID=Integer.parseInt(session.getAttribute("editDeptId").toString());
 		Departments deprt=department.findDepartment(deptID);
 		deprt.setDeptName(departName);
-		department.updateDept(deprt);
+		int i=department.updateDept(deprt);
+		try {
+			
+		
+		if(i>0) {
+			
+		
 		PrintWriter out =response.getWriter();
 		out.println("<script type=\"text/javascript\">");
 		out.println("alert('Department Updated Successfully');");
 		out.println("location='DepartShow.jsp';");
 		out.println("</script>");
+		}
+		else {
+			throw new DepartmentException();
+		}}
+		catch(DepartmentException d) {
+			session.setAttribute("deptUpdData", d.deptNotUpdate());
+			response.sendRedirect("DepartUpd.jsp");
+		}
 		
 	}
 

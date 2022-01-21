@@ -54,14 +54,11 @@ public class EmployeeAddController extends HttpServlet {
 		Employee employ=new Employee(name,dob,doj,address,city,pincode,mobileNumber,state,mailId,panNo,depart,grade);
 		EmployeeDaoImpl employDao=new EmployeeDaoImpl();
 		Employee employee=employDao.findEmploy(depart.getDeptId(),grade.getGradeId());
-		try {
-			
 		
-		if(employee==null) {
-			
+		try {
 		
 		boolean empResult=employDao.insertEmp(employ);
-		try {
+		
 			
 		if(empResult!=false) {
 			PrintWriter out =response.getWriter();
@@ -80,16 +77,9 @@ public class EmployeeAddController extends HttpServlet {
 			response.sendRedirect("EmployAdd.jsp");
 			
 		}}
-		else {
-			
-			throw new EmployeeDelException();
-		}}
-		catch(EmployeeDelException e) {
-			HttpSession session=request.getSession();
-			session.setAttribute("employalready", e.getMessage3());
-			response.sendRedirect("EmployAdd.jsp");
-		}
 		
-	}
+		
+		
+	
 
 }

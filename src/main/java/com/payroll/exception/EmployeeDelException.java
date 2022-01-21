@@ -24,6 +24,14 @@ public String getMessage3() {
 	return "That Grade Employee Already their";
 	
 }
+public String getEmployeeEntry() {
+	return "Invalid Employee Data Entry";
+	
+}
+public String EmployeeDel() {
+	return "Employee Not Deleted Successfully";
+	
+}
 
 
 }

@@ -87,6 +87,7 @@ position: relative;
 top: 10px;
 }
 
+
 </style>
 </head>
 <body>
@@ -101,6 +102,8 @@ if(userError!=null)
 
 	<div id="imgSty">
 	<img alt="" src="images/pngegg (1).png">
+</div>
+
 
 	<center>
 	<h1 id="headpayroll" >PAYROLL MANAGEMENT</h1>

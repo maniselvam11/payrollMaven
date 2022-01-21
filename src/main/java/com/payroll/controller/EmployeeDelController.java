@@ -28,13 +28,24 @@ public class EmployeeDelController extends HttpServlet {
 		EmployeeDaoImpl employeeDao=new EmployeeDaoImpl();
 		Employee employ=employeeDao.findEmployee(empId);
 		int i=employeeDao.updateEmpStatus(employ);
-	
+		try {
+			
+		
 		if(i>0) {
 			PrintWriter out =response.getWriter();
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Employee Status Inactive');");
 			out.println("location='EmpShowInactive.jsp';");
 			out.println("</script>");
+		}
+		else {
+			throw new EmployeeDelException();
+		}}
+		catch(EmployeeDelException e) 
+		{
+			HttpSession session=request.getSession();
+			session.setAttribute("employDel", e.EmployeeDel());
+			response.sendRedirect("EmpShow.jsp");
 		}
 	
 	}

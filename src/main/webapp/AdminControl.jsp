@@ -79,11 +79,15 @@
 </head>
 <body>
 
+
    
-<marquee width="100%" direction="LEFT" height="100px" scrollamount="10" > <h1 style="color:rgb(240, 240, 240);" >
+<marquee width="100%" direction="LEFT" height="100px" scrollamount="10" > 
+<h1 style="color:rgb(240, 240, 240);" >
 ADMIN CONTROLS
-</marquee></h1>
-</DIV>
+</h1>
+</marquee>
+
+
 <div class="navbar">
 
 <div class="dropdown" >
@@ -93,7 +97,7 @@ ADMIN CONTROLS
 </button>
 <div class="dropdown-content" id="downNav">
 <a href="EmpShow.jsp">Show Active Employ</a>
-<a href="EmployAdd.jsp">Employee Add</a>
+<a href="EmployAdd.jsp">ADD Employee </a>
 <a href="EmpShowInactive.jsp">Show In-Active Employ</a>
 </div>
 </div>
@@ -103,7 +107,7 @@ ADMIN CONTROLS
 &#9776>DEPARTMENT
 </button>
 <div class="dropdown-content" id="downNav">
-<a href="DepartmentAdd.jsp">Department Add</a>
+<a href="DepartmentAdd.jsp">ADD Department </a>
 <a href="DepartShow.jsp">Department Show</a>
 </div>
 </div>
@@ -114,7 +118,7 @@ ADMIN CONTROLS
 &#9776>GRADE
 </button>
 <div class="dropdown-content" id="downNav">
-<a href="Grade.jsp">Grade Add</a>
+<a href="Grade.jsp">ADD Grade</a>
 <a href="GradeShow.jsp">Grade Show</a>
 </div>
 </div>
@@ -124,7 +128,7 @@ ADMIN CONTROLS
 &#9776>LEAVE DETAIL
 </button>
 <div class="dropdown-content" id="downNav">
-<a href="LeaveDetail.jsp">Leave Add</a>
+<a href="LeaveDetail.jsp">ADD Leave</a>
 <a href="LeaveShow.jsp">Leave Show</a>
 </div>
 </div>

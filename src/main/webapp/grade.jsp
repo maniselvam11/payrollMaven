@@ -67,8 +67,8 @@ if(gradeExist!=null){
 <input type="number" name="pf" id="gradePf" pattern="[0-9]+" min="1" placeholder="enter providient fund "><br><br>
 <label for="gradePt">PROFESSIONAL TAX</label>
 <input type="number" name="pt" id="gradePt" pattern="[0-9]+" min="1" placeholder="enter Professional tax "><br><br>
-<label for="deptId">DEPARTMENT ID</label>
-<input type="number" name="deptId" id="deptId" pattern="[0-9]+" min="1" placeholder="enter department id "><br><br>
+<label for="deptName">DEPARTMENT Name</label>
+<input type="text" name="deptNa" id="deptName" pattern="[a-zA-Z]+" placeholder="enter Department Name "><br><br>
 
 <center><input type="submit" class="btn btn-primary">
 

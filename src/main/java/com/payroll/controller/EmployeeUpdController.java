@@ -11,10 +11,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.payroll.dao.DepartmentsDaoImpl;
 import com.payroll.dao.EmployeeDaoImpl;
 import com.payroll.dao.GradeDaoImpl;
+import com.payroll.exception.EmployeeDelException;
 import com.payroll.model.Departments;
 import com.payroll.model.Employee;
 import com.payroll.model.Grade;
@@ -58,6 +60,10 @@ public class EmployeeUpdController extends HttpServlet {
 		int empId=employ.findEmployeeID(employee);
 		Employee emp=new Employee(empId,name,dob,doj,address,city,pincode,mobileNo,state,email,panNo,depart,grade);
 		int i=employ.updateEmp(emp);
+		try {
+			
+		
+		
 		if(i>0) {
 			
 		
@@ -68,12 +74,14 @@ public class EmployeeUpdController extends HttpServlet {
 		out.println("</script>");
 		}
 		else{
-			PrintWriter out =response.getWriter();
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Employee not-Updated properly');");
-			out.println("location='EmpShow.jsp';");
-			out.println("</script>");
-			}
+			throw new EmployeeDelException();
+			}}
+		catch(EmployeeDelException e) {
+			HttpSession session=request.getSession();
+			session.setAttribute("dataInvalid", e.getEmployeeEntry());
+			response.sendRedirect("EmployUpd.jsp");
+			
+		}
 		}
 
 }

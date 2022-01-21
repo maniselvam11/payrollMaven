@@ -11,9 +11,8 @@ public class InvalidAmount extends Exception{
 	
 	}
 	public String getMessage1() {
-		// TODO Auto-generated method stub
+		
 		return "That Department Grade Already exist";
-	
 	}
 	
 }

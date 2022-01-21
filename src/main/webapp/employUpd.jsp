@@ -32,7 +32,7 @@
   	border-radius: 25px;
   	width:30%;
   	margin-left: 440px;
-  	background-color: #B9B087 ;
+  	background-color: #bebfc3 ;
   	text-decoration: none;}
 .text-warning {
     margin-left: 495px;
@@ -46,11 +46,19 @@
 
 </head>
 <body>
+<%String data=(String)session.getAttribute("dataInvalid");
+if(data!=null){
+	%>
+	<h3><%= data%></h3>
+	<%session.removeAttribute("dataInvalid"); %>
+<%} %>
+
+
 <% int empId=Integer.parseInt(request.getParameter("empId"));
 EmployeeDaoImpl employDao=new EmployeeDaoImpl();
 Employee employ=employDao.findEmployee(empId);
 %>
-<h3 class="text-warning">EMPLOYEE UPDATE</h3><br><br>
+<h3 class="text-warning">EMPLOYEE UPDATE</h3><br>
 
 <form action="empUpdate" class="updSty">
 <div class="formSty">
@@ -96,10 +104,12 @@ Employee employ=employDao.findEmployee(empId);
 <center>
 <input type="submit" class="btn btn-primary">
 
+</form>
+
+<button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button>
+
 <br>
 </div>
-</form>
-<button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button>
 </center>
 </body>
 </html>

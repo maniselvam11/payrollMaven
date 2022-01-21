@@ -65,23 +65,26 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 	
 		return id;
 	}
-	public void updateDept(Departments depart)
+	public int updateDept(Departments depart)
 	{
 		String insertQuery = "update departments set dept_name=? where dept_id=?";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		PreparedStatement pstmt = null;
+		int i=0;
 		try {
 
 			pstmt = con.prepareStatement(insertQuery);
 			pstmt.setString(1,depart.getDeptName());
 			pstmt.setLong(2, depart.getDeptId());
-			pstmt.executeUpdate();
+			i=pstmt.executeUpdate();
 
 		} catch (SQLException e) {
 			//catch the exception and get that message
 			e.printStackTrace();
 		}
+		return i;
+		
 	}
 	public boolean deleteDept(int  deptId)
 	{

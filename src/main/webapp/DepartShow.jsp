@@ -49,6 +49,13 @@ margin-right: 40px;
 </style>
 </head>
 <body>
+<%String deptDel=(String)request.getParameter("depDelete");
+if(deptDel!=null){
+%>
+<h3><%=deptDel %></h3>
+<%session.removeAttribute("depDelete"); %>
+
+<%} %>
 <div id="search">
 <form action="departmentSearch.jsp">
 
