@@ -19,4 +19,8 @@ public class DepartmentException extends Exception{
 		return "Department not deleted Successfully";
 		
 	}
+	public String gradeDept() {
+		return "That Department Grade Not Exist";
+		
+	}
 }

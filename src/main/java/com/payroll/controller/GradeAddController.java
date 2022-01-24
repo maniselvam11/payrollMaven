@@ -35,10 +35,9 @@ public class GradeAddController extends HttpServlet {
 		Grade grade=gradeDao.findGrade(gradeName, department.getDeptId());
 		
 		try {
+			
 		if(grade==null) {
-			
-		
-			
+				
 		try{
 			if((basic>0)&&(bonus>0)&&(pf>0)&&(pt>0)) {
 		

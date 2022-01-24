@@ -109,7 +109,7 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 	{
 		List<Departments> departmentList=new ArrayList<Departments>();
 		
-		String showQuery="select * from Departments";
+		String showQuery="select DEPT_ID,DEPT_NAME from Departments";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		GradeDaoImpl gradeDaoImpl=new GradeDaoImpl();
@@ -132,7 +132,7 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 	}
 	public  Departments	findDepartment(int id)
 	{
-		String query="select * from departments where dept_id="+id;
+		String query="select DEPT_ID,DEPT_NAME from departments where dept_id="+id;
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();		
 		Departments depart=null;
@@ -154,7 +154,7 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 	}
 	public  Departments	findDepartment(String deptName)
 	{
-		String query="select * from departments where dept_name= '"+deptName+"'";
+		String query="select DEPT_ID,DEPT_NAME from departments where dept_name= '"+deptName+"'";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		Departments depart=null;
@@ -181,7 +181,7 @@ public class DepartmentsDaoImpl implements DepartmentDao{
 	{
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
-		String query="select * from departments where upper(DEPT_NAME) like '"+deptName.toUpperCase()+"%'";
+		String query="select DEPT_ID,DEPT_NAME from departments where upper(DEPT_NAME) like '"+deptName.toUpperCase()+"%'";
 		ResultSet rs=null;
 		List<Departments> departmentList=new ArrayList<Departments>();
 

@@ -45,7 +45,7 @@ public class LeaveDaoImpl {
 	{
 		List<Leave> leaveList=new ArrayList<Leave>();
 		
-		String showQuery="select * from leave_details";
+		String showQuery="select LEAVE_ID,EMP_ID,LEAVE_DATE,REASON from leave_details";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		EmployeeDaoImpl employeeDaoImpl=new EmployeeDaoImpl();
 
@@ -97,7 +97,7 @@ public class LeaveDaoImpl {
 	}
 	public  Leave findLeave(Date leaveDt,int empId) {
 		
-		String qry="select * from leave_details where LEAVE_DATE = ? and emp_id =  ?";
+		String qry="select LEAVE_ID,EMP_ID,LEAVE_DATE,REASON from leave_details where LEAVE_DATE = ? and emp_id =  ?";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		
@@ -143,7 +143,7 @@ public class LeaveDaoImpl {
 	}
 public  Leave findLeave(int leaveId) {
 		
-		String qry="select * from Leave_details where leave_id = "+leaveId;
+		String qry="select LEAVE_ID,EMP_ID,LEAVE_DATE,REASON from Leave_details where leave_id = "+leaveId;
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		EmployeeDaoImpl employeeDaoImpl=new EmployeeDaoImpl();
@@ -204,7 +204,7 @@ public int updateLeave(Leave leave) {
 public List<Leave> searchLeave(Date fromDt,Date toDate){
 	ConnectionUtilImpl connection=new ConnectionUtilImpl();
 	Connection con=connection.dbConnect();
-	String searchQuery="select * from leave_details where LEAVE_DATE  between ? and ?";
+	String searchQuery="select LEAVE_ID,EMP_ID,LEAVE_DATE,REASON from leave_details where LEAVE_DATE  between ? and ?";
 	List<Leave> leaveList=new ArrayList<Leave>();
 	ResultSet rs=null;
 	try {

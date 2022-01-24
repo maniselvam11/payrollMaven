@@ -15,21 +15,27 @@
      body {
     font-family: Arial, Helvetica, sans-serif;
     background-image: url("images/pexels-nataliya-vaitkevich-6863259.jpg");
-    background-repeat: no-repeat;
-	background-size: cover;
+     background-repeat:no-repeat center center fixed;
+   
+  background-size: cover;
+  height: 100%;
     }
-    
-table {
+    table {
   border-collapse: collapse;
   width: 100%;
 }
 
-th, td {
+ td,th {
   text-align: left;
   padding: 8px;
 }
+tr:hover{
+background-color: lime;
+}
 
-tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(even) {
+background-color: #f2f2f2;
+}
 a{
 text-decoration:none;
 }
@@ -92,7 +98,7 @@ for(int i=0;i<employeeList.size();i++)
 <td><%= emp.getMailId() %></td>
 <td><%= emp.getPanNo() %></td>
 <td><%= emp.getDept().getDeptName()%></td>
-<td><%=emp.getGrade().getGradeName() %></td>
+<td><%=emp.getGrade().getGradeName()%></td>
 
 <td><a href="EmpStatus?statusId=<%= emp.getEmpId() %>">Active</a></td>
 </tr>

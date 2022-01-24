@@ -27,7 +27,7 @@ body {
     margin-top: 5%;
     background-color: #b3bac2;
     margin-left: -684px;
-}
+	}
   	</style>
 </head>
 <body>
@@ -48,6 +48,8 @@ if(deptError!=null){
 <input type="text" id="deptName" name="dptname" autofocus="autofocus" ><br><br>
 <input type="submit" class="btn btn-primary">
 <input type="reset" class="btn btn-primary">
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary">HOME</button></a>
+
 <br>
 </div>
 </form>

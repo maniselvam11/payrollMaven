@@ -50,7 +50,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		}
 	public  Employee findEmployee(int empId)
 	{
-		String findEmployeeQuery="select * from employees where emp_id=?";
+		String findEmployeeQuery="select EMP_ID,EMP_NAME,EMP_DOB,EMP_DOJ,EMP_ADDRESS,EMP_CITY,EMP_PINCODE,EMP_MOBILE_NO,EMP_STATE,EMP_EMAIL_ID,EMP_PAN_NO,DEPT_ID,GRADE_ID,STATUS from employees where emp_id=?";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		Employee employee=null;
@@ -159,7 +159,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	{
 		List<Employee> employeeList=new ArrayList<Employee>();
 		
-		String showQuery="select * from employees where status = 'active' ";
+		String showQuery="select  EMP_ID,EMP_NAME,EMP_DOB,EMP_DOJ,EMP_ADDRESS,EMP_CITY,EMP_PINCODE,EMP_MOBILE_NO,EMP_STATE,EMP_EMAIL_ID,EMP_PAN_NO,DEPT_ID,GRADE_ID,STATUS  from employees where status = 'active' ";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		DepartmentsDaoImpl deptDao=new DepartmentsDaoImpl();
@@ -185,7 +185,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	{
 		List<Employee> employeeList=new ArrayList<Employee>();
 		
-		String showQuery="select * from employees where status= 'inactive' ";
+		String showQuery="select  EMP_ID,EMP_NAME,EMP_DOB,EMP_DOJ,EMP_ADDRESS,EMP_CITY,EMP_PINCODE,EMP_MOBILE_NO,EMP_STATE,EMP_EMAIL_ID,EMP_PAN_NO,DEPT_ID,GRADE_ID,STATUS  from employees where status= 'inactive' ";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		DepartmentsDaoImpl deptDao=new DepartmentsDaoImpl();
@@ -209,7 +209,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 	public Employee findEmploy(String email)
 	{
-		String findEmployeeQuery="select * from employees where EMP_EMAIL_ID=?";
+		String findEmployeeQuery="select  EMP_ID,EMP_NAME,EMP_DOB,EMP_DOJ,EMP_ADDRESS,EMP_CITY,EMP_PINCODE,EMP_MOBILE_NO,EMP_STATE,EMP_EMAIL_ID,EMP_PAN_NO,DEPT_ID,GRADE_ID,STATUS  from employees where EMP_EMAIL_ID=?";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		DepartmentsDaoImpl deptDao=new DepartmentsDaoImpl();
@@ -294,7 +294,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	{	
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
-		String query="select * from employees where upper(EMP_NAME) like '"+empName.toUpperCase()+"%'";
+		String query="select  EMP_ID,EMP_NAME,EMP_DOB,EMP_DOJ,EMP_ADDRESS,EMP_CITY,EMP_PINCODE,EMP_MOBILE_NO,EMP_STATE,EMP_EMAIL_ID,EMP_PAN_NO,DEPT_ID,GRADE_ID,STATUS  from employees where upper(EMP_NAME) like '"+empName.toUpperCase()+"%'";
 		ResultSet rs=null;
 		List<Employee> employeeList=new ArrayList<Employee>();
 
@@ -369,7 +369,7 @@ public Date todayDate() {
 	}
 public Employee findEmploy(int deptId,int grdId)
 {
-	String findEmployeeQuery="select * from employees where DEPT_ID=? and GRADE_ID=?";
+	String findEmployeeQuery="select  EMP_ID,EMP_NAME,EMP_DOB,EMP_DOJ,EMP_ADDRESS,EMP_CITY,EMP_PINCODE,EMP_MOBILE_NO,EMP_STATE,EMP_EMAIL_ID,EMP_PAN_NO,DEPT_ID,GRADE_ID,STATUS  from employees where DEPT_ID=? and GRADE_ID=?";
 	ConnectionUtilImpl connection=new ConnectionUtilImpl();
 	Connection con=connection.dbConnect();
 	DepartmentsDaoImpl deptDao=new DepartmentsDaoImpl();

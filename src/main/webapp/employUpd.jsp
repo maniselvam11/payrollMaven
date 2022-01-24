@@ -15,32 +15,39 @@
     font-family: Arial, Helvetica, sans-serif;
     background-image: url("images/image3.jpg");
     background-repeat: no-repeat;
-	background-size: cover;    }
+	background-size: cover;    
+	}
     
-    }
+    
     label{
     width:200px;
     display:inline-block;
-    }
+    margin-bottom: 19px;
+    margin-left: -29px;
+     }
     .updSty{
     text-align: center;
   
     }
-    .formSty{
+       .formSty {
     background-color: white;
-  	padding: 0px 20px;
-  	border-radius: 25px;
-  	width:30%;
-  	margin-left: 440px;
-  	background-color: #bebfc3 ;
-  	text-decoration: none;}
+    border: 0px solid #ddbfbf;
+    padding: 0px 37px;
+    border-radius: 25px;
+    width: 33%;
+    margin-left: 440px;
+    background-color: #bebfc3;
+}
+    
 .text-warning {
-    margin-left: 495px;
+    margin-left: -17px;
     --bs-text-opacity: 1;
     color: rgba(var(--bs-warning-rgb),var(--bs-text-opacity))!important;
     margin-top: 24px;
 }
-
+.empDiv{
+    text-align: center;
+    }
 
 </style>
 
@@ -58,59 +65,134 @@ if(data!=null){
 EmployeeDaoImpl employDao=new EmployeeDaoImpl();
 Employee employ=employDao.findEmployee(empId);
 %>
+ <div class="empDiv">
+ 
 <h3 class="text-warning">EMPLOYEE UPDATE</h3><br>
 
-<form action="empUpdate" class="updSty">
-<div class="formSty">
+<form action="empUpdate" class="formSty">
+
+<div >
 <br>
+<table>
+<tr>
+<td>
   <label for="empName">EMPLOYEE NAME</label>
+  </td>
+  <td>
 <input type="text" id="empName" name="name"  autofocus="autofocus" value="<%=employ.getEmpName()%>"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 
 <label for="empDob">DATE OF BIRTH</label>
+</td>
+<td>
 <input type="date" id="empDob" name="dob" value="<%=employ.getDob() %>"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 
 <label for="empDoj">DATE OF JOINING</label>
+</td>
+<td>
 <input type="date" id="empDoj" name="doj" value="<%=employ.getDoj() %>"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 
 <label for="empAddress">ADDRESS</label>
+</td>
+<td>
 <input type="text" id="empAddress" name="address" value="<%=employ.getAddress() %>"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 
 <label for="empCity">CITY</label>
+</td>
+<td>
 <input type="text" id="empCity" name="city" value="<%=employ.getCity()%>"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 
 <label for="empPin">PINCODE</label>
+</td>
+<td>
 <input type="number" maxlength="6" id="empPin" name="pincode" value="<%=employ.getPincode() %>"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 
 <label for="empNo">MOBILE NUMBER</label>
+</td>
+<td>
 <input type="number" id="empNo" maxlength="10" name="mobile" value="<%=employ.getMobileNo() %>"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 
 <label for="empState">STATE</label>
+</td>
+<td>
 <input type="text" id="empState" name="state" value="<%=employ.getState() %>" ><br><br>
+</td>
+</tr>
+<tr>
+<td>
 
 <label for="empEmail">EMAIL ID</label>
+</td>
+<td>
 <input type="text" id="empEmail" name="email" value="<%=employ.getMailId() %>"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 
 <label for="empPan">PAN NUMBER</label>
+</td>
+<td>
 <input type="text" id="empPan"  maxlength="10" name="pan" value="<%=employ.getPanNo() %>"><br><br>
-
-
+</td>
+</tr>
+<tr>
+<td>
 <label for="empDepart">DEPARTMENT ID</label>
-
+</td>
+<td>
 <input type="text" id="deptName" name="dId" value="<%=employ.getDept().getDeptId() %>"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 
 <label for="gradeId">GRADE ID</label>
+</td>
+<td>
 <input type="number" min="1"  name="grdId" value="<%=employ.getGrade().getGradeId()%>"><br><br>
+</td>
+</tr>
+</table>
 
-<center>
 <input type="submit" class="btn btn-primary">
 
+
 </form>
+<a href="AdminControl.jsp" ><button type="button" class="btn btn-primary"><strong>HOME</strong></button></a>
+<input type="button" value="Go back!" onclick="history.go(-1)" class="btn btn-primary">
 
-<button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button>
-
-<br>
+<br><br>
 </div>
-</center>
+</div>
+
 </body>
 </html>
 <script>

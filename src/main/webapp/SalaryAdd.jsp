@@ -41,6 +41,12 @@
 </style>
 </head>
 <body>
+<%String salStatus=(String)session.getAttribute("statusSal");
+if(salStatus!=null){
+%>
+<h3><%=salStatus %></h3>
+<%session.removeAttribute("statusSal"); %>
+<%} %>
 <%String salInvalid=(String)session.getAttribute("salaryEntry");
 if(salInvalid!=null){
 %>
@@ -67,6 +73,7 @@ if(InvalidEnter!=null){
 
 <input type="reset" class="btn btn-primary">
 <input type="submit" class="btn btn-primary">
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary">HOME</button></a>
 
 
 <br><br>

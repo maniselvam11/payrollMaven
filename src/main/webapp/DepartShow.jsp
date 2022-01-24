@@ -59,7 +59,7 @@ if(deptDel!=null){
 <div id="search">
 <form action="departmentSearch.jsp">
 
-<input type="text" name="deptName" placeholder="Department Name" autofocus="autofocus">
+<input type="text" name="deptName" placeholder="Enter Department Name" autofocus="autofocus">
 <button type="submit" class="btn btn-primary">&#128269;
 </button>
 </form>

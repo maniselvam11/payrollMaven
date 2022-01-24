@@ -10,4 +10,8 @@ public class SalaryInvalidException extends Exception {
 		return "Employee Salary Approve after 30 days";
 		
 	}
+	public String statusInactiveEmp() {
+		return "Salary Didn't Approve Inactive Employee";
+		
+	}
 }

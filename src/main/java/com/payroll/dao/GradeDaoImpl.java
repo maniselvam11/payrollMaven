@@ -110,7 +110,7 @@ public class GradeDaoImpl {
 	{
 		List<Grade> gradeList=new ArrayList<Grade>();
 		
-		String showQuery="select * from grades";
+		String showQuery="select GRADE_ID,GRADE_NAME,GRADE_BASIC,GRADE_BONUS,GRADE_PF,GRADE_PT,DEPT_ID from grades";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		try {
@@ -168,7 +168,7 @@ public class GradeDaoImpl {
 	
 	public  Grade findGrade(int gradeId) 
 	{	
-		String qry="select * from grades where GRADE_ID="+gradeId;
+		String qry="select GRADE_ID,GRADE_NAME,GRADE_BASIC,GRADE_BONUS,GRADE_PF,GRADE_PT,DEPT_ID  from grades where GRADE_ID="+gradeId;
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		Grade grd=null;
@@ -307,7 +307,7 @@ public class GradeDaoImpl {
 	{
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
-		String query="select * from grades where upper(GRADE_NAME) like '"+grdName.toUpperCase()+"%'";
+		String query="select GRADE_ID,GRADE_NAME,GRADE_BASIC,GRADE_BONUS,GRADE_PF,GRADE_PT,DEPT_ID  from grades where upper(GRADE_NAME) like '"+grdName.toUpperCase()+"%'";
 		ResultSet rs=null;
 		List<Grade> gradeList=new ArrayList<Grade>();
 
@@ -334,7 +334,7 @@ public class GradeDaoImpl {
 	public  Grade findGrade(String gradeName,int deptId) 
 	{
 		
-		String qry="select * from grades where grade_name = ?  and DEPT_ID=?";
+		String qry="select GRADE_ID,GRADE_NAME,GRADE_BASIC,GRADE_BONUS,GRADE_PF,GRADE_PT,DEPT_ID  from grades where grade_name = ?  and DEPT_ID=?";
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		Grade grd=null;

@@ -57,6 +57,8 @@ if(gradeExist!=null){
 <br>
 <div class="formDiv">
 <br>
+<table>
+
 <label for="gradeNa">GRADE NAME</label>
 <input type="text" name="gradeName" id="gradeNa" pattern="[a-zA-z\s]+" placeholder="enter grade Name" autofocus="autofocus"><br><br>
 <label for="gradeBasic">BASIC SALARY</label>
@@ -74,6 +76,7 @@ if(gradeExist!=null){
 
 </form>
 <button onclick="history.go(-1)" class="btn btn-primary">BACK</button>
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary">HOME</button></a>
 
 
 </center>

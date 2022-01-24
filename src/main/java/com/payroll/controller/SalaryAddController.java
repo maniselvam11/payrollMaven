@@ -70,6 +70,9 @@ public class SalaryAddController extends HttpServlet {
 			salaryDt=todayDate;
 		}
 		if (todayDate.compareTo(salaryDt) == 0)  {
+			try {
+				
+			
 			if (status.equals("active")) {
 				if (selectTax.equals("yes")) {
 					if (selectBonus.equals("yes")) {
@@ -166,6 +169,11 @@ public class SalaryAddController extends HttpServlet {
 			}
 			else {
 				throw new SalaryInvalidException();
+			}}
+			catch(SalaryInvalidException s) {
+				HttpSession session = request.getSession();
+				session.setAttribute("statusSal", s.statusInactiveEmp());
+				response.sendRedirect("SalaryAdd.jsp");
 			}
 
 		} 

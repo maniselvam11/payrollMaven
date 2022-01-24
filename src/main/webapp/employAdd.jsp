@@ -27,6 +27,7 @@
     label{
     width:200px;
     display:inline-block;
+    margin-bottom: 21px;
     }
     .empDiv{
     text-align: center;
@@ -34,9 +35,9 @@
      .formSty {
     background-color: white;
     border: 0px solid #ddbfbf;
-    padding: 0px 20px;
+    padding: 0px 0px;
     border-radius: 25px;
-    width: 30%;
+    width: 33%;
     margin-left: 440px;
     background-color: #ccd1d4;
 }
@@ -50,6 +51,7 @@
   if(empAdd!=null){
 	  %>
 	  <h2><%=empAdd %></h2>
+	  <%session.removeAttribute("employInvalid"); %>
   <%} %>
   
   
@@ -57,61 +59,137 @@
   if(emp!=null){
 	  %>
 	  <h2><%=emp %></h2>
+	  <%session.removeAttribute("employalready"); %>
   <%} %>
+  
+      <%String grdDept=(String)session.getAttribute("gradeDept");
+  if(grdDept!=null){
+	  %>
+	  <h2><%=grdDept %></h2>
+	  <%session.removeAttribute("gradeDept"); %>
+  <%} %>
+  
   
   <div class="empDiv">
  
-  <h3>ADD Employee </h3>
+  <h3>ADD EMPLOYEE </h3>
   
 
-<form action="empAdd" class="formSty" method="get" >
+<form action="empAdd" class="formSty" method="post" >
 <br>
 <div>
-<label for="name">NAME</label>
-<input type="text" pattern="[a-zA-z\s]+" id="name" name="EmployeeName" placeholder="Enter your name" autofocus="autofocus"><br><br>
+<table>
+<tr>
+<td><label for="name">NAME</label></td>
+<td><input type="text" pattern="[a-zA-z\s]+" id="name" name="EmployeeName" placeholder="Enter your name" autofocus="autofocus"><br><br></td>
+</tr>
+<tr>
+<td>
 <label for="dob" >DATE OF BIRTH</label>
+</td>
+<td>
 <input type="date" pattern="(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-]\\d{4}" id="dob" name="dob" placeholder="enter your DOB"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 <label for="doj">DATE OF JOINING</label>
+</td>
+<td>
 <input type="date" pattern="(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[012])[-]\\d{4}" id="doj" name="doj" placeholder="Date Of Joining"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 <label for="address">ADDRESS</label>
+</td>
+<td>
 <input type="text" pattern="[a-zA-z0-9/,\s]+" id="address" name="address" placeholder="Enter Address"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 <label for="city">CITY</label>
+</td>
+<td>
 <input type="text" pattern="[a-zA-z\s]+" id="city" name="city" placeholder="Enter city"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 <label for="pincode">PINCODE</label>
+</td>
+<td>
 <input type="number"  maxlength="6" id="pincode" name="pincode" placeholder="pincode"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 <label for="mobileno">MOBILE NUMBER</label>
+</td>
+<td>
 <input type="number" pattern="[0-9]{10}" id="mobileno" maxlength="10"  name="mobileNumber" placeholder="Enter MobileNumber"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 <label for="state">STATE</label>
+</td>
+<td>
 <input type="text" pattern="[a-zA-z\s]+" id="state" name="state" placeholder="Enter State"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 <label for="mailId">EMAIL ID</label>
+</td>
+<td>
 <input type="email" pattern="[a-z][a-z0-9]+[@][a-z]+[.][a-z]+" id="mailId" name="mailId" placeholder="Enter employ mail"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 <label for="panNumber">PAN NUMBER</label>
+</td>
+<td>
 <input type="text" pattern="[a-zA-z0-9]+{10}" maxlength="10" id="panNumber" name="panNo" placeholder="Enter Pan Number"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 <label for="departName">DEPARTMENT NAME</label>
+</td>
+<td>
 <input type="text"  pattern="[a-zA-Z\s]+" name="deptName" placeholder="Enter Department Name"><br><br>
+</td>
+</tr>
+<tr>
+<td>
 <label for="gradeName">GRADE NAME</label>
+</td>
+<td>
 <input type="text"  pattern="[a-zA-Z\s]+" name="grdName" placeholder="Enter grade Name"><br><br>
+</td>
+</tr>
 
-
+</table>
 </div>
 
 
 
-<div>
+
 <center>
 <button type="submit" class="btn btn-primary">Submit</button>
 
 <input type="reset" class="btn btn-primary">
-</center>
+
 </form>
-  <br>
 <a href="AdminControl.jsp" ><button type="button" class="btn btn-primary"><strong>HOME</strong></button></a>
-
-
- <input type="button" value="Go back!" onclick="history.go(-1)" class="btn btn-primary">
+<input type="button" value="Go back!" onclick="history.go(-1)" class="btn btn-primary">
 <br><br>
+</center>
 </div>
-</div>
+
 </body>
 </html>
 <script>

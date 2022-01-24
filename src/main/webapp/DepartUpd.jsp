@@ -54,6 +54,8 @@ Departments department=departDao.findDepartment(deptId);
 <input type="submit"class="btn btn-primary">
 
 </form>
+<a href="AdminControl.jsp"><button type="button" class="btn btn-primary">HOME</button></a>
+
  <button onclick="history.go(-1)" class="btn btn-primary">GO BACK</button></center>
 
 </center>

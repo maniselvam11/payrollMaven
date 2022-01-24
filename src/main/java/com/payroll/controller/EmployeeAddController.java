@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.payroll.dao.DepartmentsDaoImpl;
 import com.payroll.dao.EmployeeDaoImpl;
 import com.payroll.dao.GradeDaoImpl;
+import com.payroll.exception.DepartmentException;
 import com.payroll.exception.EmployeeDelException;
 import com.payroll.model.Departments;
 import com.payroll.model.Employee;
@@ -53,8 +54,11 @@ public class EmployeeAddController extends HttpServlet {
 		Grade grade=gradeDao.findGrade(grdName, depart.getDeptId());
 		Employee employ=new Employee(name,dob,doj,address,city,pincode,mobileNumber,state,mailId,panNo,depart,grade);
 		EmployeeDaoImpl employDao=new EmployeeDaoImpl();
-		Employee employee=employDao.findEmploy(depart.getDeptId(),grade.getGradeId());
 		
+		try {
+			
+		
+		if(grade!=null) {
 		try {
 		
 		boolean empResult=employDao.insertEmp(employ);
@@ -77,6 +81,17 @@ public class EmployeeAddController extends HttpServlet {
 			response.sendRedirect("EmployAdd.jsp");
 			
 		}}
+		else {
+			throw new DepartmentException();
+			
+		}}
+		catch(DepartmentException d) {
+			HttpSession session=request.getSession();
+			session.setAttribute("gradeDept", d.gradeDept());
+			response.sendRedirect("EmployAdd.jsp");
+			
+		}
+		}
 		
 		
 		

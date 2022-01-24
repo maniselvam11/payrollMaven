@@ -9,6 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
+
   body {
     font-family: Arial, Helvetica, sans-serif;
     background-image: url("images/pexels-anna-nekrashevich-6801874.jpg");
@@ -30,7 +31,7 @@
   	border-radius: 25px;
   	width:30%;
   	margin-left: 440px;
-  	background-color: ##a8acb7 ;
+  	background-color: #a8acb7 ;
   	margin-top: 10%;
   	}
    

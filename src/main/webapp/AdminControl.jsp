@@ -89,7 +89,6 @@ ADMIN CONTROLS
 
 
 <div class="navbar">
-
 <div class="dropdown" >
 <button class="dropbtn">
 &#9776>EMPLOYEE      
@@ -145,7 +144,8 @@ ADMIN CONTROLS
 </div>
 
 
-<div class="dropdown" style="float:right"><a href="index.jsp">
+<div class="dropdown" style="float:right">
+<a href="index.jsp">
 <button class="dropbtn">&#9776>LOGOUT</button></a>
 </div>
 </div>

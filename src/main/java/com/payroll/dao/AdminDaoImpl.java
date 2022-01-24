@@ -15,7 +15,7 @@ public class AdminDaoImpl implements AdminDao{
 	
 	public boolean validateAdmin(Admin admin) {
 		
-		String query="select * from admin_details where email_id = ? and password = ?" ;
+		String query="select EMAIL_ID,PASSWORD from admin_details where email_id = ? and password = ?" ;
 		ConnectionUtilImpl connection=new ConnectionUtilImpl();
 		Connection con=connection.dbConnect();
 		boolean flag=false;
